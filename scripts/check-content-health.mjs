@@ -1,0 +1,1046 @@
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { extname, join, relative } from 'node:path'
+import { loadConfig } from './lib/load-config.mjs'
+
+const root = process.cwd()
+const docsDir = join(root, 'docs')
+const publicDir = join(root, 'docs/.vuepress/public')
+const distDir = join(root, 'docs/.vuepress/dist')
+const hostname = 'https://yp7.net'
+
+const errors = []
+if (existsSync(join(publicDir, 'llms.txt'))) {
+  errors.push('docs/.vuepress/public/llms.txt: retired file must not be published')
+}
+const toProjectPath = (filePath) => relative(root, filePath).replace(/\\/g, '/')
+
+const walkFiles = (dir, shouldSkip = () => false) => {
+  if (!existsSync(dir)) return []
+
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const filePath = join(dir, entry.name)
+
+    if (shouldSkip(filePath, entry)) return []
+    if (entry.isDirectory()) return walkFiles(filePath, shouldSkip)
+    if (entry.isFile()) return [filePath]
+
+    return []
+  })
+}
+
+const parseFrontmatter = (content = '') => {
+  const match = content.match(/^---\n([\s\S]*?)\n---/)
+  return match?.[1] || ''
+}
+
+const getFrontmatterValue = (frontmatter, key) => {
+  const match = frontmatter.match(new RegExp(`^${key}:\\s*(.+)$`, 'm'))
+  return match?.[1]?.trim().replace(/^['"]|['"]$/g, '')
+}
+
+const normalizeRoute = (path) => {
+  if (path === '/') return '/'
+  return path.endsWith('/') ? path : `${path}/`
+}
+
+const countMatches = (content, pattern) => content.match(pattern)?.length || 0
+
+const collectSchemaObjects = (value, visit) => {
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectSchemaObjects(item, visit))
+    return
+  }
+
+  if (!value || typeof value !== 'object') return
+
+  visit(value)
+  Object.values(value).forEach((item) => collectSchemaObjects(item, visit))
+}
+
+const hasSchemaType = (schema, type) => (
+  Array.isArray(schema?.['@type']) ? schema['@type'].includes(type) : schema?.['@type'] === type
+)
+
+const getJsonLdSchemas = (html, projectPath) => {
+  const schemas = []
+  const scriptPattern = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
+  let match
+
+  while ((match = scriptPattern.exec(html))) {
+    try {
+      schemas.push(JSON.parse(match[1]))
+    } catch (error) {
+      errors.push(`${projectPath}: invalid JSON-LD (${error.message})`)
+    }
+  }
+
+  return schemas
+}
+
+const validateJsonLd = (html, projectPath) => {
+  const schemaObjects = []
+
+  getJsonLdSchemas(html, projectPath).forEach((schema) => {
+    collectSchemaObjects(schema, (item) => {
+      schemaObjects.push(item)
+
+      if (hasSchemaType(item, 'Service')) {
+        if ('additionalProperty' in item) {
+          errors.push(`${projectPath}: additionalProperty is not valid on Service`)
+        }
+        const descriptionFields = new Set((item.description || '').split('\n')
+          .map((line) => line.split('：')[0]))
+        const retiredPerformanceProperties = [
+          '证据等级',
+          '最后测试时间',
+          '测试时段',
+          '测试地区',
+          '测试网络',
+          '测试设备',
+          '晚高峰延迟',
+          '晚高峰速度区间',
+          'ChatGPT表现',
+          'YouTube 4K表现',
+          '稳定性判断',
+        ]
+
+        retiredPerformanceProperties.forEach((name) => {
+          if (descriptionFields.has(name) || name in item) {
+            errors.push(`${projectPath}: Service schema restored unsupported performance property “${name}”`)
+          }
+        })
+        // Editorial policy is explained on the page and methodology, not a
+        // property of the service being reviewed. Keep its review reference.
+        if (!Array.isArray(item.subjectOf) || !item.subjectOf.some((source) => source['@id'] === `${item.url}#webpage`)) {
+          errors.push(`${projectPath}: Service schema missing review page reference`)
+        }
+      }
+
+      if (!hasSchemaType(item, 'ItemList') || !Array.isArray(item.itemListElement)) return
+
+      if (
+        typeof item.numberOfItems === 'number'
+        && item.numberOfItems !== item.itemListElement.length
+      ) {
+        errors.push(`${projectPath}: ItemList numberOfItems is ${item.numberOfItems}, expected ${item.itemListElement.length}`)
+      }
+    })
+  })
+
+  const requiresCollectionPage = (
+    projectPath.startsWith('docs/.vuepress/dist/rankings/')
+    || projectPath === 'docs/.vuepress/dist/risk-monitor/index.html'
+    || projectPath === 'docs/.vuepress/dist/posts/jichang-tuijian/index.html'
+    || projectPath === 'docs/.vuepress/dist/posts/jichang-heji/index.html'
+  )
+
+  if (requiresCollectionPage) {
+    if (!schemaObjects.some((item) => hasSchemaType(item, 'CollectionPage'))) {
+      errors.push(`${projectPath}: expected CollectionPage schema`)
+    }
+    if (schemaObjects.some((item) => hasSchemaType(item, 'BlogPosting'))) {
+      errors.push(`${projectPath}: collection page must not use BlogPosting schema`)
+    }
+  }
+
+  schemaObjects
+    .filter((item) => hasSchemaType(item, 'BreadcrumbList'))
+    .forEach((breadcrumb) => {
+      const breadcrumbItems = Array.isArray(breadcrumb.itemListElement)
+        ? breadcrumb.itemListElement
+        : []
+      const pageUrl = schemaObjects.find((item) => (
+        typeof item?.['@id'] === 'string'
+        && item['@id'].endsWith('#webpage')
+      ))?.url
+
+      if (
+        pageUrl !== `${hostname}/blog/`
+        && breadcrumbItems.some((item) => item?.item === `${hostname}/blog/`)
+      ) {
+        errors.push(`${projectPath}: breadcrumb must not point to noindex blog index`)
+      }
+    })
+}
+
+const validateExternalAnchorRel = (html, projectPath) => {
+  const anchorPattern = /<a\b([^>]*?)>/gi
+  let match
+
+  while ((match = anchorPattern.exec(html))) {
+    const attrs = match[1]
+    const href = attrs.match(/\bhref=(["'])(.*?)\1/i)?.[2]
+    if (!href || !/^https?:\/\//.test(href)) continue
+
+    const rel = attrs.match(/\srel=(["'])(.*?)\1/i)?.[2] || ''
+    if (!/\bnoopener\b/.test(rel) || !/\bnoreferrer\b/.test(rel)) {
+      errors.push(`${projectPath}: external link ${href} missing noopener/noreferrer`)
+    }
+    if (/(\?|&|#)(code|aff|r|c|from|ref)=/i.test(href) && !/\bsponsored\b/.test(rel)) {
+      errors.push(`${projectPath}: sponsored-looking link ${href} missing sponsored rel`)
+    }
+  }
+}
+
+const redirectSourcePaths = new Set()
+const redirectTargetPaths = new Set()
+const redirectRules = new Map()
+const redirectsPath = join(publicDir, '_redirects')
+if (existsSync(redirectsPath)) {
+  const redirectLines = readFileSync(redirectsPath, 'utf8').split('\n')
+
+  redirectLines.forEach((line, index) => {
+    const trimmedLine = line.trim()
+    if (!trimmedLine || trimmedLine.startsWith('#')) return
+
+    const [source, target, status, ...extra] = trimmedLine.split(/\s+/)
+    if (!source || !target || !status || extra.length) {
+      errors.push(`${toProjectPath(redirectsPath)}:${index + 1}: expected source, target and status`)
+      return
+    }
+
+    if (!source.startsWith('/') || !target.startsWith('/') || source.includes('*') || target.includes('*')) {
+      errors.push(`${toProjectPath(redirectsPath)}:${index + 1}: IndexNow redirect validation requires local absolute paths without wildcards`)
+      return
+    }
+
+    if (!['301', '308'].includes(status)) {
+      errors.push(`${toProjectPath(redirectsPath)}:${index + 1}: redirect must use permanent status 301 or 308`)
+    }
+
+    const normalizedSource = normalizeRoute(source)
+    const normalizedTarget = normalizeRoute(target)
+    if (normalizedSource === normalizedTarget) {
+      errors.push(`${toProjectPath(redirectsPath)}:${index + 1}: redirect source and target are identical`)
+    }
+    if (redirectSourcePaths.has(normalizedSource)) {
+      errors.push(`${toProjectPath(redirectsPath)}:${index + 1}: duplicate redirect source ${source}`)
+    }
+    redirectSourcePaths.add(source)
+    redirectSourcePaths.add(normalizedSource)
+    redirectTargetPaths.add(target)
+    redirectRules.set(source, { target, status })
+
+    if (!extname(source) && target.endsWith('.html')) {
+      errors.push(`${toProjectPath(redirectsPath)}:${index + 1}: extensionless redirect to .html can loop on clean-url hosts`)
+    }
+  })
+}
+
+const requiredCanonicalRedirects = new Map([
+  ['/data/airports.html', { target: '/data/airports', status: '308' }],
+  ['/data/rankings.html', { target: '/data/rankings', status: '308' }],
+  ['/data/risk-monitor.html', { target: '/data/risk-monitor', status: '308' }],
+])
+
+requiredCanonicalRedirects.forEach((expected, source) => {
+  const actual = redirectRules.get(source)
+  if (!actual || actual.target !== expected.target || actual.status !== expected.status) {
+    errors.push(`${toProjectPath(redirectsPath)}: ${source} must redirect to ${expected.target} with ${expected.status}`)
+  }
+})
+
+const deletedUrlPaths = new Set()
+const deletedUrlsPath = join(root, '.github/indexnow-deleted-urls.txt')
+if (existsSync(deletedUrlsPath)) {
+  const deletedUrlLines = readFileSync(deletedUrlsPath, 'utf8').split('\n')
+
+  deletedUrlLines.forEach((line, index) => {
+    const deletedUrl = line.trim()
+    if (!deletedUrl || deletedUrl.startsWith('#')) return
+
+    let url
+    try {
+      url = new URL(deletedUrl)
+    } catch {
+      errors.push(`${toProjectPath(deletedUrlsPath)}:${index + 1}: invalid URL ${deletedUrl}`)
+      return
+    }
+
+    if (url.origin !== hostname || url.search || url.hash) {
+      errors.push(`${toProjectPath(deletedUrlsPath)}:${index + 1}: deleted URL must be a canonical ${hostname} URL without query or hash`)
+      return
+    }
+
+    const pathname = normalizeRoute(url.pathname)
+    if (deletedUrlPaths.has(pathname)) {
+      errors.push(`${toProjectPath(deletedUrlsPath)}:${index + 1}: duplicate deleted URL ${deletedUrl}`)
+    }
+    if (redirectSourcePaths.has(pathname)) {
+      errors.push(`${toProjectPath(deletedUrlsPath)}:${index + 1}: deleted URL is also a redirect source ${deletedUrl}`)
+    }
+    deletedUrlPaths.add(pathname)
+  })
+} else {
+  errors.push(`${toProjectPath(deletedUrlsPath)}: missing deleted URL list for IndexNow`)
+}
+
+if (!deletedUrlPaths.has(normalizeRoute('/llms.txt'))) {
+  errors.push(`${toProjectPath(deletedUrlsPath)}: missing retired URL ${hostname}/llms.txt`)
+}
+
+const getSitemapHtmlPath = (pathname) => {
+  const decodedPathname = decodeURIComponent(pathname)
+
+  if (decodedPathname === '/') return join(distDir, 'index.html')
+  if (decodedPathname.endsWith('/')) return join(distDir, decodedPathname.slice(1), 'index.html')
+  if (extname(decodedPathname)) return join(distDir, decodedPathname.slice(1))
+
+  return join(distDir, `${decodedPathname.slice(1)}.html`)
+}
+
+const getDisplayDate = (value = '') => {
+  const [year, month, day] = value.replace(/\//g, '-').split('-').map((part) => Number(part))
+  if (!year || !month || !day) return undefined
+
+  return {
+    full: `${year}年${month}月${day}日`,
+    month: `${year}年${month}月`,
+  }
+}
+
+const loadAirportConfig = (filePath) => loadConfig(filePath)
+
+const booleanText = (value) => (value === null ? '待核实' : value ? '支持' : '不支持')
+
+const clientSummary = (airport) => {
+  if (airport.dedicatedClient && airport.universalSubscription) return '专属客户端、通用订阅'
+  if (airport.dedicatedClient) return '专属客户端'
+  if (airport.universalSubscription) return '通用订阅'
+
+  return '无专属客户端'
+}
+
+const getMarkdownTableAfterHeading = (filePath, heading) => {
+  const content = readFileSync(join(root, filePath), 'utf8')
+  const lines = content.split('\n')
+  const headingIndex = lines.findIndex((line) => line.trim() === heading)
+
+  if (headingIndex === -1) {
+    errors.push(`${filePath}: missing heading ${heading}`)
+    return undefined
+  }
+
+  const tableStart = lines.findIndex((line, index) => (
+    index > headingIndex && line.trim().startsWith('|')
+  ))
+
+  if (tableStart === -1) {
+    errors.push(`${filePath}: missing table after ${heading}`)
+    return undefined
+  }
+
+  const tableLines = []
+
+  for (let index = tableStart; index < lines.length; index += 1) {
+    const line = lines[index].trim()
+    if (!line.startsWith('|')) break
+    tableLines.push(line)
+  }
+
+  return tableLines
+}
+
+const parseMarkdownTable = (filePath, heading) => {
+  const tableLines = getMarkdownTableAfterHeading(filePath, heading)
+  if (!tableLines || tableLines.length < 2) return undefined
+
+  const parseLine = (line) => line
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map((cell) => cell.trim())
+
+  const headers = parseLine(tableLines[0])
+  const rows = tableLines.slice(2).map((line) => {
+    const cells = parseLine(line)
+    return Object.fromEntries(headers.map((header, index) => [header, cells[index] || '']))
+  })
+
+  return { headers, rows }
+}
+
+const parseAirportCell = (value = '') => {
+  const match = value.match(/^\[([^\]]+)]\(([^)]+)\)$/)
+  if (!match) return undefined
+
+  return {
+    name: match[1],
+    path: normalizeRoute(match[2]),
+  }
+}
+
+const assertCell = (filePath, heading, rowName, column, actual, expected) => {
+  if (actual !== expected) {
+    errors.push(`${filePath} ${heading}: ${rowName} ${column} is "${actual}", expected "${expected}"`)
+  }
+}
+
+const validateAirportTable = ({
+  filePath,
+  heading,
+  airports,
+  airportByPath,
+  requiredAirports,
+  rowFilter,
+  exactRows = false,
+  exactOrder = false,
+  fields,
+}) => {
+  const table = parseMarkdownTable(filePath, heading)
+  if (!table) return
+
+  const rowAirports = []
+
+  table.rows.forEach((row) => {
+    const airportLink = parseAirportCell(row['机场'])
+    if (!airportLink) {
+      errors.push(`${filePath} ${heading}: invalid airport cell "${row['机场']}"`)
+      return
+    }
+
+    const airport = airportByPath.get(airportLink.path)
+    if (!airport) {
+      errors.push(`${filePath} ${heading}: unknown airport path ${airportLink.path}`)
+      return
+    }
+
+    if (airport.name !== airportLink.name) {
+      errors.push(`${filePath} ${heading}: ${airportLink.path} label is "${airportLink.name}", expected "${airport.name}"`)
+    }
+
+    if (rowFilter && !rowFilter(airport)) {
+      errors.push(`${filePath} ${heading}: ${airport.name} does not match the table filter`)
+    }
+
+    rowAirports.push(airport)
+
+    fields.forEach(([field, getter]) => {
+      const column = field === '月流量' && '流量额度' in row ? '流量额度' : field
+      if (!(column in row)) {
+        errors.push(`${filePath} ${heading}: missing column ${column}`)
+        return
+      }
+
+      assertCell(filePath, heading, airport.name, column, row[column], getter(airport))
+    })
+  })
+
+  if (!exactRows) return
+
+  const actualPaths = rowAirports.map((airport) => airport.path)
+  const expectedPaths = requiredAirports.map((airport) => airport.path)
+  const missing = expectedPaths.filter((path) => !actualPaths.includes(path))
+  const extra = actualPaths.filter((path) => !expectedPaths.includes(path))
+
+  if (missing.length || extra.length || (exactOrder && actualPaths.join('|') !== expectedPaths.join('|'))) {
+    errors.push(`${filePath} ${heading}: row set${exactOrder ? '/order' : ''} differs from airports.ts`)
+    missing.forEach((path) => errors.push(`${filePath} ${heading}: missing ${path}`))
+    extra.forEach((path) => errors.push(`${filePath} ${heading}: unexpected ${path}`))
+  }
+}
+
+const markdownFiles = walkFiles(docsDir, (filePath, entry) => (
+  entry.isDirectory() && filePath.replace(/\\/g, '/').includes('/docs/.vuepress')
+)).filter((filePath) => filePath.endsWith('.md'))
+
+const generatedRoutes = new Set([
+  '/blog/',
+  '/blog/tags/',
+  '/blog/categories/',
+  '/blog/archives/',
+  '/data/airports/',
+  '/data/rankings/',
+  '/data/risk-monitor/',
+])
+const generatedCleanHtmlResourcePaths = new Set([
+  '/data/airports',
+  '/data/rankings',
+  '/data/risk-monitor',
+])
+const requiredSeoSitemapPaths = [
+  '/posts/jichang-tuijian/',
+  '/posts/jichang-heji/',
+]
+const crawlerReadableDataResourcePaths = [
+  '/data/siilas-tests.json',
+  '/data/airports.json',
+  '/data/rankings.json',
+  '/data/risk-monitor.json',
+  '/data/airports.md',
+  '/data/rankings.md',
+  '/data/risk-monitor.md',
+]
+const routeMap = new Map([['/', 'docs/index.md']])
+const pages = []
+
+for (const filePath of markdownFiles) {
+  const content = readFileSync(filePath, 'utf8')
+  const frontmatter = parseFrontmatter(content)
+  const permalink = getFrontmatterValue(frontmatter, 'permalink')
+  const projectPath = toProjectPath(filePath)
+
+  if (permalink) routeMap.set(normalizeRoute(permalink), projectPath)
+
+  pages.push({
+    filePath,
+    projectPath,
+    content,
+    frontmatter,
+    permalink,
+    title: getFrontmatterValue(frontmatter, 'title'),
+    description: getFrontmatterValue(frontmatter, 'description'),
+    dateModified: getFrontmatterValue(frontmatter, 'dateModified'),
+  })
+}
+
+const assertNaturalSearchTerms = (page, terms) => {
+  if (!page) return
+
+  terms.forEach((term) => {
+    if (!page.content.includes(term)) {
+      errors.push(`${page.projectPath}: missing natural search expression “${term}”`)
+    }
+  })
+}
+
+const commonRecommendationTerms = ['机场推荐', '价格', '节点', '客户端']
+assertNaturalSearchTerms(
+  pages.find((page) => page.projectPath === 'docs/index.md'),
+  commonRecommendationTerms,
+)
+pages
+  .filter((page) => page.projectPath.startsWith('docs/机场榜单/'))
+  .forEach((page) => assertNaturalSearchTerms(page, commonRecommendationTerms))
+pages
+  .filter((page) => page.projectPath.startsWith('docs/机场评测/'))
+  .forEach((page) => assertNaturalSearchTerms(page, [...commonRecommendationTerms, '怎么样']))
+
+const duplicateBy = (items, getKey) => {
+  const grouped = new Map()
+
+  items.forEach((item) => {
+    const key = getKey(item)
+    if (!key) return
+
+    grouped.set(key, [...(grouped.get(key) || []), item.projectPath])
+  })
+
+  return [...grouped.entries()].filter(([, owners]) => owners.length > 1)
+}
+
+duplicateBy(pages, (page) => page.title).forEach(([title, owners]) => {
+  errors.push(`duplicate frontmatter title "${title}" in ${owners.join(', ')}`)
+})
+
+duplicateBy(pages, (page) => page.permalink && normalizeRoute(page.permalink)).forEach(([route, owners]) => {
+  errors.push(`duplicate permalink ${route} in ${owners.join(', ')}`)
+})
+
+const validateLocalHref = (projectPath, href) => {
+  if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return
+  if (/^https?:\/\//.test(href)) return
+  if (!href.startsWith('/')) return
+
+  const path = href.split(/[?#]/)[0]
+  const cleanGeneratedPath = path.endsWith('/') ? path.slice(0, -1) : path
+  if (path.endsWith('/') && generatedCleanHtmlResourcePaths.has(cleanGeneratedPath)) {
+    errors.push(`${projectPath}: generated data page link ${href} should omit trailing slash`)
+  }
+
+  if (extname(path)) {
+    if (!existsSync(join(publicDir, path))) {
+      errors.push(`${projectPath}: missing public asset ${href}`)
+    }
+    return
+  }
+
+  const route = normalizeRoute(path)
+  if (!routeMap.has(route) && !generatedRoutes.has(route)) {
+    errors.push(`${projectPath}: missing internal route ${href}`)
+  }
+}
+
+for (const page of pages) {
+  if (!page.title) errors.push(`${page.projectPath}: missing frontmatter title`)
+  if (!page.description) errors.push(`${page.projectPath}: missing frontmatter description`)
+
+  const displayDate = getDisplayDate(page.dateModified)
+  if (displayDate) {
+    const updateLinePattern = /^更新时间：(?:\*\*)?(\d{4}年\d{1,2}月(?:\d{1,2}日)?)/gm
+    let updateLineMatch
+
+    while ((updateLineMatch = updateLinePattern.exec(page.content))) {
+      const actualDate = updateLineMatch[1]
+      const expectedDate = actualDate.endsWith('日') ? displayDate.full : displayDate.month
+
+      if (actualDate !== expectedDate) {
+        errors.push(`${page.projectPath}: visible update date is ${actualDate}, expected ${expectedDate}`)
+      }
+    }
+  }
+
+  const linkPattern = /\[[^\]]*]\(([^)\s]+)(?:\s+[^)]*)?\)|<(?:img|a)\b[^>]*(?:src|href)=["']([^"']+)["'][^>]*>/gi
+  let match
+
+  while ((match = linkPattern.exec(page.content))) {
+    validateLocalHref(page.projectPath, match[1] || match[2])
+  }
+
+  const frontmatterLinkPattern = /^\s+link:\s*["']?([^"'\s]+)["']?/gm
+  while ((match = frontmatterLinkPattern.exec(page.frontmatter))) {
+    validateLocalHref(page.projectPath, match[1])
+  }
+}
+
+const airportsPath = join(root, 'docs/.vuepress/config/airports.ts')
+let airportData = []
+let visibleAirportData = []
+let airportByPath = new Map()
+let airportMetrics
+let airportDataLastReviewed
+let airportDataLastModified
+
+if (existsSync(airportsPath)) {
+  const airportConfig = loadAirportConfig(airportsPath)
+  airportData = airportConfig.airportData
+  visibleAirportData = airportConfig.visibleAirportData
+  airportDataLastReviewed = airportConfig.airportDataLastReviewed
+  airportDataLastModified = airportConfig.airportDataLastModified
+  airportMetrics = airportConfig.airportMetrics || {
+    count: visibleAirportData.length,
+    trialCount: visibleAirportData.filter((airport) => airport.trial === true).length,
+    noExpiryCount: visibleAirportData.filter((airport) => airport.noExpiry === true).length,
+    noExpiryUnverifiedCount: visibleAirportData.filter((airport) => airport.noExpiry === null).length,
+    dedicatedClientCount: visibleAirportData.filter((airport) => airport.dedicatedClient).length,
+    universalSubscriptionCount: visibleAirportData.filter((airport) => airport.universalSubscription === true).length,
+    cheapUnderTenCount: visibleAirportData.filter((airport) => airport.price < 10).length,
+    averagePrice: Number((visibleAirportData.reduce((total, airport) => total + airport.price, 0) / visibleAirportData.length).toFixed(1)),
+    regularCheapUnderTenCount: visibleAirportData.filter((airport) => (airport.regularPrice ?? airport.price) < 10).length,
+    regularAveragePrice: Number((visibleAirportData.reduce((total, airport) => total + (airport.regularPrice ?? airport.price), 0) / visibleAirportData.length).toFixed(1)),
+  }
+  airportByPath = new Map(airportData.map((airport) => [normalizeRoute(airport.path), airport]))
+  const missingAirportPages = airportData
+    .map((airport) => normalizeRoute(airport.path))
+    .filter((route) => !routeMap.has(route))
+
+  if (missingAirportPages.length) {
+    missingAirportPages.forEach((route) => errors.push(`airports.ts: missing page for ${route}`))
+  }
+
+  airportData.forEach((airport) => {
+    if (!airport.image) {
+      errors.push(`airports.ts: ${airport.name} missing image`)
+    } else if (!existsSync(join(publicDir, airport.image))) {
+      errors.push(`airports.ts: ${airport.name} image asset missing ${airport.image}`)
+    }
+
+    if (
+      airport.salesSample !== undefined
+      && (!Number.isFinite(airport.salesSample) || airport.salesSample < 0)
+    ) {
+      errors.push(`airports.ts: ${airport.name} salesSample must be a non-negative number`)
+    }
+
+    if (
+      airport.performance?.lastTestedAt
+      && !/^\d{4}-\d{2}-\d{2}$/.test(airport.performance.lastTestedAt)
+    ) {
+      errors.push(`airports.ts: ${airport.name} performance.lastTestedAt must use YYYY-MM-DD`)
+    }
+  })
+} else {
+  errors.push('docs/.vuepress/config/airports.ts: missing airport data config')
+}
+
+if (!/^\d{4}-\d{2}-\d{2}$/.test(airportDataLastReviewed || '')) {
+  errors.push('airports.ts: airportDataLastReviewed must use YYYY-MM-DD')
+} else {
+  const reviewDisplayDate = getDisplayDate(airportDataLastReviewed)
+  const riskMonitorPath = 'docs/风险监测/机场风险监测.md'
+  const riskMonitorPage = pages.find((page) => page.projectPath === riskMonitorPath)
+  const riskReviewDate = riskMonitorPage?.content.match(/^\|\s*最近复核\s*\|\s*([^|]+?)\s*\|$/m)?.[1]
+
+  if (riskReviewDate !== reviewDisplayDate?.full) {
+    errors.push(`${riskMonitorPath}: 最近复核 is "${riskReviewDate || 'missing'}", expected "${reviewDisplayDate?.full}"`)
+  }
+
+  const recommendationPath = 'docs/机场推荐/机场推荐.md'
+  const recommendationPage = pages.find((page) => page.projectPath === recommendationPath)
+  const recommendationReviewDate = recommendationPage?.content.match(/^资料复核日期：([^（；]+?)(?:（|；)/m)?.[1]
+
+  if (recommendationReviewDate !== reviewDisplayDate?.full) {
+    errors.push(`${recommendationPath}: 资料复核日期 is "${recommendationReviewDate || 'missing'}", expected "${reviewDisplayDate?.full}"`)
+  }
+
+  const freshnessPages = [
+    riskMonitorPage,
+    pages.find((page) => page.projectPath === 'docs/机场推荐/机场合集.md'),
+    recommendationPage,
+  ].filter(Boolean)
+
+  freshnessPages.forEach((page) => {
+    const dateModified = page.dateModified?.replace(/\//g, '-')
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dateModified || '') || dateModified < airportDataLastReviewed) {
+      errors.push(`${page.projectPath}: dateModified must be on or after airportDataLastReviewed ${airportDataLastReviewed}`)
+    }
+  })
+
+  ;['airports.json', 'rankings.json', 'risk-monitor.json'].forEach((file) => {
+    const filePath = join(publicDir, 'data', file)
+    const projectPath = toProjectPath(filePath)
+
+    if (!existsSync(filePath)) {
+      errors.push(`${projectPath}: missing generated data file`)
+      return
+    }
+
+    try {
+      const data = JSON.parse(readFileSync(filePath, 'utf8'))
+      if (data.lastModified !== airportDataLastModified) {
+        errors.push(`${projectPath}: lastModified differs from airportDataLastModified ${airportDataLastModified}`)
+      }
+      if (data.lastReviewed !== airportDataLastReviewed) {
+        errors.push(`${projectPath}: lastReviewed is "${data.lastReviewed || 'missing'}", expected "${airportDataLastReviewed}"`)
+      }
+    } catch (error) {
+      errors.push(`${projectPath}: invalid JSON (${error.message})`)
+    }
+  })
+}
+
+if (airportMetrics) {
+  const hejiPath = 'docs/机场推荐/机场合集.md'
+  const hejiContent = existsSync(join(root, hejiPath))
+    ? readFileSync(join(root, hejiPath), 'utf8')
+    : ''
+  const percentage = (count) => airportMetrics.count ? Math.round(count / airportMetrics.count * 100) : 0
+  const expectedStats = [
+    `当前收录机场数量：${airportMetrics.count}`,
+    `- 支持试用：${airportMetrics.trialCount}家`,
+    `- 支持不限时套餐：${airportMetrics.noExpiryCount}家`,
+    `- 不限时有效期待核实：${airportMetrics.noExpiryUnverifiedCount}家`,
+    `- 支持专属客户端：${airportMetrics.dedicatedClientCount}家`,
+    `- 支持通用订阅：${airportMetrics.universalSubscriptionCount}家`,
+    `- 首次入门参考价低于10元：${airportMetrics.cheapUnderTenCount}家`,
+    `- 平均首次入门参考价：${airportMetrics.averagePrice}元`,
+    `- 常规持续套餐参考价低于10元：${airportMetrics.regularCheapUnderTenCount}家`,
+    `- 平均常规持续套餐参考价：${airportMetrics.regularAveragePrice}元`,
+    `- 支持试用比例：${percentage(airportMetrics.trialCount)}%`,
+    `- 支持不限时比例：${percentage(airportMetrics.noExpiryCount)}%`,
+    `- 支持专属客户端比例：${percentage(airportMetrics.dedicatedClientCount)}%`,
+    `- 支持通用订阅比例：${percentage(airportMetrics.universalSubscriptionCount)}%`,
+  ]
+
+  expectedStats.forEach((text) => {
+    if (!hejiContent.includes(text)) {
+      errors.push(`${hejiPath}: missing current generated statistic "${text}"`)
+    }
+  })
+}
+
+const siteConfigPath = join(root, 'docs/.vuepress/config/site.ts')
+if (existsSync(siteConfigPath)) {
+  const { pageImages } = loadConfig('site.ts')
+
+  for (const [route, image] of Object.entries(pageImages)) {
+    const normalizedRoute = normalizeRoute(route)
+    if (!routeMap.has(normalizedRoute) && !generatedRoutes.has(normalizedRoute)) {
+      errors.push(`site.ts: page image route has no page ${route}`)
+    }
+
+    if (!existsSync(join(publicDir, image))) {
+      errors.push(`site.ts: page image asset missing ${image}`)
+    }
+    if (image.startsWith('/covers/') && existsSync(join(publicDir, image))) {
+      const bytes = readFileSync(join(publicDir, image))
+      // PNG dimensions in IHDR; check the actual checked-in asset, not its label.
+      if (bytes.length < 24 || bytes.toString('hex', 0, 8) !== '89504e470d0a1a0a'
+        || bytes.readUInt32BE(16) !== 1280 || bytes.readUInt32BE(20) !== 720) {
+        errors.push(`site.ts: cover must be a 1280×720 PNG ${image}`)
+      }
+    }
+  }
+}
+
+const robotsPath = join(publicDir, 'robots.txt')
+if (existsSync(robotsPath)) {
+  const robots = readFileSync(robotsPath, 'utf8')
+  crawlerReadableDataResourcePaths.forEach((path) => {
+    if (new RegExp(`^Disallow:\\s*${path.replace(/\./g, '\\.')}$`, 'm').test(robots)) {
+      errors.push(`docs/.vuepress/public/robots.txt: should not disallow machine-readable data ${path}`)
+    }
+  })
+} else {
+  errors.push('docs/.vuepress/public/robots.txt: missing robots file')
+}
+
+if (airportData.length) {
+  const allAirports = visibleAirportData
+  const { airportCollections } = loadConfig('airport-collections.ts')
+  const { noExpiryColumns, getNoExpiryCells } = loadConfig('no-expiry-packages.ts')
+  const cheapAirports = airportCollections.cheap.items
+  const clashAirports = airportCollections.clash.items
+  const chatgptAirports = airportCollections.chatgpt.items
+  const streamingAirports = airportCollections.streaming.items
+  const trialAirports = airportCollections.trial.items
+  const noExpiryAirports = airportCollections.noExpiry.items
+  const dedicatedClientAirports = airportCollections.dedicatedClient.items
+
+  validateAirportTable({
+    filePath: 'docs/风险监测/机场风险监测.md',
+    heading: '## 站内观察状态',
+    airports: airportData,
+    airportByPath,
+    requiredAirports: allAirports,
+    exactRows: true,
+    exactOrder: true,
+    fields: [
+      ['当前状态', (airport) => airport.status],
+      ['风险提示', (airport) => airport.risk],
+      ['试用', (airport) => booleanText(airport.trial)],
+      ['最低价格', (airport) => airport.priceText],
+    ],
+  })
+
+  validateAirportTable({
+    filePath: 'docs/机场榜单/低价机场榜.md',
+    heading: '## 低价机场候选',
+    airports: airportData,
+    airportByPath,
+    requiredAirports: cheapAirports,
+    rowFilter: (airport) => cheapAirports.includes(airport),
+    exactRows: true,
+    exactOrder: true,
+    fields: [
+      ['最低价格', (airport) => airport.priceText],
+      ['月流量', (airport) => airport.traffic],
+      ['试用', (airport) => booleanText(airport.trial)],
+      ['通用订阅', (airport) => booleanText(airport.universalSubscription)],
+    ],
+  })
+
+  validateAirportTable({
+    filePath: 'docs/机场榜单/Clash机场榜.md',
+    heading: '## Clash机场候选',
+    airports: airportData,
+    airportByPath,
+    requiredAirports: clashAirports,
+    rowFilter: (airport) => clashAirports.includes(airport),
+    exactRows: true,
+    exactOrder: true,
+    fields: [
+      ['价格', (airport) => airport.priceText],
+      ['流量', (airport) => airport.traffic],
+      ['试用', (airport) => booleanText(airport.trial)],
+      ['通用订阅', (airport) => booleanText(airport.universalSubscription)],
+    ],
+  })
+
+  validateAirportTable({
+    filePath: 'docs/机场榜单/ChatGPT机场榜.md',
+    heading: '## ChatGPT机场候选',
+    airports: airportData,
+    airportByPath,
+    requiredAirports: chatgptAirports,
+    exactRows: true,
+    exactOrder: true,
+    fields: [
+      ['价格', (airport) => airport.priceText],
+      ['流量', (airport) => airport.traffic],
+      ['客户端', clientSummary],
+      ['风险提示', (airport) => airport.risk],
+    ],
+  })
+
+  validateAirportTable({
+    filePath: 'docs/机场榜单/流媒体机场榜.md',
+    heading: '## 流媒体机场候选',
+    airports: airportData,
+    airportByPath,
+    requiredAirports: streamingAirports,
+    rowFilter: (airport) => streamingAirports.includes(airport),
+    exactRows: true,
+    exactOrder: true,
+    fields: [
+      ['价格', (airport) => airport.priceText],
+      ['流量', (airport) => airport.traffic],
+      ['订阅/客户端', clientSummary],
+      ['风险提示', (airport) => airport.risk],
+    ],
+  })
+
+  validateAirportTable({
+    filePath: 'docs/机场榜单/免费试用机场榜.md',
+    heading: '## 免费试用机场候选',
+    airports: airportData,
+    airportByPath,
+    requiredAirports: trialAirports,
+    exactRows: true,
+    exactOrder: true,
+    fields: [
+      ['最低价格', (airport) => airport.priceText],
+      ['月流量', (airport) => airport.traffic],
+      ['客户端', clientSummary],
+      ['通用订阅', (airport) => booleanText(airport.universalSubscription)],
+    ],
+  })
+
+  validateAirportTable({
+    filePath: 'docs/机场榜单/不限时机场榜.md',
+    heading: '## 不限时与按量套餐候选',
+    airports: airportData,
+    airportByPath,
+    requiredAirports: noExpiryAirports,
+    exactRows: true,
+    exactOrder: true,
+    fields: noExpiryColumns.slice(1).map((column, index) => [
+      column, (airport) => getNoExpiryCells(airport.path)[index],
+    ]),
+  })
+
+  validateAirportTable({
+    filePath: 'docs/机场榜单/专属客户端机场榜.md',
+    heading: '## 专属客户端机场候选',
+    airports: airportData,
+    airportByPath,
+    requiredAirports: dedicatedClientAirports,
+    exactRows: true,
+    exactOrder: true,
+    fields: [
+      ['最低价格', (airport) => airport.priceText],
+      ['月流量', (airport) => airport.traffic],
+      ['试用', (airport) => booleanText(airport.trial)],
+      ['通用订阅', (airport) => booleanText(airport.universalSubscription)],
+      ['风险提示', (airport) => airport.risk],
+    ],
+  })
+}
+
+if (!existsSync(distDir)) {
+  errors.push('docs/.vuepress/dist: missing build output. Run pnpm run docs:build first.')
+} else {
+  if (existsSync(join(distDir, 'llms.txt'))) {
+    errors.push('docs/.vuepress/dist/llms.txt: retired file must not be generated')
+  }
+
+  const htmlFiles = walkFiles(distDir).filter((filePath) => filePath.endsWith('.html'))
+  const sitemapPath = join(distDir, 'sitemap.xml')
+
+  for (const filePath of htmlFiles) {
+    const html = readFileSync(filePath, 'utf8')
+    const projectPath = toProjectPath(filePath)
+    const htmlIssues = []
+    const isNoindex = /<meta name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)
+
+    if (countMatches(html, /<title>/g) !== 1) htmlIssues.push('expected exactly one <title>')
+    if (countMatches(html, /<link rel="canonical"/g) !== 1) htmlIssues.push('expected exactly one canonical link')
+    if (countMatches(html, /<meta name="description"/g) !== 1) htmlIssues.push('expected exactly one meta description')
+    if (countMatches(html, /<meta name="robots"/g) !== 1) htmlIssues.push('expected exactly one robots meta')
+    if (countMatches(html, /application\/ld\+json/g) < 1) htmlIssues.push('missing JSON-LD')
+    if (!isNoindex && countMatches(html, /<h1\b/g) < 1) htmlIssues.push('missing H1')
+    if (projectPath === 'docs/.vuepress/dist/index.html' && countMatches(html, /<h2\b/g) > 8) {
+      htmlIssues.push('homepage feature cards must not inflate the H2 hierarchy')
+    }
+
+    htmlIssues.forEach((issue) => errors.push(`${projectPath}: ${issue}`))
+    validateJsonLd(html, projectPath)
+    validateExternalAnchorRel(html, projectPath)
+
+    const title = html.match(/<title>(.*?)<\/title>/s)?.[1] || ''
+    if (title.includes('全部文章')) {
+      errors.push(`${projectPath}: title must not contain “全部文章”`)
+    }
+    if (html.includes('全部文章')) {
+      errors.push(`${projectPath}: rendered HTML must not contain “全部文章”`)
+    }
+    if (title.includes('\uFFFD')) {
+      errors.push(`${projectPath}: title contains a Unicode replacement character`)
+    }
+  }
+
+  if (!existsSync(sitemapPath)) {
+    errors.push('docs/.vuepress/dist/sitemap.xml: missing generated sitemap')
+  } else {
+    const sitemap = readFileSync(sitemapPath, 'utf8')
+    const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1])
+    const sitemapPathnames = new Set()
+
+    sitemapUrls.forEach((loc) => {
+      let url
+
+      try {
+        url = new URL(loc)
+      } catch {
+        errors.push(`docs/.vuepress/dist/sitemap.xml: invalid sitemap URL ${loc}`)
+        return
+      }
+
+      const pathname = url.pathname
+      sitemapPathnames.add(pathname)
+      if (pathname.endsWith('.html')) {
+        errors.push(`docs/.vuepress/dist/sitemap.xml: ${loc} should use clean URL instead of .html`)
+      }
+
+      if (redirectSourcePaths.has(pathname) || redirectSourcePaths.has(normalizeRoute(pathname))) {
+        errors.push(`docs/.vuepress/dist/sitemap.xml: ${loc} points to a redirect source`)
+      }
+      if (deletedUrlPaths.has(normalizeRoute(pathname))) {
+        errors.push(`docs/.vuepress/dist/sitemap.xml: ${loc} points to a deleted URL`)
+      }
+
+      const htmlPath = getSitemapHtmlPath(pathname)
+      if (!existsSync(htmlPath)) {
+        errors.push(`docs/.vuepress/dist/sitemap.xml: ${loc} has no generated HTML file`)
+        return
+      }
+
+      const html = readFileSync(htmlPath, 'utf8')
+      if (/<meta name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)) {
+        errors.push(`docs/.vuepress/dist/sitemap.xml: ${loc} points to a noindex page`)
+      }
+    })
+
+    const requiredSitemapPaths = [
+      ...visibleAirportData.map((airport) => normalizeRoute(airport.path)),
+      ...requiredSeoSitemapPaths,
+    ]
+
+    requiredSitemapPaths.forEach((path) => {
+      if (!sitemapPathnames.has(path)) {
+        errors.push(`docs/.vuepress/dist/sitemap.xml: missing important URL ${hostname}${path}`)
+      }
+    })
+
+    redirectTargetPaths.forEach((path) => {
+      if (generatedCleanHtmlResourcePaths.has(path)) return
+      if (!sitemapPathnames.has(path)) {
+        errors.push(`docs/.vuepress/dist/sitemap.xml: missing redirect target ${hostname}${path}`)
+      }
+    })
+
+    crawlerReadableDataResourcePaths.forEach((path) => {
+      if (!existsSync(join(publicDir, path))) {
+        errors.push(`docs/.vuepress/public: missing machine-readable data ${path}`)
+      }
+    })
+  }
+}
+
+const missingDateModified = pages.filter((page) => (
+  page.permalink
+  && !page.dateModified
+  && !page.frontmatter.includes('home: true')
+))
+
+if (missingDateModified.length) {
+  missingDateModified.forEach((page) => errors.push(`${page.projectPath}: missing frontmatter dateModified`))
+}
+
+if (errors.length) {
+  console.error('Content health check failed:')
+  errors.forEach((error) => console.error(`- ${error}`))
+  process.exit(1)
+}
+
+console.log(`Content health check passed for ${pages.length} markdown files.`)

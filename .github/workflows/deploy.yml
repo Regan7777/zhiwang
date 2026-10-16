@@ -1,0 +1,100 @@
+name: deploy
+
+on:
+  # 每当 push 到 main 分支时触发部署
+  # Deployment is triggered whenever a push is made to the main branch.
+  push:
+    branches: [main]
+  # 手动触发部署
+  # Manually trigger deployment
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+          # "Last updated time" and other git log-related information require fetching all commit records.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          # 选择要使用的 node 版本
+          node-version: 22
+          cache: pnpm
+
+
+      # 安装依赖
+      # Install dependencies
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck VuePress config
+        run: pnpm run docs:typecheck
+
+      - name: Test site and data contracts
+        run: pnpm run docs:test
+
+      - name: Check airport tables
+        run: pnpm run docs:check-tables
+
+      - name: Check airport review sections
+        run: pnpm run docs:check-review-sections
+
+      - name: Create IndexNow key file
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          case "$INDEXNOW_KEY" in
+            ''|*[!A-Za-z0-9_-]*)
+              echo "INDEXNOW_KEY secret is missing or contains unsupported characters."
+              exit 1
+              ;;
+          esac
+          printf '%s' "$INDEXNOW_KEY" > "docs/.vuepress/public/${INDEXNOW_KEY}.txt"
+
+      # 运行构建脚本
+      # Run the build script
+      - name: Build VuePress site
+        run: pnpm run docs:build
+
+      - name: Check generated data
+        run: pnpm run docs:check-data
+
+      - name: Check rendered airport data consistency
+        run: pnpm run docs:check-consistency
+
+      - name: Check content health
+        run: pnpm run docs:check-content
+
+      - name: Write deployment version marker
+        run: printf '%s' "$GITHUB_SHA" > docs/.vuepress/dist/deploy-sha.txt
+
+      # 查看 workflow 的文档来获取更多信息
+      # @see https://github.com/crazy-max/ghaction-github-pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@df5cc2bfa78282ded844b354faee141f06b41865 # v4
+        with:
+          # 部署到 gh-pages 分支
+          target_branch: gh-pages
+          # 部署目录为 VuePress 的默认输出目录
+          build_dir: docs/.vuepress/dist
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

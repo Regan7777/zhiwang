@@ -1,0 +1,182 @@
+:root {
+  /** 主题颜色 */
+
+  /*
+  --vp-c-brand-1: #5086a1;
+  --vp-c-brand-2: #6aa1b7;
+  --vp-c-brand-3: #8cccd5;
+  --vp-c-brand-soft: rgba(131, 208, 218, 0.314);
+  */
+
+  /** 背景颜色 */
+
+  /*
+  --vp-c-bg: #fff;
+  --vp-c-bg-alt: #f6f6f7;
+  --vp-c-bg-elv: #fff;
+  --vp-c-bg-soft: #f6f6f7;
+  */
+
+  /** 文本颜色 */
+
+  /*
+  --vp-c-text-1: rgba(60, 60, 67);
+  --vp-c-text-2: rgba(60, 60, 67, 0.78);
+  --vp-c-text-3: rgba(60, 60, 67, 0.56);
+  */
+}
+
+/** 深色模式 */
+[data-theme="dark"] {
+  /*
+  --vp-c-brand-1: #8cccd5;
+  --vp-c-brand-2: #6aa1b7;
+  --vp-c-brand-3: #5086a1;
+  --vp-c-brand-soft: rgba(131, 208, 218, 0.314);
+  */
+
+  /*
+  --vp-c-bg: #1b1b1f;
+  --vp-c-bg-alt: #161618;
+  --vp-c-bg-elv: #202127;
+  --vp-c-bg-soft: #202127;
+  */
+
+  /*
+  --vp-c-text-1: rgba(255, 255, 245, 0.86);
+  --vp-c-text-2: rgba(235, 235, 245, 0.6);
+  --vp-c-text-3: rgba(235, 235, 245, 0.38);
+  */
+}
+
+/* 机场大全优先展示价格总表，标签与创建日期仍保留在页面元数据中。 */
+.airport-catalogue .vp-doc-meta {
+  display: none;
+}
+
+.airport-catalogue .vp-doc #机场价格总表 {
+  padding-top: 0;
+  margin-top: 16px;
+  border-top: 0;
+}
+
+.airport-catalogue .vp-doc #机场价格总表 ~ table:first-of-type th {
+  white-space: nowrap;
+}
+
+.airport-catalogue .vp-doc .airport-official-link {
+  overflow-wrap: anywhere;
+}
+
+/* 首推页的五列对比：桌面完整表格，手机按机场纵向阅读。 */
+.vp-doc .recommendation-comparison table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  overflow: visible;
+}
+
+.vp-doc .recommendation-comparison th,
+.vp-doc .recommendation-comparison td {
+  padding: 10px 12px;
+  line-height: 1.65;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.vp-doc .recommendation-comparison th:first-child {
+  width: 13%;
+}
+
+.vp-doc .recommendation-comparison th:nth-child(2) {
+  width: 17%;
+}
+
+.vp-doc .recommendation-comparison th:nth-child(3) {
+  width: 25%;
+}
+
+.vp-doc .recommendation-comparison th:nth-child(4) {
+  width: 21%;
+}
+
+.vp-doc .recommendation-comparison th:nth-child(5) {
+  width: 24%;
+}
+
+@media (max-width: 640px) {
+  .vp-doc .recommendation-comparison table {
+    display: block;
+    position: relative;
+    border: 0;
+  }
+
+  /* 保留列标题供辅助技术读取。 */
+  .vp-doc .recommendation-comparison thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .vp-doc .recommendation-comparison tbody {
+    display: grid;
+    gap: 16px;
+  }
+
+  .vp-doc .recommendation-comparison tbody tr {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    background-color: var(--vp-c-bg);
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 10px;
+  }
+
+  .vp-doc .recommendation-comparison td {
+    display: block;
+    width: auto;
+    padding: 10px 14px;
+    border: 0;
+  }
+
+  .vp-doc .recommendation-comparison td + td {
+    border-top: 1px solid var(--vp-c-divider);
+  }
+
+  .vp-doc .recommendation-comparison td:first-child {
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--vp-c-bg-soft);
+  }
+
+  .vp-doc .recommendation-comparison td + td::before {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--vp-c-text-2);
+  }
+
+  .vp-doc .recommendation-comparison td:nth-child(2)::before {
+    content: "适用场景";
+  }
+
+  .vp-doc .recommendation-comparison td:nth-child(3)::before {
+    content: "套餐与试用";
+  }
+
+  .vp-doc .recommendation-comparison td:nth-child(4)::before {
+    content: "客户端与限制";
+  }
+
+  .vp-doc .recommendation-comparison td:nth-child(5)::before {
+    content: "测试依据";
+  }
+}

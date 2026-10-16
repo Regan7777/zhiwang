@@ -1,0 +1,120 @@
+import { qualifySponsoredAnchors } from './generated'
+import {
+  getCanonicalUrl,
+  getPageDateModified,
+  getPageDatePublished,
+  getPageDescription,
+  getPageImage,
+  getPageMetaKeywords,
+  isArticlePage,
+  normalizeDate,
+} from './page-utils'
+import { getPageSchema, hasJsonLdHead } from './schema'
+import { defaultRobots, pageImages, siteName } from './site'
+
+const getSocialHead = (page: any) => {
+  const canonicalUrl = getCanonicalUrl(page.path)
+  const title = page.title || siteName
+  const description = getPageDescription(page)
+  const image = getPageImage(page)
+  const articlePage = isArticlePage(page)
+  const datePublished = getPageDatePublished(page)
+  const dateModified = getPageDateModified(page)
+
+  return [
+    ['meta', { property: 'og:url', content: canonicalUrl }],
+    ['meta', { property: 'og:site_name', content: siteName }],
+    ['meta', { property: 'og:title', content: title }],
+    ['meta', { property: 'og:description', content: description }],
+    ['meta', { property: 'og:type', content: articlePage ? 'article' : 'website' }],
+    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ['meta', { property: 'og:locale:alternate', content: 'zh_TW' }],
+    ['meta', { property: 'og:locale:alternate', content: 'zh_HK' }],
+    ['meta', { property: 'og:image', content: image }],
+    ['meta', { property: 'og:image:alt', content: title }],
+    ...(image.includes('/covers/') ? [
+      ['meta', { property: 'og:image:width', content: '1280' }],
+      ['meta', { property: 'og:image:height', content: '720' }],
+      ['meta', { property: 'og:image:type', content: 'image/png' }],
+    ] : []),
+    ...(articlePage && datePublished
+      ? [['meta', { property: 'article:published_time', content: datePublished }]]
+      : []),
+    ...(articlePage && dateModified
+      ? [['meta', { property: 'article:modified_time', content: dateModified }]]
+      : []),
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: title }],
+    ['meta', { name: 'twitter:description', content: description }],
+    ['meta', { name: 'twitter:image', content: image }],
+    ['meta', { name: 'twitter:image:alt', content: title }],
+  ]
+}
+
+const noindexPaths = new Set([
+  '/home-draft/',
+  '/404.html',
+  '/blog/',
+  '/blog/tags/',
+  '/blog/categories/',
+  '/blog/archives/',
+  '/friends/',
+])
+
+const getPageTitleHead = (page: any) => {
+  const title = page.path === '/'
+    ? page.title || siteName
+    : page.path === '/404.html'
+      ? `页面未找到｜${siteName}`
+      : undefined
+
+  // VuePress gives frontmatter head priority over its default "page | site" title.
+  // Keeping the override in page data lets SSR and client navigation share it.
+  return title ? [['title', {}, title]] : []
+}
+
+const getBasicPageHead = (page: any) => {
+  const keywords = getPageMetaKeywords(page)
+  const robots = noindexPaths.has(page.path)
+    ? 'noindex, follow'
+    : page.path.startsWith('/rankings/')
+    ? 'index, follow, max-snippet:320, max-image-preview:large'
+    : page.path.startsWith('/posts/') && page.path.includes('-review')
+    ? 'index, follow, max-snippet:320, max-image-preview:large'
+    : defaultRobots
+
+  return [
+    ['meta', { name: 'robots', content: robots }],
+    ['meta', { name: 'description', content: getPageDescription(page) }],
+    ...(keywords ? [['meta', { name: 'keywords', content: keywords }]] : []),
+  ]
+}
+
+export const extendPageWithSeo = (page: any) => {
+  const explicitModified = normalizeDate(page.frontmatter.dateModified || page.frontmatter.updateTime || page.frontmatter.lastUpdated)
+  if (explicitModified) {
+    // Plume's footer reads this field. The user-config hook runs after its Git
+    // hook; prefer the same explicit content date used by Schema and sitemap.
+    page.data.git ||= {}
+    page.data.git.updatedTime = Date.parse(explicitModified)
+  }
+
+  const knownPageImage = pageImages[page.path]
+  if (knownPageImage) {
+    page.frontmatter.image ||= knownPageImage
+    page.frontmatter.cover ||= knownPageImage
+  }
+
+  page.contentRendered = qualifySponsoredAnchors(page.contentRendered)
+
+  page.frontmatter.head = [
+    ...(page.frontmatter.head || []),
+    ...getPageTitleHead(page),
+    ['link', { rel: 'canonical', href: getCanonicalUrl(page.path) }],
+    ...getBasicPageHead(page),
+    ...getSocialHead(page),
+    ...(hasJsonLdHead(page.frontmatter.head)
+      ? []
+      : [['script', { type: 'application/ld+json' }, JSON.stringify(getPageSchema(page))]]),
+  ]
+}

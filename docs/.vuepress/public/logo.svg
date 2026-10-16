@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#17654f" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="50%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#6ee7b7" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="url(#g1)" />
+  <!-- Gravitational Orbit Ring 1 -->
+  <ellipse cx="100" cy="100" rx="72" ry="32" stroke="url(#ringGrad)" stroke-width="4" transform="rotate(-30 100 100)" opacity="0.9" filter="url(#glow)" />
+  <!-- Gravitational Orbit Ring 2 -->
+  <ellipse cx="100" cy="100" rx="66" ry="24" stroke="#a7f3d0" stroke-width="2.5" stroke-dasharray="6 3" transform="rotate(35 100 100)" opacity="0.75" />
+  <!-- Glowing Celestial Core -->
+  <circle cx="100" cy="100" r="34" fill="url(#g1)" stroke="#6ee7b7" stroke-width="3" filter="url(#glow)" />
+  <!-- Inner Highlight -->
+  <circle cx="92" cy="92" r="14" fill="#34d399" opacity="0.6" filter="url(#glow)" />
+  <!-- Center Star Light -->
+  <circle cx="100" cy="100" r="6" fill="#fef08a" />
+</svg>
