@@ -407,7 +407,7 @@ export const airportData: AirportData[] = [
   {
     "name": "边缘节点",
     "path": "/posts/bianyuan-review-2026/",
-    "image": "/bianyuan.png",
+    "image": "/shouye.png",
     "price": 15,
     "priceText": "15元/月",
     "traffic": "50GB/月",
