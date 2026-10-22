@@ -1,5 +1,9 @@
 <div align="center">
 
+<a href="https://zhiwang.one">
+  <img src="https://zhiwang.one/logo.png" alt="织网 Logo" width="100" height="100" />
+</a>
+
 # 🌐 织网 · ZhiWang.one
 **2026 最新科学上网工具与机场推荐 · 避坑与风险监测指南**
 
@@ -36,7 +40,22 @@
 
 访问 **[https://zhiwang.one](https://zhiwang.one)** 体验完整的交互式榜单与详细评测：
 
-### 1. 场景优选榜单
+### 🏆 站长核心精选推荐（6 大高口碑稳定机场）
+
+本站根据客户端易用性、付款周期弹性、新手友好度及备用流量策略精选以下 6 款机场：
+
+| 推荐机场 | 核心亮点 | 套餐与特惠 | 客户端支持 | 独家优惠码 | 快速直达 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **神行加速**<br><sub>(全站主推)</sub> | 极速专线、流媒体与ChatGPT解锁、多端专属 | **23元/月** (150GB)<br>年付特惠96元 (60GB/月)<br>不限时包99元90GB起 | Windows专属客户端<br>iOS Nextin (`sxjs`)<br>通用订阅联系客服 | **7折优惠码**<br>`sx0077` | [👉 官网注册](https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8)<br>[📖 详细评测](https://zhiwang.one/posts/shenxingjiasu-review-2026/) |
+| **大佬云**<br><sub>(四端自研)</sub> | 四端自研客户端、通用订阅双轨、平价大碗 | **19.99元/月** (100GB)<br>年付特惠96元 (60GB/月)<br>不限时包99元78GB起 | 四端官方自研客户端<br>iOS Nextin适配<br>支持Clash通用订阅 | 邀请码<br>`1o7gYhTL` | [👉 官网注册](https://fugui0077.dalaoyunaff.com/#/?code=1o7gYhTL)<br>[📖 详细评测](https://zhiwang.one/posts/dalaoyun-review-2026/) |
+| **榴莲云**<br><sub>(大带宽)</sub> | 30天自动刷新、常驻7折码、专属客户端 | **24元/月** (140GB)<br>年付特惠96元 (60GB/月)<br>设备数量不限制 | 四端专属客户端教程<br>iOS Nextin (`lly`)<br>通用订阅联系客服 | **常驻7折码**<br>`ll88` | [👉 官网注册](https://fugui007.liulianyunaff.com/#/?code=Y6A1M1MN)<br>[📖 详细评测](https://zhiwang.one/posts/liulianyun-review-2026/) |
+| **云界线**<br><sub>(不限时备用)</sub> | 价格实测核验、多档不限时流量包、首单7折 | **实测22元/月** (150GB)<br>年付特惠96元 (60GB/月)<br>多档不限时包99元起 | Windows专属客户端<br>iOS Nextin (`yjx`)<br>通用订阅向客服领取 | **首单7折码**<br>`yjx888` | [👉 官网注册](https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW)<br>[📖 详细评测](https://zhiwang.one/posts/yunjiexian-review-2026/) |
+| **闪电鼠**<br><sub>(轻量入门)</sub> | 起步门槛低、极简轻巧、新人首购7折 | **22元/月** (120GB)<br>年付特惠96元 (60GB/月) | 四平台客户端教程<br>iOS Nextin (`sd88`)<br>账号登录使用 | **首购7折码**<br>`sd88` | [👉 官网注册](https://fugui0077.shandianshuaff.com/#/?code=I2yK9PfK)<br>[📖 详细评测](https://zhiwang.one/posts/shandianshu-review-2026/) |
+| **环球梯**<br><sub>(多设备畅连)</sub> | 支持3台设备并发、365天按量包、专属客服 | **23元/月** (120GB)<br>年付特惠96元 (60GB/月)<br>365天按量包99元起 | 官方多端客户端教程<br>iOS Nextin (`HQ66`)<br>账号登录使用 | **限量7折码**<br>`HQ66` | [👉 官网注册](https://fugui0077.huanqiutiaff.com/#/?code=rJyQn4xG)<br>[📖 详细评测](https://zhiwang.one/posts/huanqiuti-review-2026/) |
+
+> 💡 **避坑提醒**：以上 6 家均通过后台套餐及可用性核验。建议首次购买优先选择**月付或小额周期**，在您的网络环境下实际体验良好后再考虑长周期订阅！
+
+### 场景筛选与专项榜单
 - 💰 **[高性价比/低价机场排行](https://zhiwang.one/rankings/cheap/)**：适合学生党与轻度科学上网用户，最低月付几元起。
 - ⏳ **[不限时流量套餐推荐](https://zhiwang.one/rankings/no-expiry/)**：流量按量计费不过期，备用防失联的首选。
 - ⚡ **[Clash 原生支持机场](https://zhiwang.one/rankings/clash/)**：支持通用订阅一键导入，完美兼容各类 Clash 客户端。
