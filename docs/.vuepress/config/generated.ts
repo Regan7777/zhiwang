@@ -94,6 +94,22 @@ const patchGeneratedExternalLinks = (html = '') => html.replace(/<a\b([^>]*?)>/g
   return `<a${attrs} rel="${rel}">`
 })
 
+const patchGeneratedImages = (html = '') => html.replace(/<img\b([^>]*?)>/gi, (imgTag, attrs) => {
+  const altMatch = attrs.match(/\balt=(["'])(.*?)\1/i)
+  if (altMatch && altMatch[2].trim()) return imgTag
+
+  const isLogo = /\bclass=(["'])[^"']*?\blogo\b[^"']*?\1/i.test(attrs) || /\bsrc=(["'])[^"']*?logo\.[^"']*?\1/i.test(attrs)
+  const fallbackAlt = isLogo ? '织网 Logo' : '图片'
+
+  if (altMatch) {
+    return imgTag.replace(/\balt=(["'])\s*\1/i, `alt="${fallbackAlt}"`)
+  }
+  if (/\balt\b(?!=)/i.test(attrs)) {
+    return imgTag.replace(/\balt\b(?!=)/i, `alt="${fallbackAlt}"`)
+  }
+  return `<img alt="${fallbackAlt}"${attrs}>`
+})
+
 const walkGeneratedHtml = (dir: string, visit: (file: string) => void) => {
   readdirSync(dir, { withFileTypes: true }).forEach((entry) => {
     const file = `${dir}/${entry.name}`
@@ -119,7 +135,8 @@ export const patchGeneratedHtml = (app: any) => {
 
   walkGeneratedHtml(app.dir.dest(), (htmlPath) => {
     const html = readFileSync(htmlPath, 'utf-8')
-    const patched = patchGeneratedExternalLinks(html)
+    let patched = patchGeneratedExternalLinks(html)
+    patched = patchGeneratedImages(patched)
     if (patched !== html) writeFileSync(htmlPath, patched)
   })
 }

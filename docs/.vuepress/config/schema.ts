@@ -225,6 +225,46 @@ const getBreadcrumbItems = (page: any) => {
   return items
 }
 
+const getFaqSchema = (page: any) => {
+  const faq = page.frontmatter.faq
+  if (!Array.isArray(faq) || !faq.length) return undefined
+
+  return {
+    '@type': 'FAQPage',
+    '@id': `${getCanonicalUrl(page.path)}#faq`,
+    mainEntity: faq.map((item: { q: string; a: string }) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  }
+}
+
+const getHowToSchema = (page: any) => {
+  const howto = page.frontmatter.howto
+  if (!howto || !Array.isArray(howto.steps) || !howto.steps.length) return undefined
+
+  const canonicalUrl = getCanonicalUrl(page.path)
+  return {
+    '@type': 'HowTo',
+    '@id': `${canonicalUrl}#howto`,
+    name: howto.name || page.title || siteName,
+    description: howto.description || getPageDescription(page),
+    ...(howto.totalTime ? { totalTime: howto.totalTime } : {}),
+    step: howto.steps.map((step: { name: string; text: string; image?: string; url?: string }, index: number) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+      ...(step.url ? { url: step.url.startsWith('http') ? step.url : `${canonicalUrl}${step.url}` } : {}),
+      ...(step.image ? { image: step.image.startsWith('http') ? step.image : `${hostname}${step.image}` } : {}),
+    })),
+  }
+}
+
 export const getPageSchema = (page: any) => {
   const canonicalUrl = getCanonicalUrl(page.path)
   const title = page.title || siteName
@@ -232,6 +272,8 @@ export const getPageSchema = (page: any) => {
   const primaryPageSchemaType = getPrimaryPageSchemaType(page)
   const extraSchemas = getPageExtraSchemas(page, primaryPageSchemaType)
   const generatedItemListSchema = getGeneratedItemListSchema(page)
+  const faqSchema = getFaqSchema(page)
+  const howToSchema = getHowToSchema(page)
   const image = getPageImage(page)
   const datePublished = getPageDatePublished(page)
   const dateModified = getPageDateModified(page)
@@ -251,12 +293,25 @@ export const getPageSchema = (page: any) => {
         url: hostname,
         logo: `${hostname}/logo.png`,
         description: siteDescription,
+        foundingDate: '2026-05-28',
         publishingPrinciples: sitePublishingPrinciplesUrl,
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'editorial',
           url: siteContactUrl,
         },
+        knowsAbout: [
+          '机场推荐',
+          '机场测评',
+          'VPN推荐',
+          '科学上网',
+          'Clash 配置',
+          'Shadowrocket 配置',
+          'ChatGPT 访问',
+          '流媒体解锁',
+          '代理工具教程',
+          '购买风险提示',
+        ],
         sameAs: [
           'https://github.com/Regan7777',
           siteContactUrl,
@@ -275,11 +330,14 @@ export const getPageSchema = (page: any) => {
         knowsAbout: [
           '机场推荐',
           '机场测评',
-          'Clash',
-          'Shadowrocket',
+          'VPN推荐',
           '科学上网',
+          'Clash 配置',
+          'Shadowrocket 配置',
           'ChatGPT 访问',
           '流媒体解锁',
+          '代理工具教程',
+          '购买风险提示',
         ],
       },
       {
@@ -291,6 +349,14 @@ export const getPageSchema = (page: any) => {
         inLanguage: 'zh-CN',
         publisher: { '@id': `${hostname}/#organization` },
         publishingPrinciples: sitePublishingPrinciplesUrl,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${hostname}/?search={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
       },
       {
         '@type': primaryPageSchemaType,
@@ -327,6 +393,8 @@ export const getPageSchema = (page: any) => {
       },
       ...getAirportServiceSchemas(page),
       ...(generatedItemListSchema ? [generatedItemListSchema] : []),
+      ...(faqSchema ? [faqSchema] : []),
+      ...(howToSchema ? [howToSchema] : []),
       ...extraSchemas,
     ],
   }

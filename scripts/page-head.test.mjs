@@ -82,6 +82,50 @@ test('the explicit content date drives the footer and metadata without losing Gi
   assert.equal(fallback.data.git.updatedTime, gitTime)
 })
 
+test('FAQPage and HowTo schemas are generated when frontmatter defines faq and howto', () => {
+  const page = {
+    filePathRelative: 'example.md',
+    path: '/posts/guide-example/',
+    title: '教程指南',
+    frontmatter: {
+      faq: [
+        { q: '怎么安装？', a: '直接从官网下载并运行安装程序。' },
+      ],
+      howto: {
+        name: '快速配置教程',
+        totalTime: 'PT5M',
+        steps: [
+          { name: '第一步：下载', text: '前往下载页获取客户端。' },
+          { name: '第二步：导入', text: '复制订阅链接并导入。' },
+        ],
+      },
+    },
+    data: {},
+    content: '',
+    contentRendered: '',
+  }
+  extendPageWithSeo(page)
+  const jsonLdTag = page.frontmatter.head.find(([tag, attrs]) => tag === 'script' && attrs?.type === 'application/ld+json')
+  assert.ok(jsonLdTag, 'ld+json script tag should exist')
+  const schema = JSON.parse(jsonLdTag[2])
+  const graph = schema['@graph']
+
+  const faqItem = graph.find((item) => item['@type'] === 'FAQPage')
+  assert.ok(faqItem, 'FAQPage should exist in schema graph')
+  assert.equal(faqItem.mainEntity.length, 1)
+  assert.equal(faqItem.mainEntity[0].name, '怎么安装？')
+  assert.equal(faqItem.mainEntity[0].acceptedAnswer.text, '直接从官网下载并运行安装程序。')
+
+  const howToItem = graph.find((item) => item['@type'] === 'HowTo')
+  assert.ok(howToItem, 'HowTo should exist in schema graph')
+  assert.equal(howToItem.name, '快速配置教程')
+  assert.equal(howToItem.totalTime, 'PT5M')
+  assert.equal(howToItem.step.length, 2)
+  assert.equal(howToItem.step[0]['@type'], 'HowToStep')
+  assert.equal(howToItem.step[0].position, 1)
+  assert.equal(howToItem.step[0].name, '第一步：下载')
+})
+
 test('post-generation cleanup preserves the head that the client will take over', (t) => {
   const dest = mkdtempSync(join(tmpdir(), 'yinli-page-head-'))
   t.after(() => rmSync(dest, { recursive: true, force: true }))
@@ -95,7 +139,7 @@ test('post-generation cleanup preserves the head that the client will take over'
   for (const [file, page] of fixtures) {
     const head = `<head><title>${getTitles(resolveHead(page))[0]}</title><meta name="robots" content="${getRobots(resolveHead(page))[0]}"></head>`
     expectedHeads.set(file, head)
-    writeFileSync(join(dest, file), `<!doctype html><html>${head}<body><div id="VPContent"></div><a href="https://www.dengta12.com/reg?ref=DjdVKysq">官网入口</a></body></html>`)
+    writeFileSync(join(dest, file), `<!doctype html><html>${head}<body><div id="VPContent"></div><img class="vp-image dark logo" style="" src="/logo.svg" alt><img class="vp-image light logo" style="" src="/logo.svg" alt><a href="https://www.dengta12.com/reg?ref=DjdVKysq">官网入口</a></body></html>`)
   }
 
   patchGeneratedHtml({ dir: { dest: (file = '') => join(dest, file) } })
@@ -106,5 +150,7 @@ test('post-generation cleanup preserves the head that the client will take over'
     assert.equal((html.match(/<title>/g) || []).length, 1, file)
     assert.equal((html.match(/<meta name="robots"/g) || []).length, 1, file)
     assert.match(html, /href="https:\/\/www\.dengta12\.com\/reg\?ref=DjdVKysq"[^>]*rel="sponsored nofollow noopener noreferrer"/)
+    assert.match(html, /<img class="vp-image dark logo" style="" src="\/logo\.svg" alt="织网 Logo">/)
+    assert.match(html, /<img class="vp-image light logo" style="" src="\/logo\.svg" alt="织网 Logo">/)
   }
 })

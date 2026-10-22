@@ -13,6 +13,7 @@ import { theme } from './config/theme'
 // Plume uses H2 for every feature card; keep H2 for homepage sections and H3 for cards.
 const homeFeatureComponent = fileURLToPath(new URL('./theme/components/VPHomeFeature.vue', import.meta.url))
 const blogHeadingComponent = fileURLToPath(new URL('./theme/components/VPBlogWithHeading.vue', import.meta.url))
+const navBarTitleComponent = fileURLToPath(new URL('./theme/components/VPNavBarTitle.vue', import.meta.url))
 
 export default defineUserConfig({
   lang: 'zh-CN',
@@ -60,6 +61,7 @@ export default defineUserConfig({
         alias: {
           '@theme/Home/VPHomeFeature.vue': homeFeatureComponent,
           '@theme/Blog/VPBlog.vue': blogHeadingComponent,
+          '@theme/Nav/VPNavBarTitle.vue': navBarTitleComponent,
         },
       },
       build: {

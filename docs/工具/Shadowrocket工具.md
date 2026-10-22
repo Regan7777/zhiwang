@@ -12,6 +12,32 @@ tags:
   - VPN配置
   - 机场教程
 description: 说明Shadowrocket官方App Store入口、自己的Apple账户、订阅导入、连接与分流核对步骤，区分应用购买和节点服务，处理导入及连接问题。
+howto:
+  name: "Shadowrocket（小火箭）iOS下载与订阅配置教程"
+  description: "指导在 iPhone/iPad 上通过官方 App Store 安装 Shadowrocket，并完成机场通用订阅的导入与连接验证。"
+  totalTime: "PT8M"
+  steps:
+    - name: "从官方 App Store 下载"
+      text: "使用自己的海外 App Store 账户搜索 Shadowrocket，核对开发者与价格后完成下载。"
+      url: "#从哪里下载"
+    - name: "准备节点或订阅链接"
+      text: "在机场服务商或管理后台获取兼容的通用订阅链接或二维码并复制。"
+      url: "#节点与订阅从哪里来"
+    - name: "在小火箭中导入订阅"
+      text: "打开 Shadowrocket 点击右上角加号，类型选择 Subscribe，粘贴地址并保存更新。"
+      url: "#导入订阅的基本流程"
+    - name: "允许 VPN 权限并开启连接"
+      text: "选取目标节点，开启首行连接开关，并在系统弹窗中允许添加 VPN 配置即可使用。"
+      url: "#连接与vpn图标怎么判断"
+faq:
+  - q: "为什么在 App Store 搜不到小火箭 Shadowrocket？"
+    a: "Shadowrocket 未在中国大陆区 App Store 上架。需要使用海外地区（如美区、日区、港区）的 Apple ID 登录 App Store 后搜索购买下载。"
+  - q: "Shadowrocket 订阅导入后节点列表为空怎么办？"
+    a: "首先确认订阅链接是否完整复制，检查套餐是否已激活并在有效期内。也可在浏览器打开订阅链接确认是否有数据返回，排查格式兼容性。"
+  - q: "小火箭连接成功后部分应用依然打不开？"
+    a: "分别检查当前选中的节点是否通畅、路由模式是否设置为按规则分流（Config），以及目标应用是否对 IP 纯净度或地区有特殊限制（如 ChatGPT 或特定流媒体）。"
+  - q: "购买 Shadowrocket 应用后自带免费节点吗？"
+    a: "不自带。Shadowrocket 是单纯的规则代理客户端工具，不提供代理服务器或机场节点。客户端费用归属于 App Store 开发者，节点服务需向机场服务商另外购买。"
 ---
 
 更新时间：2026年10月21日（删除共享账号残留步骤，修正客户端性能与节点获取方式的表述）
