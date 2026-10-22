@@ -1,0 +1,2820 @@
+{
+  "site": "织网",
+  "url": "https://zhiwang.one",
+  "lastReviewed": "2026-08-19",
+  "lastModified": "2026-10-21",
+  "testingPolicy": {
+    "effectiveDate": "2026-08-18",
+    "yinliConductsCurrentTests": false,
+    "removedRecordsNotice": "旧测速截图、性能数值与结论已从公开资料移除；现有资料仅用于套餐、客户端与风险核对",
+    "contributedRecordsNotice": "用户投稿单列来源、测试日期和环境，不代表 织网 自行测试或全部节点的当前表现"
+  },
+  "metrics": {
+    "count": 11,
+    "trialCount": 0,
+    "noExpiryCount": 7,
+    "noExpiryUnverifiedCount": 0,
+    "dedicatedClientCount": 10,
+    "universalSubscriptionCount": 6,
+    "cheapUnderTenCount": 1,
+    "averagePrice": 19.2,
+    "regularCheapUnderTenCount": 1,
+    "regularAveragePrice": 19.2,
+    "priceBasis": {
+      "entry": "首次入门周期参考价，包含不可续费的新人优惠；不是所有机场的实际首购结算价",
+      "regular": "常规持续套餐周期参考价，优先使用明确记录的常规价，否则沿用当前周期价格；不是逐家验证的续费成交价"
+    }
+  },
+  "rankings": {
+    "mainRecommendation": [
+      {
+        "name": "神行加速",
+        "path": "/posts/shenxingjiasu-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "clash",
+          "chatgpt",
+          "streaming",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取",
+        "summary": "月付23元150GB（年付240元）、40元300GB、72元666GB；96元年付特惠60GB/月（折约8元/月）。另有90GB 99元、450GB 398元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
+        "informationSources": [
+          {
+            "name": "神行加速套餐页",
+            "url": "https://www1.shenxingjstt.xyz/#/plans",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速客户端教程",
+            "url": "https://www1.shenxingjstt.xyz/#/knowledge",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速优惠公告",
+            "url": "https://www1.shenxingjstt.xyz/#/dashboard",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速官网邀请入口",
+            "url": "https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "name": "神行加速试用与订阅规则（人工补充）",
+            "url": "/posts/shenxingjiasu-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 90,
+          "priceText": "99元",
+          "trafficText": "90GB",
+          "status": "listed",
+          "deviceLimit": "不限同时使用客户端数量",
+          "validity": "不限时间，用完为止；另有神行·不限时大包450GB/398元",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.1,
+          "sourcePage": "/posts/shenxingjiasu-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/shenxingjiasu-review-2026/"
+      },
+      {
+        "name": "大佬云",
+        "path": "/posts/dalaoyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 19.99,
+        "priceText": "19.99元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie",
+          "clash",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包",
+        "summary": "初云·福利版月付19.99元100GB起，另有25元150GB、43元300GB、73元600GB月付，以及96元年付特惠（60GB/月，折约8元/月）。提供99元78GB与199元160GB不限时包。Windows、macOS与Android提供自研客户端，iOS使用Nextin专属码dly，支持通用订阅。新客7折码dly88（排除年付活动包与不限时包）。换购套餐覆盖余量且不退款，退款政策待核实。",
+        "informationSources": [
+          {
+            "name": "大佬云试用与订阅规则（人工补充）",
+            "url": "/posts/dalaoyun-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云套餐页",
+            "url": "https://www1.dalaoyuntt.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云客户端教程",
+            "url": "https://www1.dalaoyuntt.xyz/#/download",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云优惠公告",
+            "url": "https://www1.dalaoyuntt.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云官网邀请入口",
+            "url": "https://fugui0077.dalaoyunaff.com/#/?code=1o7gYhTL",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 78,
+          "priceText": "99元",
+          "trafficText": "78GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注不限时，用完即止；不按月重置，另有199元160GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.269,
+          "sourcePage": "/posts/dalaoyun-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/dalaoyun-review-2026/"
+      },
+      {
+        "name": "榴莲云",
+        "path": "/posts/liulianyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 24,
+        "priceText": "24元/月",
+        "traffic": "140GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "chatgpt",
+          "streaming",
+          "newbie",
+          "clash"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认",
+        "summary": "不支持免费试用；通用订阅需购买订阅后向客服领取，具体格式与客户端兼容先确认。可见最低月付24元140GB，40元260GB、60元420GB、100元750GB；96元年付提供60GB/月，购买日起每30天刷新，不限同时使用客户端数量。四端账号登录客户端，iOS Nextin专属码lly；公告展示ll88七折码，结算未验证。IPLC及原生IP、AI与流媒体为商家说明。",
+        "informationSources": [
+          {
+            "name": "榴莲云试用与订阅规则（人工补充）",
+            "url": "/posts/liulianyun-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云套餐页",
+            "url": "https://www2.liulianyuntt.xyz/#/plans",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云客户端教程",
+            "url": "https://www2.liulianyuntt.xyz/#/knowledge",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云官网邀请入口",
+            "url": "https://fugui007.liulianyunaff.com/#/?code=Y6A1M1MN",
+            "checkedAt": "2026-09-28"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/liulianyun-review-2026/"
+      },
+      {
+        "name": "云界线",
+        "path": "/posts/yunjiexian-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实",
+        "summary": "实测订单结算为22/40/66元。不支持免费试用，通用订阅可向客服领取，具体客户端格式先确认。96元年付小包60GB/月，从购买日起每30天刷新，重置20元。轻云150GB、凌云300GB、御云600GB月付实测结算22/40/66元，重置分别22/40/66元且不延长有效期。99元80GB与199元200GB不限时包均不按月刷新，用完重购。Windows账号登录自有客户端，iOS用Nextin识别码yjx，另有Android与Mac教程。yjx888新客七折适用轻云/凌云/御云各周期，每人一次不可叠加，排除年付小包与不限时包。线路、速率及解锁为商家说明。",
+        "informationSources": [
+          {
+            "name": "云界线试用与订阅规则（人工补充）",
+            "url": "/posts/yunjiexian-review-2026/",
+            "checkedAt": "2026-10-06",
+            "link": false
+          },
+          {
+            "name": "云界线套餐页",
+            "url": "https://www1.yunjiexiant.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线客户端知识库",
+            "url": "https://www1.yunjiexiant.xyz/#/knowledge",
+            "checkedAt": "2026-10-05",
+            "link": false
+          },
+          {
+            "name": "云界线仪表盘与优惠公告",
+            "url": "https://www1.yunjiexiant.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线官网邀请入口",
+            "url": "https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 80,
+          "priceText": "99元",
+          "trafficText": "80GB",
+          "status": "listed",
+          "deviceLimit": "不限客户端数量",
+          "validity": "标注不限时，不按月刷新、用完重购；另有199元200GB包",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.238,
+          "sourcePage": "/posts/yunjiexian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yunjiexian-review-2026/"
+      },
+      {
+        "name": "闪电鼠",
+        "path": "/posts/shandianshu-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "120GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对",
+        "summary": "不支持免费试用和通用订阅。22元月付120GB起，另有40元250GB、70元500GB月付及96元年付60GB/月；流量每30天重置。提供四平台客户端教程，iOS使用Nextin识别码sd88。公告列出新用户首购7折码sd88，未验证适用套餐与叠加条件；专线、解锁及不限设备为商家说明。",
+        "informationSources": [
+          {
+            "name": "闪电鼠试用与订阅规则（人工补充）",
+            "url": "/posts/shandianshu-review-2026/",
+            "checkedAt": "2026-09-27",
+            "link": false
+          },
+          {
+            "name": "闪电鼠套餐页",
+            "url": "https://www2.shandiantt.xyz/#/plans",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠使用教程",
+            "url": "https://www2.shandiantt.xyz/#/knowledge",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠下载中心",
+            "url": "https://www2.shandiantt.xyz/#/downloads",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠新人优惠公告",
+            "url": "https://www2.shandiantt.xyz/#/dashboard",
+            "checkedAt": "2026-09-26",
+            "link": false
+          }
+        ],
+        "url": "https://zhiwang.one/posts/shandianshu-review-2026/"
+      },
+      {
+        "name": "环球梯",
+        "path": "/posts/huanqiuti-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "120GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "按量包详情限365天，与卡片终身标签不同；不支持免费试用和通用订阅，退款待核实",
+        "summary": "不支持免费试用和通用订阅。23元月付120GB起，96元年付60GB/月；39元240GB、69元600GB月付，设备分别限3、5、10台。按量包99元80GB、299元400GB，有效期均为365天，不属于不限时套餐。提供四平台客户端教程，iOS使用Nextin识别码HQ66。公告七折码HQ66限2000份、每人一次、不可叠加，截止2026年11月30日，结算与余量未验证；流媒体和AI支持为商家说明。",
+        "informationSources": [
+          {
+            "name": "环球梯试用与订阅规则（人工补充）",
+            "url": "/posts/huanqiuti-review-2026/",
+            "checkedAt": "2026-09-27",
+            "link": false
+          },
+          {
+            "name": "环球梯套餐页",
+            "url": "https://www2.huanqiutitt.xyz/#/plans",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "环球梯客户端教程",
+            "url": "https://www2.huanqiutitt.xyz/#/knowledge",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "环球梯客户端下载与优惠公告",
+            "url": "https://www2.huanqiutitt.xyz/#/dashboard",
+            "checkedAt": "2026-09-26",
+            "link": false
+          }
+        ],
+        "url": "https://zhiwang.one/posts/huanqiuti-review-2026/"
+      }
+    ],
+    "all": [
+      {
+        "name": "神行加速",
+        "path": "/posts/shenxingjiasu-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "clash",
+          "chatgpt",
+          "streaming",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取",
+        "summary": "月付23元150GB（年付240元）、40元300GB、72元666GB；96元年付特惠60GB/月（折约8元/月）。另有90GB 99元、450GB 398元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
+        "informationSources": [
+          {
+            "name": "神行加速套餐页",
+            "url": "https://www1.shenxingjstt.xyz/#/plans",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速客户端教程",
+            "url": "https://www1.shenxingjstt.xyz/#/knowledge",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速优惠公告",
+            "url": "https://www1.shenxingjstt.xyz/#/dashboard",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速官网邀请入口",
+            "url": "https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "name": "神行加速试用与订阅规则（人工补充）",
+            "url": "/posts/shenxingjiasu-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 90,
+          "priceText": "99元",
+          "trafficText": "90GB",
+          "status": "listed",
+          "deviceLimit": "不限同时使用客户端数量",
+          "validity": "不限时间，用完为止；另有神行·不限时大包450GB/398元",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.1,
+          "sourcePage": "/posts/shenxingjiasu-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/shenxingjiasu-review-2026/"
+      },
+      {
+        "name": "榴莲云",
+        "path": "/posts/liulianyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 24,
+        "priceText": "24元/月",
+        "traffic": "140GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "chatgpt",
+          "streaming",
+          "newbie",
+          "clash"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认",
+        "summary": "不支持免费试用；通用订阅需购买订阅后向客服领取，具体格式与客户端兼容先确认。可见最低月付24元140GB，40元260GB、60元420GB、100元750GB；96元年付提供60GB/月，购买日起每30天刷新，不限同时使用客户端数量。四端账号登录客户端，iOS Nextin专属码lly；公告展示ll88七折码，结算未验证。IPLC及原生IP、AI与流媒体为商家说明。",
+        "informationSources": [
+          {
+            "name": "榴莲云试用与订阅规则（人工补充）",
+            "url": "/posts/liulianyun-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云套餐页",
+            "url": "https://www2.liulianyuntt.xyz/#/plans",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云客户端教程",
+            "url": "https://www2.liulianyuntt.xyz/#/knowledge",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云官网邀请入口",
+            "url": "https://fugui007.liulianyunaff.com/#/?code=Y6A1M1MN",
+            "checkedAt": "2026-09-28"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/liulianyun-review-2026/"
+      },
+      {
+        "name": "云界线",
+        "path": "/posts/yunjiexian-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实",
+        "summary": "实测订单结算为22/40/66元。不支持免费试用，通用订阅可向客服领取，具体客户端格式先确认。96元年付小包60GB/月，从购买日起每30天刷新，重置20元。轻云150GB、凌云300GB、御云600GB月付实测结算22/40/66元，重置分别22/40/66元且不延长有效期。99元80GB与199元200GB不限时包均不按月刷新，用完重购。Windows账号登录自有客户端，iOS用Nextin识别码yjx，另有Android与Mac教程。yjx888新客七折适用轻云/凌云/御云各周期，每人一次不可叠加，排除年付小包与不限时包。线路、速率及解锁为商家说明。",
+        "informationSources": [
+          {
+            "name": "云界线试用与订阅规则（人工补充）",
+            "url": "/posts/yunjiexian-review-2026/",
+            "checkedAt": "2026-10-06",
+            "link": false
+          },
+          {
+            "name": "云界线套餐页",
+            "url": "https://www1.yunjiexiant.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线客户端知识库",
+            "url": "https://www1.yunjiexiant.xyz/#/knowledge",
+            "checkedAt": "2026-10-05",
+            "link": false
+          },
+          {
+            "name": "云界线仪表盘与优惠公告",
+            "url": "https://www1.yunjiexiant.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线官网邀请入口",
+            "url": "https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 80,
+          "priceText": "99元",
+          "trafficText": "80GB",
+          "status": "listed",
+          "deviceLimit": "不限客户端数量",
+          "validity": "标注不限时，不按月刷新、用完重购；另有199元200GB包",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.238,
+          "sourcePage": "/posts/yunjiexian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yunjiexian-review-2026/"
+      },
+      {
+        "name": "闪电鼠",
+        "path": "/posts/shandianshu-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "120GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对",
+        "summary": "不支持免费试用和通用订阅。22元月付120GB起，另有40元250GB、70元500GB月付及96元年付60GB/月；流量每30天重置。提供四平台客户端教程，iOS使用Nextin识别码sd88。公告列出新用户首购7折码sd88，未验证适用套餐与叠加条件；专线、解锁及不限设备为商家说明。",
+        "informationSources": [
+          {
+            "name": "闪电鼠试用与订阅规则（人工补充）",
+            "url": "/posts/shandianshu-review-2026/",
+            "checkedAt": "2026-09-27",
+            "link": false
+          },
+          {
+            "name": "闪电鼠套餐页",
+            "url": "https://www2.shandiantt.xyz/#/plans",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠使用教程",
+            "url": "https://www2.shandiantt.xyz/#/knowledge",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠下载中心",
+            "url": "https://www2.shandiantt.xyz/#/downloads",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠新人优惠公告",
+            "url": "https://www2.shandiantt.xyz/#/dashboard",
+            "checkedAt": "2026-09-26",
+            "link": false
+          }
+        ],
+        "url": "https://zhiwang.one/posts/shandianshu-review-2026/"
+      },
+      {
+        "name": "环球梯",
+        "path": "/posts/huanqiuti-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "120GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "按量包详情限365天，与卡片终身标签不同；不支持免费试用和通用订阅，退款待核实",
+        "summary": "不支持免费试用和通用订阅。23元月付120GB起，96元年付60GB/月；39元240GB、69元600GB月付，设备分别限3、5、10台。按量包99元80GB、299元400GB，有效期均为365天，不属于不限时套餐。提供四平台客户端教程，iOS使用Nextin识别码HQ66。公告七折码HQ66限2000份、每人一次、不可叠加，截止2026年11月30日，结算与余量未验证；流媒体和AI支持为商家说明。",
+        "informationSources": [
+          {
+            "name": "环球梯试用与订阅规则（人工补充）",
+            "url": "/posts/huanqiuti-review-2026/",
+            "checkedAt": "2026-09-27",
+            "link": false
+          },
+          {
+            "name": "环球梯套餐页",
+            "url": "https://www2.huanqiutitt.xyz/#/plans",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "环球梯客户端教程",
+            "url": "https://www2.huanqiutitt.xyz/#/knowledge",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "环球梯客户端下载与优惠公告",
+            "url": "https://www2.huanqiutitt.xyz/#/dashboard",
+            "checkedAt": "2026-09-26",
+            "link": false
+          }
+        ],
+        "url": "https://zhiwang.one/posts/huanqiuti-review-2026/"
+      },
+      {
+        "name": "月之暗面",
+        "path": "/posts/yuezhi-anmian-review-2026/",
+        "image": "/covers/posts-yuezhi-anmian-review-2026.png",
+        "price": 5,
+        "priceText": "5元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": false,
+        "universalSubscription": true,
+        "scenarios": [
+          "cheap",
+          "clash"
+        ],
+        "status": "新收录观察",
+        "risk": "人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录",
+        "summary": "2026-10-21人工补充：月付5元100GB、10元200GB、15元300GB、20元500GB；25元年付50GB/月，购买日重置、不参加促销且当月不能购买重置包。不限时总量包10元100GB、20元200GB、50元500GB、80元1000GB。无专属客户端，提供Clash订阅，不支持免费试用；周期套餐文案明确不退款。同日人工确认官网可访问、Clash订阅可导入，具体客户端与内核版本未提供。AnyTLS、海外BGP中转、港台日美新、1倍率、不限速及平台解锁为商家说明，未作本站性能测试。",
+        "informationSources": [
+          {
+            "name": "月之暗面套餐文案及试用规则（人工提供，套餐与结算未独立核验）",
+            "url": "/posts/yuezhi-anmian-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "月之暗面无专属客户端、Clash订阅可导入（人工确认，版本未提供）",
+            "url": "/posts/yuezhi-anmian-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "月之暗面官网入口",
+            "url": "https://月之暗面.org/#/register?code=lAzTYBl2",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 10,
+          "trafficGb": 100,
+          "priceText": "10元",
+          "trafficText": "100GB",
+          "status": "listed",
+          "deviceLimit": "待核实（周期套餐标注不限设备）",
+          "validity": "人工提供：流量不限时、用完为止；续购叠加与退款待核实",
+          "checkedAt": "2026-10-21",
+          "sourceLabel": "人工提供，套餐与结算未独立核验",
+          "unitPriceCnyPerGb": 0.1,
+          "sourcePage": "/posts/yuezhi-anmian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yuezhi-anmian-review-2026/"
+      },
+      {
+        "name": "大佬云",
+        "path": "/posts/dalaoyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 19.99,
+        "priceText": "19.99元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie",
+          "clash",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包",
+        "summary": "初云·福利版月付19.99元100GB起，另有25元150GB、43元300GB、73元600GB月付，以及96元年付特惠（60GB/月，折约8元/月）。提供99元78GB与199元160GB不限时包。Windows、macOS与Android提供自研客户端，iOS使用Nextin专属码dly，支持通用订阅。新客7折码dly88（排除年付活动包与不限时包）。换购套餐覆盖余量且不退款，退款政策待核实。",
+        "informationSources": [
+          {
+            "name": "大佬云试用与订阅规则（人工补充）",
+            "url": "/posts/dalaoyun-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云套餐页",
+            "url": "https://www1.dalaoyuntt.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云客户端教程",
+            "url": "https://www1.dalaoyuntt.xyz/#/download",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云优惠公告",
+            "url": "https://www1.dalaoyuntt.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云官网邀请入口",
+            "url": "https://fugui0077.dalaoyunaff.com/#/?code=1o7gYhTL",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 78,
+          "priceText": "99元",
+          "trafficText": "78GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注不限时，用完即止；不按月重置，另有199元160GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.269,
+          "sourcePage": "/posts/dalaoyun-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/dalaoyun-review-2026/"
+      },
+      {
+        "name": "边缘节点",
+        "path": "/posts/bianyuan-review-2026/",
+        "image": "/shouye.png",
+        "price": 15,
+        "priceText": "15元/月",
+        "traffic": "50GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "streaming",
+          "chatgpt",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "15元体验小包不参加优惠；全系不支持免费试用与通用订阅；退款条款待核实；依赖专属客户端生态",
+        "summary": "限时体验15元/月50GB，标准22元/月120GB；98元年付每月45GB，不限时100元100GB或399元450GB。常规套餐展示xk808八折码，体验月付不参加。提供四端客户端，iOS使用Nextin识别码edgenova0526；不支持免费试用和通用订阅。",
+        "informationSources": [
+          {
+            "name": "边缘节点试用与订阅规则（人工补充）",
+            "url": "/posts/bianyuan-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点套餐页",
+            "url": "https://fvfetg.ztymforedge.lol/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点客户端下载",
+            "url": "https://fvfetg.ztymforedge.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点优惠公告",
+            "url": "https://fvfetg.ztymforedge.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点官网邀请入口",
+            "url": "https://wep.edgenovaaff.com/#/?code=q1BOP7EV",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 100,
+          "trafficGb": 100,
+          "priceText": "100元",
+          "trafficText": "100GB",
+          "status": "listed",
+          "deviceLimit": "不限设备数",
+          "validity": "不限时；不自动刷新，重置90元",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1,
+          "sourcePage": "/posts/bianyuan-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/bianyuan-review-2026/"
+      },
+      {
+        "name": "快狸",
+        "path": "/posts/kuaili-review-2026/",
+        "image": "/shouye.png",
+        "price": 15,
+        "priceText": "15元/月",
+        "traffic": "50GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "clash",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "官方公告遇恶意攻击抢修；不支持免费试用；夜狸季付高于连续月付；退款待核实",
+        "summary": "15元月付50GB起，120元年付30GB/月；22元100GB、35元250GB、95元500GB、180元1000GB月付，周期流量每30天刷新。提供四平台客户端，iOS使用Nextin识别码kuaili0421，并有Clash Mi订阅导入教程。夜狸季付290元高于三个月月付285元，年付并非统一8折；官方公告遇恶意攻击抢修中；IEPL、解锁与不限设备为商家说明。",
+        "informationSources": [
+          {
+            "name": "快狸试用规则（人工补充）",
+            "url": "/posts/kuaili-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸套餐页",
+            "url": "https://iasfa.kuailitztz2.sbs/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸客户端下载与公告",
+            "url": "https://iasfa.kuailitztz2.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸官网邀请入口",
+            "url": "https://fanxiaobin.kuailiaff.com/#/?code=K0WKmH8h",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/kuaili-review-2026/"
+      },
+      {
+        "name": "飞V",
+        "path": "/posts/feiv-review-2026/",
+        "image": "/covers/posts-feiv-review-2026.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用与通用订阅；全套餐不接受退款；新客8折码fly20不适用买断包",
+        "summary": "月付22元150GB起（年付224.4元），另有99元年付轻量版65GB/月（折约8.25元/月）。提供三档终身不限时流量包：189元130GB、479元380GB、799元600GB。提供Windows、macOS、Android自研客户端及iOS Nextin支持。新客享8折优惠码fly20（买断包除外）。不支持免费试用和通用订阅，不接受退款。",
+        "informationSources": [
+          {
+            "name": "飞V试用与订阅规则（人工补充）",
+            "url": "/posts/feiv-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V套餐页",
+            "url": "https://ehju.flyvastt.lol/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V客户端下载",
+            "url": "https://ehju.flyvastt.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V优惠公告",
+            "url": "https://ehju.flyvastt.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V官网邀请入口",
+            "url": "https://fugui.flyvaff.com/#/?code=gxmUajhy",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 189,
+          "trafficGb": 130,
+          "priceText": "189元",
+          "trafficText": "130GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注终身不限时，用完即止；另有479元380GB与799元600GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.454,
+          "sourcePage": "/posts/feiv-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/feiv-review-2026/"
+      },
+      {
+        "name": "灵动云",
+        "path": "/posts/lingdongyun-review-2026/",
+        "image": "/covers/posts-lingdongyun-review-2026.png",
+        "price": 20,
+        "priceText": "20元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用与通用订阅；全套餐不接受退款；优惠码需加入官方Telegram群获取",
+        "summary": "月付20元100GB起（年付204元），另有99元年付穿云版70GB/月（折约8.25元/月）。提供三档永久有效不限时流量包：199元150GB、499元400GB、899元800GB。提供Windows、macOS、Android自研客户端及iOS Nextin支持。官方设Telegram交流群发布最新福利。不支持免费试用和通用订阅，不接受退款。",
+        "informationSources": [
+          {
+            "name": "灵动云试用与订阅规则（人工补充）",
+            "url": "/posts/lingdongyun-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云套餐页",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云客户端下载",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云官方交流群公告",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云官网邀请入口",
+            "url": "https://fugui.lingdongaff.com/#/?code=lyfEXnqR",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 199,
+          "trafficGb": 150,
+          "priceText": "199元",
+          "trafficText": "150GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注永久有效，用完即止；另有499元400GB与899元800GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.327,
+          "sourcePage": "/posts/lingdongyun-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/lingdongyun-review-2026/"
+      }
+    ],
+    "cheap": [
+      {
+        "name": "月之暗面",
+        "path": "/posts/yuezhi-anmian-review-2026/",
+        "image": "/covers/posts-yuezhi-anmian-review-2026.png",
+        "price": 5,
+        "priceText": "5元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": false,
+        "universalSubscription": true,
+        "scenarios": [
+          "cheap",
+          "clash"
+        ],
+        "status": "新收录观察",
+        "risk": "人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录",
+        "summary": "2026-10-21人工补充：月付5元100GB、10元200GB、15元300GB、20元500GB；25元年付50GB/月，购买日重置、不参加促销且当月不能购买重置包。不限时总量包10元100GB、20元200GB、50元500GB、80元1000GB。无专属客户端，提供Clash订阅，不支持免费试用；周期套餐文案明确不退款。同日人工确认官网可访问、Clash订阅可导入，具体客户端与内核版本未提供。AnyTLS、海外BGP中转、港台日美新、1倍率、不限速及平台解锁为商家说明，未作本站性能测试。",
+        "informationSources": [
+          {
+            "name": "月之暗面套餐文案及试用规则（人工提供，套餐与结算未独立核验）",
+            "url": "/posts/yuezhi-anmian-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "月之暗面无专属客户端、Clash订阅可导入（人工确认，版本未提供）",
+            "url": "/posts/yuezhi-anmian-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "月之暗面官网入口",
+            "url": "https://月之暗面.org/#/register?code=lAzTYBl2",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 10,
+          "trafficGb": 100,
+          "priceText": "10元",
+          "trafficText": "100GB",
+          "status": "listed",
+          "deviceLimit": "待核实（周期套餐标注不限设备）",
+          "validity": "人工提供：流量不限时、用完为止；续购叠加与退款待核实",
+          "checkedAt": "2026-10-21",
+          "sourceLabel": "人工提供，套餐与结算未独立核验",
+          "unitPriceCnyPerGb": 0.1,
+          "sourcePage": "/posts/yuezhi-anmian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yuezhi-anmian-review-2026/"
+      }
+    ],
+    "clash": [
+      {
+        "name": "月之暗面",
+        "path": "/posts/yuezhi-anmian-review-2026/",
+        "image": "/covers/posts-yuezhi-anmian-review-2026.png",
+        "price": 5,
+        "priceText": "5元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": false,
+        "universalSubscription": true,
+        "scenarios": [
+          "cheap",
+          "clash"
+        ],
+        "status": "新收录观察",
+        "risk": "人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录",
+        "summary": "2026-10-21人工补充：月付5元100GB、10元200GB、15元300GB、20元500GB；25元年付50GB/月，购买日重置、不参加促销且当月不能购买重置包。不限时总量包10元100GB、20元200GB、50元500GB、80元1000GB。无专属客户端，提供Clash订阅，不支持免费试用；周期套餐文案明确不退款。同日人工确认官网可访问、Clash订阅可导入，具体客户端与内核版本未提供。AnyTLS、海外BGP中转、港台日美新、1倍率、不限速及平台解锁为商家说明，未作本站性能测试。",
+        "informationSources": [
+          {
+            "name": "月之暗面套餐文案及试用规则（人工提供，套餐与结算未独立核验）",
+            "url": "/posts/yuezhi-anmian-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "月之暗面无专属客户端、Clash订阅可导入（人工确认，版本未提供）",
+            "url": "/posts/yuezhi-anmian-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "月之暗面官网入口",
+            "url": "https://月之暗面.org/#/register?code=lAzTYBl2",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 10,
+          "trafficGb": 100,
+          "priceText": "10元",
+          "trafficText": "100GB",
+          "status": "listed",
+          "deviceLimit": "待核实（周期套餐标注不限设备）",
+          "validity": "人工提供：流量不限时、用完为止；续购叠加与退款待核实",
+          "checkedAt": "2026-10-21",
+          "sourceLabel": "人工提供，套餐与结算未独立核验",
+          "unitPriceCnyPerGb": 0.1,
+          "sourcePage": "/posts/yuezhi-anmian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yuezhi-anmian-review-2026/"
+      },
+      {
+        "name": "神行加速",
+        "path": "/posts/shenxingjiasu-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "clash",
+          "chatgpt",
+          "streaming",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取",
+        "summary": "月付23元150GB（年付240元）、40元300GB、72元666GB；96元年付特惠60GB/月（折约8元/月）。另有90GB 99元、450GB 398元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
+        "informationSources": [
+          {
+            "name": "神行加速套餐页",
+            "url": "https://www1.shenxingjstt.xyz/#/plans",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速客户端教程",
+            "url": "https://www1.shenxingjstt.xyz/#/knowledge",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速优惠公告",
+            "url": "https://www1.shenxingjstt.xyz/#/dashboard",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速官网邀请入口",
+            "url": "https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "name": "神行加速试用与订阅规则（人工补充）",
+            "url": "/posts/shenxingjiasu-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 90,
+          "priceText": "99元",
+          "trafficText": "90GB",
+          "status": "listed",
+          "deviceLimit": "不限同时使用客户端数量",
+          "validity": "不限时间，用完为止；另有神行·不限时大包450GB/398元",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.1,
+          "sourcePage": "/posts/shenxingjiasu-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/shenxingjiasu-review-2026/"
+      },
+      {
+        "name": "榴莲云",
+        "path": "/posts/liulianyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 24,
+        "priceText": "24元/月",
+        "traffic": "140GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "chatgpt",
+          "streaming",
+          "newbie",
+          "clash"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认",
+        "summary": "不支持免费试用；通用订阅需购买订阅后向客服领取，具体格式与客户端兼容先确认。可见最低月付24元140GB，40元260GB、60元420GB、100元750GB；96元年付提供60GB/月，购买日起每30天刷新，不限同时使用客户端数量。四端账号登录客户端，iOS Nextin专属码lly；公告展示ll88七折码，结算未验证。IPLC及原生IP、AI与流媒体为商家说明。",
+        "informationSources": [
+          {
+            "name": "榴莲云试用与订阅规则（人工补充）",
+            "url": "/posts/liulianyun-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云套餐页",
+            "url": "https://www2.liulianyuntt.xyz/#/plans",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云客户端教程",
+            "url": "https://www2.liulianyuntt.xyz/#/knowledge",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云官网邀请入口",
+            "url": "https://fugui007.liulianyunaff.com/#/?code=Y6A1M1MN",
+            "checkedAt": "2026-09-28"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/liulianyun-review-2026/"
+      },
+      {
+        "name": "云界线",
+        "path": "/posts/yunjiexian-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实",
+        "summary": "实测订单结算为22/40/66元。不支持免费试用，通用订阅可向客服领取，具体客户端格式先确认。96元年付小包60GB/月，从购买日起每30天刷新，重置20元。轻云150GB、凌云300GB、御云600GB月付实测结算22/40/66元，重置分别22/40/66元且不延长有效期。99元80GB与199元200GB不限时包均不按月刷新，用完重购。Windows账号登录自有客户端，iOS用Nextin识别码yjx，另有Android与Mac教程。yjx888新客七折适用轻云/凌云/御云各周期，每人一次不可叠加，排除年付小包与不限时包。线路、速率及解锁为商家说明。",
+        "informationSources": [
+          {
+            "name": "云界线试用与订阅规则（人工补充）",
+            "url": "/posts/yunjiexian-review-2026/",
+            "checkedAt": "2026-10-06",
+            "link": false
+          },
+          {
+            "name": "云界线套餐页",
+            "url": "https://www1.yunjiexiant.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线客户端知识库",
+            "url": "https://www1.yunjiexiant.xyz/#/knowledge",
+            "checkedAt": "2026-10-05",
+            "link": false
+          },
+          {
+            "name": "云界线仪表盘与优惠公告",
+            "url": "https://www1.yunjiexiant.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线官网邀请入口",
+            "url": "https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 80,
+          "priceText": "99元",
+          "trafficText": "80GB",
+          "status": "listed",
+          "deviceLimit": "不限客户端数量",
+          "validity": "标注不限时，不按月刷新、用完重购；另有199元200GB包",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.238,
+          "sourcePage": "/posts/yunjiexian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yunjiexian-review-2026/"
+      },
+      {
+        "name": "大佬云",
+        "path": "/posts/dalaoyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 19.99,
+        "priceText": "19.99元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie",
+          "clash",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包",
+        "summary": "初云·福利版月付19.99元100GB起，另有25元150GB、43元300GB、73元600GB月付，以及96元年付特惠（60GB/月，折约8元/月）。提供99元78GB与199元160GB不限时包。Windows、macOS与Android提供自研客户端，iOS使用Nextin专属码dly，支持通用订阅。新客7折码dly88（排除年付活动包与不限时包）。换购套餐覆盖余量且不退款，退款政策待核实。",
+        "informationSources": [
+          {
+            "name": "大佬云试用与订阅规则（人工补充）",
+            "url": "/posts/dalaoyun-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云套餐页",
+            "url": "https://www1.dalaoyuntt.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云客户端教程",
+            "url": "https://www1.dalaoyuntt.xyz/#/download",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云优惠公告",
+            "url": "https://www1.dalaoyuntt.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云官网邀请入口",
+            "url": "https://fugui0077.dalaoyunaff.com/#/?code=1o7gYhTL",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 78,
+          "priceText": "99元",
+          "trafficText": "78GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注不限时，用完即止；不按月重置，另有199元160GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.269,
+          "sourcePage": "/posts/dalaoyun-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/dalaoyun-review-2026/"
+      },
+      {
+        "name": "快狸",
+        "path": "/posts/kuaili-review-2026/",
+        "image": "/shouye.png",
+        "price": 15,
+        "priceText": "15元/月",
+        "traffic": "50GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "clash",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "官方公告遇恶意攻击抢修；不支持免费试用；夜狸季付高于连续月付；退款待核实",
+        "summary": "15元月付50GB起，120元年付30GB/月；22元100GB、35元250GB、95元500GB、180元1000GB月付，周期流量每30天刷新。提供四平台客户端，iOS使用Nextin识别码kuaili0421，并有Clash Mi订阅导入教程。夜狸季付290元高于三个月月付285元，年付并非统一8折；官方公告遇恶意攻击抢修中；IEPL、解锁与不限设备为商家说明。",
+        "informationSources": [
+          {
+            "name": "快狸试用规则（人工补充）",
+            "url": "/posts/kuaili-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸套餐页",
+            "url": "https://iasfa.kuailitztz2.sbs/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸客户端下载与公告",
+            "url": "https://iasfa.kuailitztz2.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸官网邀请入口",
+            "url": "https://fanxiaobin.kuailiaff.com/#/?code=K0WKmH8h",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/kuaili-review-2026/"
+      }
+    ],
+    "chatgpt": [
+      {
+        "name": "神行加速",
+        "path": "/posts/shenxingjiasu-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "clash",
+          "chatgpt",
+          "streaming",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取",
+        "summary": "月付23元150GB（年付240元）、40元300GB、72元666GB；96元年付特惠60GB/月（折约8元/月）。另有90GB 99元、450GB 398元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
+        "informationSources": [
+          {
+            "name": "神行加速套餐页",
+            "url": "https://www1.shenxingjstt.xyz/#/plans",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速客户端教程",
+            "url": "https://www1.shenxingjstt.xyz/#/knowledge",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速优惠公告",
+            "url": "https://www1.shenxingjstt.xyz/#/dashboard",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速官网邀请入口",
+            "url": "https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "name": "神行加速试用与订阅规则（人工补充）",
+            "url": "/posts/shenxingjiasu-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 90,
+          "priceText": "99元",
+          "trafficText": "90GB",
+          "status": "listed",
+          "deviceLimit": "不限同时使用客户端数量",
+          "validity": "不限时间，用完为止；另有神行·不限时大包450GB/398元",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.1,
+          "sourcePage": "/posts/shenxingjiasu-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/shenxingjiasu-review-2026/"
+      },
+      {
+        "name": "榴莲云",
+        "path": "/posts/liulianyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 24,
+        "priceText": "24元/月",
+        "traffic": "140GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "chatgpt",
+          "streaming",
+          "newbie",
+          "clash"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认",
+        "summary": "不支持免费试用；通用订阅需购买订阅后向客服领取，具体格式与客户端兼容先确认。可见最低月付24元140GB，40元260GB、60元420GB、100元750GB；96元年付提供60GB/月，购买日起每30天刷新，不限同时使用客户端数量。四端账号登录客户端，iOS Nextin专属码lly；公告展示ll88七折码，结算未验证。IPLC及原生IP、AI与流媒体为商家说明。",
+        "informationSources": [
+          {
+            "name": "榴莲云试用与订阅规则（人工补充）",
+            "url": "/posts/liulianyun-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云套餐页",
+            "url": "https://www2.liulianyuntt.xyz/#/plans",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云客户端教程",
+            "url": "https://www2.liulianyuntt.xyz/#/knowledge",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云官网邀请入口",
+            "url": "https://fugui007.liulianyunaff.com/#/?code=Y6A1M1MN",
+            "checkedAt": "2026-09-28"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/liulianyun-review-2026/"
+      },
+      {
+        "name": "闪电鼠",
+        "path": "/posts/shandianshu-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "120GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对",
+        "summary": "不支持免费试用和通用订阅。22元月付120GB起，另有40元250GB、70元500GB月付及96元年付60GB/月；流量每30天重置。提供四平台客户端教程，iOS使用Nextin识别码sd88。公告列出新用户首购7折码sd88，未验证适用套餐与叠加条件；专线、解锁及不限设备为商家说明。",
+        "informationSources": [
+          {
+            "name": "闪电鼠试用与订阅规则（人工补充）",
+            "url": "/posts/shandianshu-review-2026/",
+            "checkedAt": "2026-09-27",
+            "link": false
+          },
+          {
+            "name": "闪电鼠套餐页",
+            "url": "https://www2.shandiantt.xyz/#/plans",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠使用教程",
+            "url": "https://www2.shandiantt.xyz/#/knowledge",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠下载中心",
+            "url": "https://www2.shandiantt.xyz/#/downloads",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠新人优惠公告",
+            "url": "https://www2.shandiantt.xyz/#/dashboard",
+            "checkedAt": "2026-09-26",
+            "link": false
+          }
+        ],
+        "url": "https://zhiwang.one/posts/shandianshu-review-2026/"
+      }
+    ],
+    "streaming": [
+      {
+        "name": "神行加速",
+        "path": "/posts/shenxingjiasu-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "clash",
+          "chatgpt",
+          "streaming",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取",
+        "summary": "月付23元150GB（年付240元）、40元300GB、72元666GB；96元年付特惠60GB/月（折约8元/月）。另有90GB 99元、450GB 398元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
+        "informationSources": [
+          {
+            "name": "神行加速套餐页",
+            "url": "https://www1.shenxingjstt.xyz/#/plans",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速客户端教程",
+            "url": "https://www1.shenxingjstt.xyz/#/knowledge",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速优惠公告",
+            "url": "https://www1.shenxingjstt.xyz/#/dashboard",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速官网邀请入口",
+            "url": "https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "name": "神行加速试用与订阅规则（人工补充）",
+            "url": "/posts/shenxingjiasu-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 90,
+          "priceText": "99元",
+          "trafficText": "90GB",
+          "status": "listed",
+          "deviceLimit": "不限同时使用客户端数量",
+          "validity": "不限时间，用完为止；另有神行·不限时大包450GB/398元",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.1,
+          "sourcePage": "/posts/shenxingjiasu-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/shenxingjiasu-review-2026/"
+      },
+      {
+        "name": "榴莲云",
+        "path": "/posts/liulianyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 24,
+        "priceText": "24元/月",
+        "traffic": "140GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "chatgpt",
+          "streaming",
+          "newbie",
+          "clash"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认",
+        "summary": "不支持免费试用；通用订阅需购买订阅后向客服领取，具体格式与客户端兼容先确认。可见最低月付24元140GB，40元260GB、60元420GB、100元750GB；96元年付提供60GB/月，购买日起每30天刷新，不限同时使用客户端数量。四端账号登录客户端，iOS Nextin专属码lly；公告展示ll88七折码，结算未验证。IPLC及原生IP、AI与流媒体为商家说明。",
+        "informationSources": [
+          {
+            "name": "榴莲云试用与订阅规则（人工补充）",
+            "url": "/posts/liulianyun-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云套餐页",
+            "url": "https://www2.liulianyuntt.xyz/#/plans",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云客户端教程",
+            "url": "https://www2.liulianyuntt.xyz/#/knowledge",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云官网邀请入口",
+            "url": "https://fugui007.liulianyunaff.com/#/?code=Y6A1M1MN",
+            "checkedAt": "2026-09-28"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/liulianyun-review-2026/"
+      },
+      {
+        "name": "云界线",
+        "path": "/posts/yunjiexian-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实",
+        "summary": "实测订单结算为22/40/66元。不支持免费试用，通用订阅可向客服领取，具体客户端格式先确认。96元年付小包60GB/月，从购买日起每30天刷新，重置20元。轻云150GB、凌云300GB、御云600GB月付实测结算22/40/66元，重置分别22/40/66元且不延长有效期。99元80GB与199元200GB不限时包均不按月刷新，用完重购。Windows账号登录自有客户端，iOS用Nextin识别码yjx，另有Android与Mac教程。yjx888新客七折适用轻云/凌云/御云各周期，每人一次不可叠加，排除年付小包与不限时包。线路、速率及解锁为商家说明。",
+        "informationSources": [
+          {
+            "name": "云界线试用与订阅规则（人工补充）",
+            "url": "/posts/yunjiexian-review-2026/",
+            "checkedAt": "2026-10-06",
+            "link": false
+          },
+          {
+            "name": "云界线套餐页",
+            "url": "https://www1.yunjiexiant.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线客户端知识库",
+            "url": "https://www1.yunjiexiant.xyz/#/knowledge",
+            "checkedAt": "2026-10-05",
+            "link": false
+          },
+          {
+            "name": "云界线仪表盘与优惠公告",
+            "url": "https://www1.yunjiexiant.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线官网邀请入口",
+            "url": "https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 80,
+          "priceText": "99元",
+          "trafficText": "80GB",
+          "status": "listed",
+          "deviceLimit": "不限客户端数量",
+          "validity": "标注不限时，不按月刷新、用完重购；另有199元200GB包",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.238,
+          "sourcePage": "/posts/yunjiexian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yunjiexian-review-2026/"
+      }
+    ],
+    "noExpiry": [
+      {
+        "name": "神行加速",
+        "path": "/posts/shenxingjiasu-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "clash",
+          "chatgpt",
+          "streaming",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取",
+        "summary": "月付23元150GB（年付240元）、40元300GB、72元666GB；96元年付特惠60GB/月（折约8元/月）。另有90GB 99元、450GB 398元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
+        "informationSources": [
+          {
+            "name": "神行加速套餐页",
+            "url": "https://www1.shenxingjstt.xyz/#/plans",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速客户端教程",
+            "url": "https://www1.shenxingjstt.xyz/#/knowledge",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速优惠公告",
+            "url": "https://www1.shenxingjstt.xyz/#/dashboard",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速官网邀请入口",
+            "url": "https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "name": "神行加速试用与订阅规则（人工补充）",
+            "url": "/posts/shenxingjiasu-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 90,
+          "priceText": "99元",
+          "trafficText": "90GB",
+          "status": "listed",
+          "deviceLimit": "不限同时使用客户端数量",
+          "validity": "不限时间，用完为止；另有神行·不限时大包450GB/398元",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.1,
+          "sourcePage": "/posts/shenxingjiasu-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/shenxingjiasu-review-2026/"
+      },
+      {
+        "name": "云界线",
+        "path": "/posts/yunjiexian-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实",
+        "summary": "实测订单结算为22/40/66元。不支持免费试用，通用订阅可向客服领取，具体客户端格式先确认。96元年付小包60GB/月，从购买日起每30天刷新，重置20元。轻云150GB、凌云300GB、御云600GB月付实测结算22/40/66元，重置分别22/40/66元且不延长有效期。99元80GB与199元200GB不限时包均不按月刷新，用完重购。Windows账号登录自有客户端，iOS用Nextin识别码yjx，另有Android与Mac教程。yjx888新客七折适用轻云/凌云/御云各周期，每人一次不可叠加，排除年付小包与不限时包。线路、速率及解锁为商家说明。",
+        "informationSources": [
+          {
+            "name": "云界线试用与订阅规则（人工补充）",
+            "url": "/posts/yunjiexian-review-2026/",
+            "checkedAt": "2026-10-06",
+            "link": false
+          },
+          {
+            "name": "云界线套餐页",
+            "url": "https://www1.yunjiexiant.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线客户端知识库",
+            "url": "https://www1.yunjiexiant.xyz/#/knowledge",
+            "checkedAt": "2026-10-05",
+            "link": false
+          },
+          {
+            "name": "云界线仪表盘与优惠公告",
+            "url": "https://www1.yunjiexiant.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线官网邀请入口",
+            "url": "https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 80,
+          "priceText": "99元",
+          "trafficText": "80GB",
+          "status": "listed",
+          "deviceLimit": "不限客户端数量",
+          "validity": "标注不限时，不按月刷新、用完重购；另有199元200GB包",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.238,
+          "sourcePage": "/posts/yunjiexian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yunjiexian-review-2026/"
+      },
+      {
+        "name": "月之暗面",
+        "path": "/posts/yuezhi-anmian-review-2026/",
+        "image": "/covers/posts-yuezhi-anmian-review-2026.png",
+        "price": 5,
+        "priceText": "5元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": false,
+        "universalSubscription": true,
+        "scenarios": [
+          "cheap",
+          "clash"
+        ],
+        "status": "新收录观察",
+        "risk": "人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录",
+        "summary": "2026-10-21人工补充：月付5元100GB、10元200GB、15元300GB、20元500GB；25元年付50GB/月，购买日重置、不参加促销且当月不能购买重置包。不限时总量包10元100GB、20元200GB、50元500GB、80元1000GB。无专属客户端，提供Clash订阅，不支持免费试用；周期套餐文案明确不退款。同日人工确认官网可访问、Clash订阅可导入，具体客户端与内核版本未提供。AnyTLS、海外BGP中转、港台日美新、1倍率、不限速及平台解锁为商家说明，未作本站性能测试。",
+        "informationSources": [
+          {
+            "name": "月之暗面套餐文案及试用规则（人工提供，套餐与结算未独立核验）",
+            "url": "/posts/yuezhi-anmian-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "月之暗面无专属客户端、Clash订阅可导入（人工确认，版本未提供）",
+            "url": "/posts/yuezhi-anmian-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "月之暗面官网入口",
+            "url": "https://月之暗面.org/#/register?code=lAzTYBl2",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 10,
+          "trafficGb": 100,
+          "priceText": "10元",
+          "trafficText": "100GB",
+          "status": "listed",
+          "deviceLimit": "待核实（周期套餐标注不限设备）",
+          "validity": "人工提供：流量不限时、用完为止；续购叠加与退款待核实",
+          "checkedAt": "2026-10-21",
+          "sourceLabel": "人工提供，套餐与结算未独立核验",
+          "unitPriceCnyPerGb": 0.1,
+          "sourcePage": "/posts/yuezhi-anmian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yuezhi-anmian-review-2026/"
+      },
+      {
+        "name": "大佬云",
+        "path": "/posts/dalaoyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 19.99,
+        "priceText": "19.99元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie",
+          "clash",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包",
+        "summary": "初云·福利版月付19.99元100GB起，另有25元150GB、43元300GB、73元600GB月付，以及96元年付特惠（60GB/月，折约8元/月）。提供99元78GB与199元160GB不限时包。Windows、macOS与Android提供自研客户端，iOS使用Nextin专属码dly，支持通用订阅。新客7折码dly88（排除年付活动包与不限时包）。换购套餐覆盖余量且不退款，退款政策待核实。",
+        "informationSources": [
+          {
+            "name": "大佬云试用与订阅规则（人工补充）",
+            "url": "/posts/dalaoyun-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云套餐页",
+            "url": "https://www1.dalaoyuntt.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云客户端教程",
+            "url": "https://www1.dalaoyuntt.xyz/#/download",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云优惠公告",
+            "url": "https://www1.dalaoyuntt.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云官网邀请入口",
+            "url": "https://fugui0077.dalaoyunaff.com/#/?code=1o7gYhTL",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 78,
+          "priceText": "99元",
+          "trafficText": "78GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注不限时，用完即止；不按月重置，另有199元160GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.269,
+          "sourcePage": "/posts/dalaoyun-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/dalaoyun-review-2026/"
+      },
+      {
+        "name": "边缘节点",
+        "path": "/posts/bianyuan-review-2026/",
+        "image": "/shouye.png",
+        "price": 15,
+        "priceText": "15元/月",
+        "traffic": "50GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "streaming",
+          "chatgpt",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "15元体验小包不参加优惠；全系不支持免费试用与通用订阅；退款条款待核实；依赖专属客户端生态",
+        "summary": "限时体验15元/月50GB，标准22元/月120GB；98元年付每月45GB，不限时100元100GB或399元450GB。常规套餐展示xk808八折码，体验月付不参加。提供四端客户端，iOS使用Nextin识别码edgenova0526；不支持免费试用和通用订阅。",
+        "informationSources": [
+          {
+            "name": "边缘节点试用与订阅规则（人工补充）",
+            "url": "/posts/bianyuan-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点套餐页",
+            "url": "https://fvfetg.ztymforedge.lol/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点客户端下载",
+            "url": "https://fvfetg.ztymforedge.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点优惠公告",
+            "url": "https://fvfetg.ztymforedge.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点官网邀请入口",
+            "url": "https://wep.edgenovaaff.com/#/?code=q1BOP7EV",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 100,
+          "trafficGb": 100,
+          "priceText": "100元",
+          "trafficText": "100GB",
+          "status": "listed",
+          "deviceLimit": "不限设备数",
+          "validity": "不限时；不自动刷新，重置90元",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1,
+          "sourcePage": "/posts/bianyuan-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/bianyuan-review-2026/"
+      },
+      {
+        "name": "飞V",
+        "path": "/posts/feiv-review-2026/",
+        "image": "/covers/posts-feiv-review-2026.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用与通用订阅；全套餐不接受退款；新客8折码fly20不适用买断包",
+        "summary": "月付22元150GB起（年付224.4元），另有99元年付轻量版65GB/月（折约8.25元/月）。提供三档终身不限时流量包：189元130GB、479元380GB、799元600GB。提供Windows、macOS、Android自研客户端及iOS Nextin支持。新客享8折优惠码fly20（买断包除外）。不支持免费试用和通用订阅，不接受退款。",
+        "informationSources": [
+          {
+            "name": "飞V试用与订阅规则（人工补充）",
+            "url": "/posts/feiv-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V套餐页",
+            "url": "https://ehju.flyvastt.lol/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V客户端下载",
+            "url": "https://ehju.flyvastt.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V优惠公告",
+            "url": "https://ehju.flyvastt.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V官网邀请入口",
+            "url": "https://fugui.flyvaff.com/#/?code=gxmUajhy",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 189,
+          "trafficGb": 130,
+          "priceText": "189元",
+          "trafficText": "130GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注终身不限时，用完即止；另有479元380GB与799元600GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.454,
+          "sourcePage": "/posts/feiv-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/feiv-review-2026/"
+      },
+      {
+        "name": "灵动云",
+        "path": "/posts/lingdongyun-review-2026/",
+        "image": "/covers/posts-lingdongyun-review-2026.png",
+        "price": 20,
+        "priceText": "20元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用与通用订阅；全套餐不接受退款；优惠码需加入官方Telegram群获取",
+        "summary": "月付20元100GB起（年付204元），另有99元年付穿云版70GB/月（折约8.25元/月）。提供三档永久有效不限时流量包：199元150GB、499元400GB、899元800GB。提供Windows、macOS、Android自研客户端及iOS Nextin支持。官方设Telegram交流群发布最新福利。不支持免费试用和通用订阅，不接受退款。",
+        "informationSources": [
+          {
+            "name": "灵动云试用与订阅规则（人工补充）",
+            "url": "/posts/lingdongyun-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云套餐页",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云客户端下载",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云官方交流群公告",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云官网邀请入口",
+            "url": "https://fugui.lingdongaff.com/#/?code=lyfEXnqR",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 199,
+          "trafficGb": 150,
+          "priceText": "199元",
+          "trafficText": "150GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注永久有效，用完即止；另有499元400GB与899元800GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.327,
+          "sourcePage": "/posts/lingdongyun-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/lingdongyun-review-2026/"
+      }
+    ],
+    "dedicatedClient": [
+      {
+        "name": "神行加速",
+        "path": "/posts/shenxingjiasu-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "clash",
+          "chatgpt",
+          "streaming",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取",
+        "summary": "月付23元150GB（年付240元）、40元300GB、72元666GB；96元年付特惠60GB/月（折约8元/月）。另有90GB 99元、450GB 398元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
+        "informationSources": [
+          {
+            "name": "神行加速套餐页",
+            "url": "https://www1.shenxingjstt.xyz/#/plans",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速客户端教程",
+            "url": "https://www1.shenxingjstt.xyz/#/knowledge",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速优惠公告",
+            "url": "https://www1.shenxingjstt.xyz/#/dashboard",
+            "checkedAt": "2026-10-19",
+            "link": false
+          },
+          {
+            "name": "神行加速官网邀请入口",
+            "url": "https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "name": "神行加速试用与订阅规则（人工补充）",
+            "url": "/posts/shenxingjiasu-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 90,
+          "priceText": "99元",
+          "trafficText": "90GB",
+          "status": "listed",
+          "deviceLimit": "不限同时使用客户端数量",
+          "validity": "不限时间，用完为止；另有神行·不限时大包450GB/398元",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.1,
+          "sourcePage": "/posts/shenxingjiasu-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/shenxingjiasu-review-2026/"
+      },
+      {
+        "name": "榴莲云",
+        "path": "/posts/liulianyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 24,
+        "priceText": "24元/月",
+        "traffic": "140GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "chatgpt",
+          "streaming",
+          "newbie",
+          "clash"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认",
+        "summary": "不支持免费试用；通用订阅需购买订阅后向客服领取，具体格式与客户端兼容先确认。可见最低月付24元140GB，40元260GB、60元420GB、100元750GB；96元年付提供60GB/月，购买日起每30天刷新，不限同时使用客户端数量。四端账号登录客户端，iOS Nextin专属码lly；公告展示ll88七折码，结算未验证。IPLC及原生IP、AI与流媒体为商家说明。",
+        "informationSources": [
+          {
+            "name": "榴莲云试用与订阅规则（人工补充）",
+            "url": "/posts/liulianyun-review-2026/",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云套餐页",
+            "url": "https://www2.liulianyuntt.xyz/#/plans",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云客户端教程",
+            "url": "https://www2.liulianyuntt.xyz/#/knowledge",
+            "checkedAt": "2026-09-28",
+            "link": false
+          },
+          {
+            "name": "榴莲云官网邀请入口",
+            "url": "https://fugui007.liulianyunaff.com/#/?code=Y6A1M1MN",
+            "checkedAt": "2026-09-28"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/liulianyun-review-2026/"
+      },
+      {
+        "name": "云界线",
+        "path": "/posts/yunjiexian-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实",
+        "summary": "实测订单结算为22/40/66元。不支持免费试用，通用订阅可向客服领取，具体客户端格式先确认。96元年付小包60GB/月，从购买日起每30天刷新，重置20元。轻云150GB、凌云300GB、御云600GB月付实测结算22/40/66元，重置分别22/40/66元且不延长有效期。99元80GB与199元200GB不限时包均不按月刷新，用完重购。Windows账号登录自有客户端，iOS用Nextin识别码yjx，另有Android与Mac教程。yjx888新客七折适用轻云/凌云/御云各周期，每人一次不可叠加，排除年付小包与不限时包。线路、速率及解锁为商家说明。",
+        "informationSources": [
+          {
+            "name": "云界线试用与订阅规则（人工补充）",
+            "url": "/posts/yunjiexian-review-2026/",
+            "checkedAt": "2026-10-06",
+            "link": false
+          },
+          {
+            "name": "云界线套餐页",
+            "url": "https://www1.yunjiexiant.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线客户端知识库",
+            "url": "https://www1.yunjiexiant.xyz/#/knowledge",
+            "checkedAt": "2026-10-05",
+            "link": false
+          },
+          {
+            "name": "云界线仪表盘与优惠公告",
+            "url": "https://www1.yunjiexiant.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "云界线官网邀请入口",
+            "url": "https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 80,
+          "priceText": "99元",
+          "trafficText": "80GB",
+          "status": "listed",
+          "deviceLimit": "不限客户端数量",
+          "validity": "标注不限时，不按月刷新、用完重购；另有199元200GB包",
+          "checkedAt": "2026-10-19",
+          "unitPriceCnyPerGb": 1.238,
+          "sourcePage": "/posts/yunjiexian-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/yunjiexian-review-2026/"
+      },
+      {
+        "name": "闪电鼠",
+        "path": "/posts/shandianshu-review-2026/",
+        "image": "/shouye.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "120GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对",
+        "summary": "不支持免费试用和通用订阅。22元月付120GB起，另有40元250GB、70元500GB月付及96元年付60GB/月；流量每30天重置。提供四平台客户端教程，iOS使用Nextin识别码sd88。公告列出新用户首购7折码sd88，未验证适用套餐与叠加条件；专线、解锁及不限设备为商家说明。",
+        "informationSources": [
+          {
+            "name": "闪电鼠试用与订阅规则（人工补充）",
+            "url": "/posts/shandianshu-review-2026/",
+            "checkedAt": "2026-09-27",
+            "link": false
+          },
+          {
+            "name": "闪电鼠套餐页",
+            "url": "https://www2.shandiantt.xyz/#/plans",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠使用教程",
+            "url": "https://www2.shandiantt.xyz/#/knowledge",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠下载中心",
+            "url": "https://www2.shandiantt.xyz/#/downloads",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "闪电鼠新人优惠公告",
+            "url": "https://www2.shandiantt.xyz/#/dashboard",
+            "checkedAt": "2026-09-26",
+            "link": false
+          }
+        ],
+        "url": "https://zhiwang.one/posts/shandianshu-review-2026/"
+      },
+      {
+        "name": "环球梯",
+        "path": "/posts/huanqiuti-review-2026/",
+        "image": "/shouye.png",
+        "price": 23,
+        "priceText": "23元/月",
+        "traffic": "120GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "按量包详情限365天，与卡片终身标签不同；不支持免费试用和通用订阅，退款待核实",
+        "summary": "不支持免费试用和通用订阅。23元月付120GB起，96元年付60GB/月；39元240GB、69元600GB月付，设备分别限3、5、10台。按量包99元80GB、299元400GB，有效期均为365天，不属于不限时套餐。提供四平台客户端教程，iOS使用Nextin识别码HQ66。公告七折码HQ66限2000份、每人一次、不可叠加，截止2026年11月30日，结算与余量未验证；流媒体和AI支持为商家说明。",
+        "informationSources": [
+          {
+            "name": "环球梯试用与订阅规则（人工补充）",
+            "url": "/posts/huanqiuti-review-2026/",
+            "checkedAt": "2026-09-27",
+            "link": false
+          },
+          {
+            "name": "环球梯套餐页",
+            "url": "https://www2.huanqiutitt.xyz/#/plans",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "环球梯客户端教程",
+            "url": "https://www2.huanqiutitt.xyz/#/knowledge",
+            "checkedAt": "2026-09-26",
+            "link": false
+          },
+          {
+            "name": "环球梯客户端下载与优惠公告",
+            "url": "https://www2.huanqiutitt.xyz/#/dashboard",
+            "checkedAt": "2026-09-26",
+            "link": false
+          }
+        ],
+        "url": "https://zhiwang.one/posts/huanqiuti-review-2026/"
+      },
+      {
+        "name": "大佬云",
+        "path": "/posts/dalaoyun-review-2026/",
+        "image": "/shouye.png",
+        "price": 19.99,
+        "priceText": "19.99元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie",
+          "clash",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包",
+        "summary": "初云·福利版月付19.99元100GB起，另有25元150GB、43元300GB、73元600GB月付，以及96元年付特惠（60GB/月，折约8元/月）。提供99元78GB与199元160GB不限时包。Windows、macOS与Android提供自研客户端，iOS使用Nextin专属码dly，支持通用订阅。新客7折码dly88（排除年付活动包与不限时包）。换购套餐覆盖余量且不退款，退款政策待核实。",
+        "informationSources": [
+          {
+            "name": "大佬云试用与订阅规则（人工补充）",
+            "url": "/posts/dalaoyun-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云套餐页",
+            "url": "https://www1.dalaoyuntt.xyz/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云客户端教程",
+            "url": "https://www1.dalaoyuntt.xyz/#/download",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云优惠公告",
+            "url": "https://www1.dalaoyuntt.xyz/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "大佬云官网邀请入口",
+            "url": "https://fugui0077.dalaoyunaff.com/#/?code=1o7gYhTL",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 99,
+          "trafficGb": 78,
+          "priceText": "99元",
+          "trafficText": "78GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注不限时，用完即止；不按月重置，另有199元160GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.269,
+          "sourcePage": "/posts/dalaoyun-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/dalaoyun-review-2026/"
+      },
+      {
+        "name": "边缘节点",
+        "path": "/posts/bianyuan-review-2026/",
+        "image": "/shouye.png",
+        "price": 15,
+        "priceText": "15元/月",
+        "traffic": "50GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "streaming",
+          "chatgpt",
+          "newbie"
+        ],
+        "status": "资料已核对",
+        "risk": "15元体验小包不参加优惠；全系不支持免费试用与通用订阅；退款条款待核实；依赖专属客户端生态",
+        "summary": "限时体验15元/月50GB，标准22元/月120GB；98元年付每月45GB，不限时100元100GB或399元450GB。常规套餐展示xk808八折码，体验月付不参加。提供四端客户端，iOS使用Nextin识别码edgenova0526；不支持免费试用和通用订阅。",
+        "informationSources": [
+          {
+            "name": "边缘节点试用与订阅规则（人工补充）",
+            "url": "/posts/bianyuan-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点套餐页",
+            "url": "https://fvfetg.ztymforedge.lol/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点客户端下载",
+            "url": "https://fvfetg.ztymforedge.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点优惠公告",
+            "url": "https://fvfetg.ztymforedge.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "边缘节点官网邀请入口",
+            "url": "https://wep.edgenovaaff.com/#/?code=q1BOP7EV",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 100,
+          "trafficGb": 100,
+          "priceText": "100元",
+          "trafficText": "100GB",
+          "status": "listed",
+          "deviceLimit": "不限设备数",
+          "validity": "不限时；不自动刷新，重置90元",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1,
+          "sourcePage": "/posts/bianyuan-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/bianyuan-review-2026/"
+      },
+      {
+        "name": "快狸",
+        "path": "/posts/kuaili-review-2026/",
+        "image": "/shouye.png",
+        "price": 15,
+        "priceText": "15元/月",
+        "traffic": "50GB/月",
+        "trial": false,
+        "noExpiry": false,
+        "dedicatedClient": true,
+        "universalSubscription": true,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "clash",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "官方公告遇恶意攻击抢修；不支持免费试用；夜狸季付高于连续月付；退款待核实",
+        "summary": "15元月付50GB起，120元年付30GB/月；22元100GB、35元250GB、95元500GB、180元1000GB月付，周期流量每30天刷新。提供四平台客户端，iOS使用Nextin识别码kuaili0421，并有Clash Mi订阅导入教程。夜狸季付290元高于三个月月付285元，年付并非统一8折；官方公告遇恶意攻击抢修中；IEPL、解锁与不限设备为商家说明。",
+        "informationSources": [
+          {
+            "name": "快狸试用规则（人工补充）",
+            "url": "/posts/kuaili-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸套餐页",
+            "url": "https://iasfa.kuailitztz2.sbs/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸客户端下载与公告",
+            "url": "https://iasfa.kuailitztz2.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "快狸官网邀请入口",
+            "url": "https://fanxiaobin.kuailiaff.com/#/?code=K0WKmH8h",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "url": "https://zhiwang.one/posts/kuaili-review-2026/"
+      },
+      {
+        "name": "飞V",
+        "path": "/posts/feiv-review-2026/",
+        "image": "/covers/posts-feiv-review-2026.png",
+        "price": 22,
+        "priceText": "22元/月",
+        "traffic": "150GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用与通用订阅；全套餐不接受退款；新客8折码fly20不适用买断包",
+        "summary": "月付22元150GB起（年付224.4元），另有99元年付轻量版65GB/月（折约8.25元/月）。提供三档终身不限时流量包：189元130GB、479元380GB、799元600GB。提供Windows、macOS、Android自研客户端及iOS Nextin支持。新客享8折优惠码fly20（买断包除外）。不支持免费试用和通用订阅，不接受退款。",
+        "informationSources": [
+          {
+            "name": "飞V试用与订阅规则（人工补充）",
+            "url": "/posts/feiv-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V套餐页",
+            "url": "https://ehju.flyvastt.lol/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V客户端下载",
+            "url": "https://ehju.flyvastt.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V优惠公告",
+            "url": "https://ehju.flyvastt.lol/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "飞V官网邀请入口",
+            "url": "https://fugui.flyvaff.com/#/?code=gxmUajhy",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 189,
+          "trafficGb": 130,
+          "priceText": "189元",
+          "trafficText": "130GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注终身不限时，用完即止；另有479元380GB与799元600GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.454,
+          "sourcePage": "/posts/feiv-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/feiv-review-2026/"
+      },
+      {
+        "name": "灵动云",
+        "path": "/posts/lingdongyun-review-2026/",
+        "image": "/covers/posts-lingdongyun-review-2026.png",
+        "price": 20,
+        "priceText": "20元/月",
+        "traffic": "100GB/月",
+        "trial": false,
+        "noExpiry": true,
+        "dedicatedClient": true,
+        "universalSubscription": false,
+        "scenarios": [
+          "newbie",
+          "chatgpt",
+          "streaming"
+        ],
+        "status": "资料已核对",
+        "risk": "不支持免费试用与通用订阅；全套餐不接受退款；优惠码需加入官方Telegram群获取",
+        "summary": "月付20元100GB起（年付204元），另有99元年付穿云版70GB/月（折约8.25元/月）。提供三档永久有效不限时流量包：199元150GB、499元400GB、899元800GB。提供Windows、macOS、Android自研客户端及iOS Nextin支持。官方设Telegram交流群发布最新福利。不支持免费试用和通用订阅，不接受退款。",
+        "informationSources": [
+          {
+            "name": "灵动云试用与订阅规则（人工补充）",
+            "url": "/posts/lingdongyun-review-2026/",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云套餐页",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/plans",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云客户端下载",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云官方交流群公告",
+            "url": "https://nbqmhk.lingdongttt.sbs/#/dashboard",
+            "checkedAt": "2026-10-21",
+            "link": false
+          },
+          {
+            "name": "灵动云官网邀请入口",
+            "url": "https://fugui.lingdongaff.com/#/?code=lyfEXnqR",
+            "checkedAt": "2026-10-21"
+          }
+        ],
+        "noExpiryPackage": {
+          "priceCny": 199,
+          "trafficGb": 150,
+          "priceText": "199元",
+          "trafficText": "150GB",
+          "status": "listed",
+          "deviceLimit": "不限同时在线设备",
+          "validity": "标注永久有效，用完即止；另有499元400GB与899元800GB包",
+          "checkedAt": "2026-10-21",
+          "unitPriceCnyPerGb": 1.327,
+          "sourcePage": "/posts/lingdongyun-review-2026/",
+          "currency": "CNY",
+          "billing": "one-off"
+        },
+        "url": "https://zhiwang.one/posts/lingdongyun-review-2026/"
+      }
+    ]
+  }
+}
