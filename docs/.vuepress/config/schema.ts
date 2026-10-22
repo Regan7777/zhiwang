@@ -258,7 +258,7 @@ export const getPageSchema = (page: any) => {
           url: siteContactUrl,
         },
         sameAs: [
-          'https://github.com/haandiiong',
+          'https://github.com/Regan7777',
           siteContactUrl,
         ],
       },
@@ -269,7 +269,7 @@ export const getPageSchema = (page: any) => {
         description: siteAuthorDescription,
         url: siteAuthorUrl,
         sameAs: [
-          'https://github.com/haandiiong',
+          'https://github.com/Regan7777',
           siteContactUrl,
         ],
         knowsAbout: [

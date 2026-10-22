@@ -54,7 +54,7 @@ export const theme = plumeTheme({
     description: '织网 专注机场推荐、套餐与客户端资料、风险提示和科学上网教程。',
   },
   social: [
-    { icon: 'github', link: 'https://github.com/haandiiong' },
+    { icon: 'github', link: 'https://github.com/Regan7777' },
     {
       icon: {
         name: 'Telegram',
