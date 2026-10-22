@@ -61,13 +61,20 @@ jobs:
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: |
-          case "$INDEXNOW_KEY" in
-            ''|*[!A-Za-z0-9_-]*)
-              echo "INDEXNOW_KEY secret is missing or contains unsupported characters."
-              exit 1
-              ;;
-          esac
-          printf '%s' "$INDEXNOW_KEY" > "docs/.vuepress/public/${INDEXNOW_KEY}.txt"
+          if [ -n "$INDEXNOW_KEY" ]; then
+            case "$INDEXNOW_KEY" in
+              *[!A-Za-z0-9_-]*)
+                echo "INDEXNOW_KEY secret contains unsupported characters."
+                exit 1
+                ;;
+              *)
+                printf '%s' "$INDEXNOW_KEY" > "docs/.vuepress/public/${INDEXNOW_KEY}.txt"
+                echo "Successfully created IndexNow key file."
+                ;;
+            esac
+          else
+            echo "::notice::INDEXNOW_KEY secret is not configured in repository secrets. Skipping key file creation."
+          fi
 
       # 运行构建脚本
       # Run the build script

@@ -174,9 +174,13 @@ jobs:
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: |
+          if [ -z "$INDEXNOW_KEY" ]; then
+            echo "::notice::INDEXNOW_KEY secret is not configured in repository secrets. Skipping submission."
+            exit 0
+          fi
           case "$INDEXNOW_KEY" in
-            ''|*[!A-Za-z0-9_-]*)
-              echo "INDEXNOW_KEY secret is missing or contains unsupported characters."
+            *[!A-Za-z0-9_-]*)
+              echo "INDEXNOW_KEY secret contains unsupported characters."
               exit 1
               ;;
           esac
