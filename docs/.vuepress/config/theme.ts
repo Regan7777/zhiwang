@@ -57,13 +57,14 @@ export const theme = plumeTheme({
     { icon: 'github', link: 'https://github.com/Regan7777' },
     {
       icon: {
-        name: 'Telegram',
-        svg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.4 4.6 18.3 19c-.2 1-.8 1.2-1.6.8l-4.4-3.2-2.1 2c-.2.2-.4.4-.8.4l.3-4.5 8.2-7.4c.4-.3-.1-.5-.6-.2L7.5 13.3l-4.3-1.4c-.9-.3-.9-.9.2-1.3L20.2 4c.8-.3 1.5.2 1.2.6Z"/></svg>',
+        name: 'telegram',
+        svg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>',
       },
       link: 'https://t.me/wanfengzn7',
       ariaLabel: 'Telegram',
     },
   ],
+  navbarSocialInclude: ['github', 'telegram'],
   markdown: {
     collapse: true,
     imageSize: 'local',
