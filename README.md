@@ -1,114 +1,126 @@
-# 织网
+<div align="center">
 
-织网 是一个基于 VuePress 2 和 vuepress-theme-plume 的中文机场推荐站，主要维护机场推荐、套餐与客户端资料、科学上网教程、风险监测和结构化推荐数据。
+# 🌐 织网 · ZhiWang.one
+**2026 最新科学上网工具与机场推荐 · 避坑与风险监测指南**
 
-## 测试数据政策
+[![Website](https://img.shields.io/badge/官网入口-zhiwang.one-blue?style=for-the-badge&logo=cloudflare&logoColor=white)](https://zhiwang.one)
+[![Telegram](https://img.shields.io/badge/Telegram-交流频道-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/yinli_blog)
+[![GitHub Stars](https://img.shields.io/github/stars/Regan7777/zhiwang?style=for-the-badge&logo=github)](https://github.com/Regan7777/zhiwang)
+[![Build Status](https://img.shields.io/badge/Cloudflare_Pages-Active-success?style=for-the-badge&logo=cloudflarepages&logoColor=white)](https://zhiwang.one)
 
-自 2026-08-18 起，织网 不再自行开展或发布新的测速、实测、流媒体测试或 AI 可用性测试：
+<p align="center">
+  <a href="https://zhiwang.one">🌐 访问网站</a> •
+  <a href="https://zhiwang.one/posts/jichang-tuijian/">🏆 机场精选推荐</a> •
+  <a href="https://zhiwang.one/risk-monitor/">🛡️ 跑路风险监测</a> •
+  <a href="https://zhiwang.one/posts/airport-tools/">📱 客户端下载</a> •
+  <a href="https://t.me/yinli_blog">💬 Telegram 社群</a>
+</p>
 
-- 2026-08-18 前的 织网 测速截图和测试记录保留为历史资料，不代表当前表现。
-- 织网 从此只负责推荐、套餐与客户端信息整理、风险提示、商业披露和教程。
-- 用户测速教程可以保留，但不得把用户自行验证描述为 织网 的项目测试。
+</div>
 
-## 本地开发
+---
 
+## 📖 关于 织网
+
+**[织网 (zhiwang.one)](https://zhiwang.one)** 是一个专注于科学上网工具评测、机场套餐核验、客户端保姆级教程与跑路风险监测的中文导航门户。
+
+在这个充斥着虚假跑分图、引流跑路机场和失效优惠码的环境下，我们坚持：
+- **🚫 拒绝虚假测速**：不搞单次晚高峰或赞助商特定节点测速截图忽悠读者，专注于服务商背景、节点架构、真实退款条款和长期稳定性观察。
+- **🔍 真实价格核验**：亲自注册后台、验证优惠券叠加逻辑、折算每 GB 真实单价与长周期折扣。
+- **🛡️ 动态风险预警**：建立全网机场失联/跑路看板，续费前 5 分钟复核，保护您的资金安全。
+- **📱 全平台覆盖**：为 Android、iOS、Mac、Windows 提供经过验证的开源客户端下载与配置教学。
+
+---
+
+## 🔥 精选导航与场景榜单
+
+访问 **[https://zhiwang.one](https://zhiwang.one)** 体验完整的交互式榜单与详细评测：
+
+### 1. 场景优选榜单
+- 💰 **[高性价比/低价机场排行](https://zhiwang.one/rankings/cheap/)**：适合学生党与轻度科学上网用户，最低月付几元起。
+- ⏳ **[不限时流量套餐推荐](https://zhiwang.one/rankings/no-expiry/)**：流量按量计费不过期，备用防失联的首选。
+- ⚡ **[Clash 原生支持机场](https://zhiwang.one/rankings/clash/)**：支持通用订阅一键导入，完美兼容各类 Clash 客户端。
+- 🤖 **[ChatGPT / Claude / AI 专用节点](https://zhiwang.one/rankings/chatgpt/)**：针对 OpenAI 与主流大模型优化，告别 1020 拦截与 Access Denied。
+- 🎬 **[4K/8K 流媒体解锁推荐](https://zhiwang.one/rankings/streaming/)**：支持 Netflix、Disney+、YouTube Premium、HBO 等主流流媒体原生解锁。
+
+### 2. 🛡️ 机场风险监测（避坑必读）
+- 🚨 **[机场风险监测与跑路预警看板](https://zhiwang.one/risk-monitor/)**：实时记录各服务商官网异常、工单无响应、群组异常及已淘汰名单，购买与续费前必看！
+
+---
+
+## 📱 客户端工具与配置指南
+
+全平台主流代理客户端官方直达与傻瓜式图文教程：
+
+| 平台 | 推荐客户端 | 优势特点 | 教程直达 |
+| :--- | :--- | :--- | :--- |
+| **Android** | **FlClash** / Clash Meta | 界面现代、内存占用低、支持分流规则 | [安卓配置教程](https://zhiwang.one/posts/flclash-guide-2026/) |
+| **iOS / iPadOS** | **Clash Mi** / Shadowrocket | 免外区账号直装 / 老牌小火箭稳定省电 | [iOS 配置教程](https://zhiwang.one/posts/clash-mi-guide-2026/) |
+| **Windows** | **FlClash** / Clash Verge Rev | 支持内核切换、系统代理增强、现代 UI | [Windows 教程](https://zhiwang.one/posts/flclash-guide-2026/) |
+| **macOS** | **FlClash** / Hiddify | 原生适配 Apple Silicon、开机自启稳定 | [Mac 配置教程](https://zhiwang.one/posts/hiddify-guide-2026/) |
+
+> 客户端安装包及下载地址请访问：[机场工具与客户端下载中心](https://zhiwang.one/posts/airport-tools/)
+
+---
+
+## 💬 交流群与最新动态
+
+欢迎加入我们的官方交流圈，获取第一手机场优惠、节点维护状态与突发跑路风险提示：
+
+- 📢 **Telegram 官方频道**：[@yinli_blog](https://t.me/yinli_blog)
+- 💡 **实时动态**：
+  - 机场限时折扣码、大额节日优惠券派发；
+  - 晚高峰断流排查与节点维护通知；
+  - 异常服务商失联风险预警；
+  - 最新翻墙协议与开源客户端版本更新。
+
+---
+
+## 🤝 合作说明与商业披露
+
+1. **商业披露**：网站部分链接包含推广参数（Affiliate Links）。这些推广收益用于支付网站服务器、域名维护以及长期观察测试成本。
+2. **客观独立原则**：我们不会因为推广返利而隐瞒商家的负面问题、退款限制或客服失联情况。凡出现严重质量异常或跑路风险的服务商，均会被无条件移入高风险/已淘汰看板。
+3. **商务合作与收录申请**：
+   - 欢迎优质机场服务商联系申请收录（需满足：运营时间稳定、提供测试账户复核、具备透明退款政策）。
+   - 联系方式：请通过 Telegram [@yinli_blog](https://t.me/yinli_blog) 洽谈。
+
+---
+
+## 🛠️ 本地开发与维护
+
+本项目基于 **VuePress 2** 和 **vuepress-theme-plume** 搭建，采用自动化脚本保证全站数据严谨同步：
+
+### 快速启动
 ```bash
+# 克隆仓库
+git clone https://github.com/Regan7777/zhiwang.git
+cd zhiwang
+
+# 安装依赖
 pnpm install
+
+# 启动本地开发服务
 pnpm run docs:dev
 ```
 
-常用脚本：
-
+### 常用维护指令
 ```bash
-pnpm run docs:sync-tables
-pnpm run docs:sync-review-sections
-pnpm run docs:build
-pnpm run docs:sync-data
-pnpm run docs:check-tables
-pnpm run docs:check-review-sections
-pnpm run docs:check-data
-pnpm run docs:check-consistency
-pnpm run docs:check-content
-pnpm run docs:typecheck
-pnpm run docs:test
-pnpm run docs:preview
+pnpm run docs:sync-tables          # 同步全站推荐对比表与场景榜单
+pnpm run docs:sync-review-sections  # 同步单机场评测关联区块
+pnpm run docs:build                 # 生产打包构建
+pnpm run docs:test                  # 执行自动化一致性检测
 ```
 
-`docs:test` 自动运行 `scripts/` 下全部 `*.test.mjs`，提交前与 CI 使用同一入口；`docs:test-head` 和 `docs:test-data` 保留为定向排查入口。
+---
 
-`pnpm-workspace.yaml` 为安全修复定向固定 Vite 7.3.7 和 KaTeX 0.18.2。两者超出当前上游依赖声明的范围，已验证生产构建、开发预览及数学插件的公开渲染接口；升级 VuePress、主题或数学插件时应复核这些覆盖项，并重新检查公式渲染和页面显示。
+## ⚖️ 免责声明
 
-## 内容结构
+- 本站所提供的信息仅供技术交流与学术研究参考。
+- 互联网代理服务具有高度时效性，受网络环境、运营商策略与服务商运营状况影响，本站不作任何可用性或资金绝对安全保证。
+- 强烈建议用户：**坚持小额月付、按需购买、勿囤大额长期套餐**！
 
-- `docs/机场评测/`：单个机场推荐资料与历史测试记录。
-- `docs/机场榜单/`：按稳定、低价、试用、不限时、客户端、Clash、ChatGPT、流媒体等场景整理的榜单页。
-- `docs/机场推荐/`：机场推荐主文和机场大全。
-- `docs/风险监测/`：机场风险监测页。
-- `docs/科学上网专区/`、`docs/工具/`、`docs/tiktok专区/` 等：教程型内容。
-- `docs/.vuepress/config/airports.ts`：机场价格、流量、客户端能力、历史记录及风险的基础数据源。
-- `docs/.vuepress/config/airport-collections.ts`：各页面候选名单、顺序和筛选规则，供正文表格、JSON 与 ItemList Schema 共用。
-- `docs/.vuepress/config/airport-public.ts`：公开数据对象，供 JSON、Markdown 和 HTML 数据页共同使用。
+---
 
-## 数据生成流程
-
-构建时会从 `docs/.vuepress/config/airports.ts` 生成：
-
-- `/data/airports.json`
-- `/data/rankings.json`
-- `/data/risk-monitor.json`
-- 对应的 Markdown 和 HTML 数据页
-
-`airport-collections.ts` 保留低价、Clash、流媒体页面的编辑筛选名单及顺序；`rankings.json` 中的对应集合与正文候选表、页面 ItemList 完全对应。全量数据仍可从 `airports.json` 或 `rankings.all` 获取。新增编辑候选应修改集合配置，再运行 `docs:sync-tables`；下架或失去对应能力的服务会从相关集合中排除。
-
-`trial`（免费试用）和 `universalSubscription`（通用订阅）使用三种状态：`true` 为确认支持，`false` 为不支持，`null` 为待核实。待核实条目不进入对应的免费试用榜或 Clash 榜，正文、公开数据与 Schema 均保留该状态。价格按 `priceText` 标明的套餐周期比较，`traffic` 保留每日或每月重置说明；一次性流量包价格在详情中单列，不能写成月付价格。
-
-`docs:sync-tables` 同步主推荐对比表、机场大全价格总表、各场景候选表及风险观察表的基础字段，保留表内编辑说明和已有页内链接。主推荐首屏 `recommendation-scope` 标记内的资料数量与精选数量也自动同步。详细套餐、优惠条件、推荐理由和历史引用由编辑维护。`docs:check-consistency` 在构建后交叉核对正文表格、公开 JSON/Markdown/HTML、单机场 Service 和集合 ItemList，检查名单、顺序、链接、价格、能力与历史证据。
-
-主推荐表的“套餐与试用”列首行按 `priceText，traffic；支持试用/无试用/试用待核实` 自动生成，“客户端与限制”列首行同步客户端能力；人工补充放在第一个 `<br>` 后，同步时完整保留。适用场景由编辑维护，桌面表格和手机卡片共用同一张 Markdown 表。
-
-构建后运行：
-
-```bash
-pnpm run docs:sync-data
-```
-
-这会把 `docs/.vuepress/dist/data` 同步回 `docs/.vuepress/public`，用于提交到仓库。
-
-提交前至少运行：
-
-```bash
-pnpm run docs:sync-tables
-pnpm run docs:sync-review-sections
-pnpm run docs:build
-pnpm run docs:sync-data
-pnpm run docs:check-tables
-pnpm run docs:check-review-sections
-pnpm run docs:check-data
-pnpm run docs:check-consistency
-pnpm run docs:check-content
-pnpm run docs:typecheck
-pnpm run docs:test
-```
-
-## 内容更新 Checklist
-
-新增或修改文章时，注意：
-
-- frontmatter 必须包含 `title`、`description`、`createTime`、`dateModified`、`permalink`。
-- 新增机场评测页时，同步检查 `docs/.vuepress/config/airports.ts` 里的结构化字段、页面图片和资料来源日期。
-- 修改 `docs/.vuepress/config/airports.ts` 的价格、流量、试用、客户端、通用订阅、资料来源或风险字段后，运行 `pnpm run docs:sync-tables` 同步榜单和风险监测表格，避免多处数据漂移。
-- 完成价格、服务状态、能力和风险的实际复核后，手动更新 `airportDataLastReviewed`；仅补录历史测速或调整测试口径时不要推进该日期。
-- 修改单机场页或机场结构化数据后，运行 `pnpm run docs:sync-review-sections` 同步“推荐依据与历史测试记录”“本文属于”和“相关阅读”，避免页面内链断层。
-- 本地图片放在 `docs/.vuepress/public/`，正文使用 `/image-name.png` 这种绝对路径。
-- 推广链接可以正常写入正文，构建时会自动补充 `rel="sponsored nofollow noopener noreferrer"`。
-- 分享封面与正文标志、原始测速截图分开：`page-covers.ts` 映射各页的1280×720 PNG，源SVG保存在 `public/covers/sources/`。新增页面后可运行 `node scripts/generate-page-covers.mjs`（维护环境需有 Sharp，也可通过 `SHARP_MODULE` 指定已有模块），再检查封面的标题和布局。生产构建直接使用已提交的图片，无需图片渲染依赖。
-- 优化既有机场文章前，先按目标关键词检查 Google 和 Bing 的实际排名；排名前 5 的文章只做必要的数据、价格、日期、链接修正，不调整正文结构。
-- 结构性改写优先用于排名靠后的文章，避免破坏已经稳定获得搜索流量的页面。例如“全球云机场”相关关键词如果已在前 5，不改动文章结构。
-
-## CI 与发布
-
-- `.github/workflows/deploy.yml`：push 到 `main` 后构建并部署到 `gh-pages`。
-- `.github/workflows/indexnow.yml`：部署成功后提交 sitemap URL 到 IndexNow。
-- GitHub Secrets 需要配置 `INDEXNOW_KEY`，部署时会动态生成 IndexNow 校验文件。
-
-CI 会检查生成数据同步和内容健康，包括断链、缺图、缺 H1、缺 canonical、缺 JSON-LD、机场数据页面映射和 `dateModified` 覆盖。
+<div align="center">
+  <sub>© 2026 织网 (zhiwang.one). All rights reserved.</sub>
+</div>
