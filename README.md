@@ -4,7 +4,7 @@
 **2026 最新科学上网工具与机场推荐 · 避坑与风险监测指南**
 
 [![Website](https://img.shields.io/badge/官网入口-zhiwang.one-blue?style=for-the-badge&logo=cloudflare&logoColor=white)](https://zhiwang.one)
-[![Telegram](https://img.shields.io/badge/Telegram-交流频道-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/yinli_blog)
+[![Telegram](https://img.shields.io/badge/Telegram-交流频道-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/wanfengzn7)
 [![GitHub Stars](https://img.shields.io/github/stars/Regan7777/zhiwang?style=for-the-badge&logo=github)](https://github.com/Regan7777/zhiwang)
 [![Build Status](https://img.shields.io/badge/Cloudflare_Pages-Active-success?style=for-the-badge&logo=cloudflarepages&logoColor=white)](https://zhiwang.one)
 
@@ -13,7 +13,7 @@
   <a href="https://zhiwang.one/posts/jichang-tuijian/">🏆 机场精选推荐</a> •
   <a href="https://zhiwang.one/risk-monitor/">🛡️ 跑路风险监测</a> •
   <a href="https://zhiwang.one/posts/airport-tools/">📱 客户端下载</a> •
-  <a href="https://t.me/yinli_blog">💬 Telegram 社群</a>
+  <a href="https://t.me/wanfengzn7">💬 Telegram 社群</a>
 </p>
 
 </div>
@@ -67,7 +67,7 @@
 
 欢迎加入我们的官方交流圈，获取第一手机场优惠、节点维护状态与突发跑路风险提示：
 
-- 📢 **Telegram 官方频道**：[@yinli_blog](https://t.me/yinli_blog)
+- 📢 **Telegram 官方频道**：[@wanfengzn7](https://t.me/wanfengzn7)
 - 💡 **实时动态**：
   - 机场限时折扣码、大额节日优惠券派发；
   - 晚高峰断流排查与节点维护通知；
@@ -82,7 +82,7 @@
 2. **客观独立原则**：我们不会因为推广返利而隐瞒商家的负面问题、退款限制或客服失联情况。凡出现严重质量异常或跑路风险的服务商，均会被无条件移入高风险/已淘汰看板。
 3. **商务合作与收录申请**：
    - 欢迎优质机场服务商联系申请收录（需满足：运营时间稳定、提供测试账户复核、具备透明退款政策）。
-   - 联系方式：请通过 Telegram [@yinli_blog](https://t.me/yinli_blog) 洽谈。
+   - 联系方式：请通过 Telegram [@wanfengzn7](https://t.me/wanfengzn7) 洽谈。
 
 ---
 

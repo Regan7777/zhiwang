@@ -78,7 +78,7 @@ description: 织网 专注2026机场推荐、套餐与客户端信息整理、�
 
 如果你发现失效链接、套餐变化、历史记录误标、图片错误或风险描述不准确，可以通过 Telegram 联系：
 
-[https://t.me/yinli_blog](https://t.me/yinli_blog)
+[https://t.me/wanfengzn7](https://t.me/wanfengzn7)
 
 反馈时建议附上具体页面、服务商名称、信息来源和时间。涉及测速或应用测试时，请附具体记录链接或原始截图、测试日期、节点和网络环境；请勿发送账号密码、订阅密钥或个人信息。
 

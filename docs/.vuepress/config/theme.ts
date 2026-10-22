@@ -60,7 +60,7 @@ export const theme = plumeTheme({
         name: 'Telegram',
         svg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.4 4.6 18.3 19c-.2 1-.8 1.2-1.6.8l-4.4-3.2-2.1 2c-.2.2-.4.4-.8.4l.3-4.5 8.2-7.4c.4-.3-.1-.5-.6-.2L7.5 13.3l-4.3-1.4c-.9-.3-.9-.9.2-1.3L20.2 4c.8-.3 1.5.2 1.2.6Z"/></svg>',
       },
-      link: 'https://t.me/yinli_blog',
+      link: 'https://t.me/wanfengzn7',
       ariaLabel: 'Telegram',
     },
   ],
