@@ -1,12 +1,13 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { extname, join, relative } from 'node:path'
 import { loadConfig } from './lib/load-config.mjs'
+import { markdownTables } from './lib/airport-data-validation.mjs'
 
 const root = process.cwd()
 const docsDir = join(root, 'docs')
 const publicDir = join(root, 'docs/.vuepress/public')
 const distDir = join(root, 'docs/.vuepress/dist')
-const hostname = 'https://yp7.net'
+const hostname = 'https://zhiwang.one'
 
 const errors = []
 if (existsSync(join(publicDir, 'llms.txt'))) {
@@ -463,7 +464,6 @@ const requiredSeoSitemapPaths = [
   '/posts/jichang-heji/',
 ]
 const crawlerReadableDataResourcePaths = [
-  '/data/siilas-tests.json',
   '/data/airports.json',
   '/data/rankings.json',
   '/data/risk-monitor.json',
@@ -776,6 +776,21 @@ if (existsSync(robotsPath)) {
 }
 
 if (airportData.length) {
+  const { externalRiskRecords } = loadConfig('external-risks.ts')
+  const currentNames = new Set(visibleAirportData.map((airport) => airport.name))
+  const riskNames = new Set(['奈云', 'echo', ...externalRiskRecords.map((risk) => risk.name)])
+  // Validate every airport-name table, including secondary tables and coupons.
+  for (const page of pages) {
+    for (const table of markdownTables(page.content)) {
+      if (Object.keys(table[0]?.cells || {})[0] !== '机场') continue
+      for (const row of table) {
+        const name = row.cells['机场']
+        if (!name || currentNames.has(name)) continue
+        if (page.projectPath === 'docs/风险监测/机场风险监测.md' && riskNames.has(name)) continue
+        errors.push(`${page.projectPath}: airport table contains non-current entry ${name}`)
+      }
+    }
+  }
   const allAirports = visibleAirportData
   const { airportCollections } = loadConfig('airport-collections.ts')
   const { noExpiryColumns, getNoExpiryCells } = loadConfig('no-expiry-packages.ts')
@@ -783,7 +798,6 @@ if (airportData.length) {
   const clashAirports = airportCollections.clash.items
   const chatgptAirports = airportCollections.chatgpt.items
   const streamingAirports = airportCollections.streaming.items
-  const trialAirports = airportCollections.trial.items
   const noExpiryAirports = airportCollections.noExpiry.items
   const dedicatedClientAirports = airportCollections.dedicatedClient.items
 
@@ -832,7 +846,6 @@ if (airportData.length) {
     fields: [
       ['价格', (airport) => airport.priceText],
       ['流量', (airport) => airport.traffic],
-      ['试用', (airport) => booleanText(airport.trial)],
       ['通用订阅', (airport) => booleanText(airport.universalSubscription)],
     ],
   })
@@ -867,22 +880,6 @@ if (airportData.length) {
       ['流量', (airport) => airport.traffic],
       ['订阅/客户端', clientSummary],
       ['风险提示', (airport) => airport.risk],
-    ],
-  })
-
-  validateAirportTable({
-    filePath: 'docs/机场榜单/免费试用机场榜.md',
-    heading: '## 免费试用机场候选',
-    airports: airportData,
-    airportByPath,
-    requiredAirports: trialAirports,
-    exactRows: true,
-    exactOrder: true,
-    fields: [
-      ['最低价格', (airport) => airport.priceText],
-      ['月流量', (airport) => airport.traffic],
-      ['客户端', clientSummary],
-      ['通用订阅', (airport) => booleanText(airport.universalSubscription)],
     ],
   })
 

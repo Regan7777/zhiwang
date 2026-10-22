@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFileSync, statSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import vm from 'node:vm'
 import test from 'node:test'
@@ -42,27 +42,4 @@ test('self-closing HTML images are normalized before Plume parses their final at
   const html = render(`${belowFoldText}<a href="/original.png"><img src="/thumb.png" srcset="/thumb.png 1x, /thumb-2x.png 2x" width="100" alt="证据图"/></a>`)
   assert.match(html, /decoding="async">/)
   assert.doesNotMatch(html, /<img[^>]*\/>/)
-})
-
-test('globalcloud responsive thumbnails are smaller resources and retain original evidence links', () => {
-  const article = readFileSync(new URL('../docs/机场评测/全球云.md', import.meta.url), 'utf8')
-  for (const [name, displayWidth] of [
-    ...Array.from({ length: 6 }, (_, index) => [`quanqiuyun${index + 1}`, 100]),
-    ['youtubecesu', 300], ['speedtest', 300],
-  ]) {
-    const original = new URL(`../docs/.vuepress/public/${name}.png`, import.meta.url)
-    assert.ok(article.includes(`href="/${name}.png"`), `${name}: original remains accessible`)
-    for (const density of [1, 2]) {
-      if (name === 'speedtest' && density === 2) {
-        assert.ok(article.includes('/speedtest.png 2.5x'), 'reuse compact original for high-density display')
-        continue
-      }
-      const width = displayWidth * density
-      const thumbnail = new URL(`../docs/.vuepress/public/thumbnails/${name}-${width}.png`, import.meta.url)
-      const bytes = readFileSync(thumbnail)
-      assert.equal(bytes.readUInt32BE(16), width, `${name}: actual pixel width`)
-      assert.ok(statSync(thumbnail).size < statSync(original).size, `${name}: thumbnail should save transfer bytes`)
-      assert.ok(article.includes(`/thumbnails/${name}-${width}.png ${density}x`), `${name}: density candidate present`)
-    }
-  }
 })

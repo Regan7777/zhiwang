@@ -15,7 +15,7 @@ const addHtmlImageLoading = (html: string, loading: string) => html.replace(/<im
 })
 
 export const extendContentImageLoading = (md: any) => {
-  md.core.ruler.push('yp7-content-image-loading', (state: any) => {
+  md.core.ruler.push('yinli-content-image-loading', (state: any) => {
     const textBeforeLine = [0]
     for (const line of state.src.split('\n')) {
       textBeforeLine.push(textBeforeLine.at(-1)! + line.replace(/<[^>]+>|\s/g, '').length)

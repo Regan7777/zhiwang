@@ -1,7 +1,7 @@
 ---
 title: v2rayN使用教程：Windows节点导入、订阅更新、测速和常见问题
 createTime: 2026/06/26
-dateModified: 2026/09/28
+dateModified: 2026/10/21
 permalink: /posts/v2rayn-guide-2026/
 tags:
   - v2rayN
@@ -12,7 +12,7 @@ tags:
 description: v2rayN怎么用？本文整理 Windows 电脑安装 v2rayN、导入机场订阅、更新节点、测速、设置系统代理、路由模式和常见连接失败排查方法。
 ---
 
-文档更新：2026年9月28日。本次整理下载、订阅导入与排查说明；该日期不代表机场节点的实测或套餐核验日期。
+文档更新：2026年10月21日。本次核对官方项目定位，修正协议、测试与系统代理说明；不代表机场节点实测或套餐核验日期。
 
 ## 使用风险提示
 
@@ -29,11 +29,11 @@ v2rayN 是 Windows 用户常见的代理客户端，也支持 Linux 和 macOS。
 适合：
 
 - Windows 电脑用户。
-- 需要导入 V2Ray、Xray、Trojan、VLESS 等节点的用户。
+- 需要导入当前内核所支持的VMess、Trojan、VLESS等协议配置的用户。
 - 想用订阅链接统一管理节点的用户。
 - Clash 导入失败时做交叉测试的用户。
 
-如果你更习惯 Clash 配置，可以并列参考 [Clash Verge Rev 教程](/posts/clash-verge-guide-2026/) 和 [FlClash 教程](/posts/flclash-guide-2026/)，按设备和操作习惯选择。
+如果你更习惯 Clash 配置，可以并列参考 [Clash Verge Rev 教程](/posts/clash-verge-guide-2026/) 和 [FlClash 教程](/posts/flclash-guide-2026/)；如果需要跨全平台体验 Sing-box 与 VLESS Reality、Hysteria 2 等现代协议，推荐参考 [Hiddify 教程](/posts/hiddify-guide-2026/)。
 
 ## 下载与安装
 
@@ -48,7 +48,7 @@ v2rayN 是 Windows 用户常见的代理客户端，也支持 Linux 和 macOS。
 2. 下载适合 Windows 的压缩包或安装包。
 3. 解压到固定目录。
 4. 运行 v2rayN。
-5. 如系统提示安全确认，核对来源后再允许。
+5. 按系统提示核验来源与安装要求；无法确认时先停止安装并查看项目说明。
 
 不要把客户端放在临时目录里，后续更新、日志和配置文件可能不好管理。
 
@@ -73,10 +73,10 @@ v2rayN 里常见的测试包括延迟、真连接延迟和速度测试。新手�
 
 | 测试项 | 说明 | 使用建议 |
 |---|---|---|
-| 延迟 | 节点响应时间 | 用来初筛，不代表下载速度 |
-| 真连接延迟 | 更接近真实访问 | 比普通延迟更有参考价值 |
-| 下载速度 | 大文件或视频能力 | 受测试地址和高峰影响明显 |
-| 实际打开网页 | 最接近真实体验 | 用 Google、YouTube、GitHub、ChatGPT 验证 |
+| 延迟 | 特定方式与目标的响应时间 | 看清测试方式，不代表下载速度 |
+| 真连接延迟 | 客户端按其定义发起的连接测试 | 保留测试目标与版本，不与其他方法直接排名 |
+| 下载速度 | 到测试端点的当时吞吐 | 不代表所有文件、视频或平台路径 |
+| 实际打开网页 | 某项请求的当时结果 | 记录目标、时间、状态与具体错误 |
 
 日常选择节点时，可以先测日本、新加坡、香港、台湾、美国等常用地区，再结合自己主要用途决定。
 
@@ -89,7 +89,7 @@ v2rayN 常见问题往往出在系统代理和路由模式：
 - 国内网站变慢：检查是否使用了全局代理。
 - Git、终端、开发工具不生效：可能需要单独配置代理地址。
 
-新手排查时可以先用全局模式确认节点可用，再切回规则或绕过大陆地址模式。
+排查时先核对已选节点、当前代理端口和分流日志；一次只调整一个设置并记录原值。全局模式不能代替系统代理，也不能证明所有应用已进入内核。
 
 ## 常见问题
 
@@ -107,7 +107,7 @@ v2rayN 常见问题往往出在系统代理和路由模式：
 
 ### v2rayN 可以用来访问 ChatGPT 吗
 
-可以，但能否稳定访问还取决于节点地区、IP 质量、账号环境和平台规则。AI 工具排查可以看 [ChatGPT、Claude、Gemini打不开怎么办](/posts/ai-tools-not-working/)。
+v2rayN提供本地代理配置能力，不保证ChatGPT账户资格或平台可用性。应分别核对官方规则、服务状态与实际错误，见[ChatGPT、Claude、Gemini排查](/posts/ai-tools-not-working/)。
 
 ## 总结
 
@@ -116,7 +116,8 @@ v2rayN 的核心流程是：下载官方客户端、导入机场订阅、更新�
 ## 相关阅读
 
 - [机场工具推荐与官方下载指南](/posts/airport-tools/)
-
+- [Hiddify下载与使用教程](/posts/hiddify-guide-2026/)
+- [Clash Mi下载与使用教程](/posts/clash-mi-guide-2026/)
 - [机场是什么？节点、订阅链接和 Clash 入门](/posts/airport-node-subscription-guide/)
 - [Clash订阅链接导入失败怎么办](/posts/clash-subscription-troubleshooting/)
 - [Clash Verge 使用教程](/posts/clash-verge-guide-2026/)
@@ -125,4 +126,4 @@ v2rayN 的核心流程是：下载官方客户端、导入机场订阅、更新�
 
 ## 资料来源
 
-2026年9月28日核对了 [v2rayN 官方仓库](https://github.com/2dust/v2rayN)的项目说明与发布入口。客户端下载以官方发布页为准；本文没有新增节点速度或平台可用性的实测结果。
+2026年10月21日核对了[v2rayN官方仓库](https://github.com/2dust/v2rayN)的项目说明与发布入口。客户端下载以官方发布页为准；本文没有新增节点速度或平台可用性的实测结果。

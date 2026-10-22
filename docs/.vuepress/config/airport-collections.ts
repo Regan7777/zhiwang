@@ -37,12 +37,13 @@ const visibleWhere = (predicate: (airport: AirportData) => boolean) => (airports
   airports.filter((airport) => isVisibleAirport(airport) && predicate(airport))
 )
 
-// https://siilas.com/airport/ "本站实测" (checked 2026-10-05).
-// Both scenario pages use the same nine services with dated original records;
-// a Siilas source-only profile or yp7.net historical performance is not enough.
-const siilasRecordedNames = [
-  'Flybit', '拼好连', '光年梯', 'cocoduck', '网际快车',
-  '全球云', 'XSUS', 'xxyun', '边缘节点',
+// Candidate services for the ChatGPT scenario.
+const chatgptCandidateNames = [
+  '神行加速', '榴莲云', '闪电鼠',
+] as const
+
+const streamingCandidateNames = [
+  '神行加速', '榴莲云', '云界线',
 ] as const
 
 const definitions = {
@@ -57,29 +58,15 @@ const definitions = {
     pagePath: '/posts/jichang-heji/', sourceFile: 'docs/机场推荐/机场合集.md',
     heading: '## 机场价格总表', sectionLinks: true,
     select: (airports) => selectNames(airports, [
-      '网际快车', 'Flybit', '全球云', 'xxyun', '阿达西', '拼好连', '唯兔云', '99吧',
-      '光年梯', '迅达', 'ccyz', 'uuone', '冲上云霄', 'SSONE', 'U1S1', '隐云',
-      'cocoduck', 'XSUS', '坦克云（原坦克加速）', '瞬云', '极连云', '二猫云', '寰宇云', '光速云',
-      'sogo', '速界', '边缘节点', '宇宙云', '快狸', '可信云', '星岛梦', '一翻云',
+      '神行加速', '榴莲云', '云界线', '闪电鼠', '环球梯', '月之暗面', '大佬云', '边缘节点', '快狸', '飞V', '灵动云',
     ], () => true, true),
-  },
-  sales: {
-    name: '机场销量样本', dataTitle: '销量机场', ordered: true,
-    select: (airports) => visibleWhere((airport) => typeof airport.salesSample === 'number')(airports)
-      .sort((a, b) => b.salesSample! - a.salesSample!),
-  },
-  stable: {
-    name: '稳定场景资料', dataTitle: '稳定机场',
-    select: visibleWhere((airport) => airport.scenarios.includes('stable')),
   },
   cheap: {
     name: '2026低价机场筛选', dataTitle: '低价机场',
     pagePath: '/rankings/cheap/', sourceFile: 'docs/机场榜单/低价机场榜.md',
     heading: '## 低价机场候选',
     select: (airports) => selectNames(airports, [
-      '阿达西', '冲上云霄', '九云', '坦克云（原坦克加速）', '拼好连', '99吧', 'xxyun', 'XSUS', 'uuone',
-      '鲤云', '秒秒云', '锦云', '熊猫cloud', '杏花云',
-      'AnDy Cloud',
+      '月之暗面',
     ], (airport) => airport.price <= 10 || airport.scenarios.includes('cheap')),
   },
   clash: {
@@ -87,29 +74,20 @@ const definitions = {
     pagePath: '/rankings/clash/', sourceFile: 'docs/机场榜单/Clash机场榜.md',
     heading: '## Clash机场候选',
     select: (airports) => selectNames(airports, [
-      'Flybit', '网际快车', '九云', '99吧', '拼好连', 'xxyun', '迅达', '速界', '边缘节点', '坦克云（原坦克加速）',
-      '二猫云', 'U1S1', '一翻云', '快狸', 'ccyz', '瞬云', '寰宇云', '宇宙云', '跨界云', 'Edge-X', '闪跃',
-      '鲤云', '山水云', '秒秒云', '锦云', '熊猫cloud', '云图', '极速Cloud', '杏花云', '灵猫网络', 'Firefly', '无忧链接', '神行加速', '榴莲云',
-      'AnDy Cloud', 'Tidal潮汐加速', '极速123', '云界线',
+      '月之暗面', '神行加速', '榴莲云', '云界线', '大佬云', '快狸',
     ], (airport) => airport.universalSubscription === true),
   },
   chatgpt: {
     name: '2026 ChatGPT机场筛选', dataTitle: 'ChatGPT 机场',
     pagePath: '/rankings/chatgpt/', sourceFile: 'docs/机场榜单/ChatGPT机场榜.md',
     heading: '## ChatGPT机场候选',
-    select: (airports) => selectNames(airports, siilasRecordedNames),
+    select: (airports) => selectNames(airports, chatgptCandidateNames),
   },
   streaming: {
-    name: '2026流媒体机场筛选', dataTitle: '流媒体机场',
+    name: '2026流媒体机场资料筛选', dataTitle: '流媒体机场资料',
     pagePath: '/rankings/streaming/', sourceFile: 'docs/机场榜单/流媒体机场榜.md',
     heading: '## 流媒体机场候选',
-    select: (airports) => selectNames(airports, siilasRecordedNames),
-  },
-  trial: {
-    name: '2026免费试用机场筛选', dataTitle: '免费试用机场',
-    pagePath: '/rankings/trial/', sourceFile: 'docs/机场榜单/免费试用机场榜.md',
-    heading: '## 免费试用机场候选',
-    select: visibleWhere((airport) => airport.trial === true),
+    select: (airports) => selectNames(airports, streamingCandidateNames),
   },
   noExpiry: {
     name: '2026不限时机场筛选', dataTitle: '不限时套餐机场',
@@ -142,6 +120,6 @@ export const getAirportCollectionForPage = (path: string) => (
 )
 
 export const airportRankingKeys = [
-  'mainRecommendation', 'sales', 'stable', 'cheap', 'trial', 'noExpiry',
+  'mainRecommendation', 'cheap', 'noExpiry',
   'dedicatedClient', 'clash', 'chatgpt', 'streaming',
 ] as const satisfies readonly AirportCollectionKey[]

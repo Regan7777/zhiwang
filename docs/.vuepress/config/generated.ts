@@ -2,17 +2,14 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import {
   airportData,
   airportMetrics,
-  airportSalesSampleMeta,
-  currentTestingSourceName,
-  currentTestingSourceUrl,
   historicalTestingNotice,
   testingPolicyEffectiveDate,
 } from './airports'
 import { airportCollections, airportRankingKeys } from './airport-collections'
+import { externalRiskRecords } from './external-risks'
 import type { AirportCollectionKey } from './airport-collections'
 import { serializeAirport } from './airport-public'
 import type { PublicAirportData } from './airport-public'
-import { siilasTestingSnapshot } from './siilas-evidence'
 import { getNoExpiryCells, noExpiryColumns, noExpiryComparisonNotice } from './no-expiry-packages'
 import { defaultImage, hostname, siteDescription, siteLastModified, siteLastReviewed, siteName } from './site'
 
@@ -54,7 +51,7 @@ export const isSponsoredLink = (href = '') => {
   if (!/^https?:\/\//.test(href)) return false
 
   return /(\?|&|#)(code|aff|r|c|from|ref)=/i.test(href)
-    || /^https?:\/\/yp7\.yqhyym\.com(?:[/?#]|$)/i.test(href)
+    || /^https?:\/\/yinli\.yqhyym\.com(?:[/?#]|$)/i.test(href)
     || /\/\/haandiiong\./i.test(href)
     || /vipaff|aff\.cc|kuailicloudt|sogoyunaff|gsyaff|2maoyunaff|jlcvipaff/i.test(href)
 }
@@ -106,8 +103,8 @@ const walkGeneratedHtml = (dir: string, visit: (file: string) => void) => {
 }
 
 const generatedH1Fallbacks = [
-  ['index.html', '引力｜机场资料、风险监测与科学上网教程'],
-  ['404.html', '页面未找到｜引力'],
+  ['index.html', '织网｜机场资料、风险监测与科学上网教程'],
+  ['404.html', '页面未找到｜织网'],
 ] as const
 
 export const patchGeneratedHtml = (app: any) => {
@@ -137,11 +134,12 @@ const getAirportDataFiles = () => {
     airports: rankings.all,
     rankings,
     riskMonitor: [
+      ...externalRiskRecords,
       {
         name: 'echo',
         status: '已淘汰',
-        risk: '客服失联，谨慎使用',
-        source: `${hostname}/posts/jichang-heji/`,
+        risk: '旧站内编辑记录称客服失联；原始公告与发生日期未留存，当前状态待独立复核，不建议新购',
+        source: `${hostname}/risk-monitor/#已淘汰或高风险记录`,
       },
       ...airportData.map((airport) => ({
         name: airport.name,
@@ -154,19 +152,18 @@ const getAirportDataFiles = () => {
 }
 
 const getPublicAirportMetrics = () => {
-  const { performanceCount, ...metrics } = airportMetrics
+  const { performanceCount, salesSampleCount, ...metrics } = airportMetrics
 
   return {
     ...metrics,
-    historicalPerformanceRecordCount: performanceCount,
     priceBasis: {
       entry: '首次入门周期参考价，包含不可续费的新人优惠；不是所有机场的实际首购结算价',
-      regular: '常规持续套餐周期参考价，仅极速Cloud改用30元，其余沿用已记录价格；不是逐家验证的续费成交价',
+      regular: '常规持续套餐周期参考价，优先使用明确记录的常规价，否则沿用当前周期价格；不是逐家验证的续费成交价',
     },
   }
 }
 
-const getAirportMarkdownTable = (airports: PublicAirportData[], columns: string[] = ['机场', '最低价格', '流量额度', '试用', '不限时', '专属客户端', '通用订阅', '历史证据', '历史测试日期', '历史延迟', '历史速度区间', '状态']) => {
+const getAirportMarkdownTable = (airports: PublicAirportData[], columns: string[] = ['机场', '最低价格', '流量额度', '试用', '不限时', '专属客户端', '通用订阅', '状态']) => {
   const header = `| ${columns.join(' | ')} |`
   const divider = `| ${columns.map(() => '---').join(' | ')} |`
   const rows = airports.map((airport) => [
@@ -175,27 +172,6 @@ const getAirportMarkdownTable = (airports: PublicAirportData[], columns: string[
     airport.traffic,
     booleanText(airport.trial),
     booleanText(airport.noExpiry),
-    airport.dedicatedClient ? '支持' : '不支持',
-    booleanText(airport.universalSubscription),
-    airport.historicalEvidence ? airport.historicalEvidence.evidenceLevel || '未评级' : '无',
-    airport.historicalEvidence?.lastTestedAt || '无历史记录',
-    airport.historicalEvidence ? airport.historicalEvidence.latencyMs === null ? '未证实' : `${airport.historicalEvidence.latencyMs}ms` : '无历史记录',
-    airport.historicalEvidence?.downloadMbpsRange || '无历史记录',
-    airport.status,
-  ])
-
-  return [header, divider, ...rows.map((row) => `| ${row.join(' | ')} |`)].join('\n')
-}
-
-const getSalesMarkdownTable = (airports: PublicAirportData[]) => {
-  const header = '| 机场 | 销量样本 | 最低价格 | 流量额度 | 试用 | 专属客户端 | 通用订阅 | 状态 |'
-  const divider = '| --- | ---: | --- | --- | --- | --- | --- | --- |'
-  const rows = airports.map((airport) => [
-    `[${airport.name}](${getCanonicalUrl(airport.path)})`,
-    airport.salesSample,
-    airport.priceText,
-    airport.traffic,
-    booleanText(airport.trial),
     airport.dedicatedClient ? '支持' : '不支持',
     booleanText(airport.universalSubscription),
     airport.status,
@@ -248,8 +224,10 @@ const renderDataHtmlPage = ({
     <meta name="twitter:title" content="${escapeHtml(title)}">
     <meta name="twitter:description" content="${escapeHtml(metaDescription)}">
     <meta name="twitter:image" content="${defaultImage}">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#141518">
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
     <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/logo.png">
     <script type="application/ld+json">${JSON.stringify(schema)}</script>
     <title>${escapeHtml(title)}</title>
@@ -285,38 +263,12 @@ const getAirportHtmlTable = (airports: PublicAirportData[]) => {
         <td>${booleanText(airport.noExpiry)}</td>
         <td>${airport.dedicatedClient ? '支持' : '不支持'}</td>
         <td>${booleanText(airport.universalSubscription)}</td>
-        <td>${escapeHtml(airport.historicalEvidence ? airport.historicalEvidence.evidenceLevel || '未评级' : '无')}</td>
-        <td>${escapeHtml(airport.historicalEvidence?.lastTestedAt || '无历史记录')}</td>
-        <td>${airport.historicalEvidence ? airport.historicalEvidence.latencyMs === null ? '未证实' : `${airport.historicalEvidence.latencyMs}ms` : '无历史记录'}</td>
-        <td>${escapeHtml(airport.historicalEvidence?.downloadMbpsRange || '无历史记录')}</td>
         <td>${escapeHtml(airport.status)}</td>
       </tr>`).join('\n')
 
   return `<table>
         <thead>
-          <tr><th>机场</th><th>最低价格</th><th>流量额度</th><th>试用</th><th>不限时</th><th>专属客户端</th><th>通用订阅</th><th>历史证据</th><th>历史测试日期</th><th>历史延迟</th><th>历史速度区间</th><th>状态</th></tr>
-        </thead>
-        <tbody>
-${rows}
-        </tbody>
-      </table>`
-}
-
-const getSalesHtmlTable = (airports: PublicAirportData[]) => {
-  const rows = airports.map((airport) => `<tr>
-        <td><a href="${airport.path}">${escapeHtml(airport.name)}</a></td>
-        <td>${airport.salesSample}</td>
-        <td>${escapeHtml(airport.priceText)}</td>
-        <td>${escapeHtml(airport.traffic)}</td>
-        <td>${booleanText(airport.trial)}</td>
-        <td>${airport.dedicatedClient ? '支持' : '不支持'}</td>
-        <td>${booleanText(airport.universalSubscription)}</td>
-        <td>${escapeHtml(airport.status)}</td>
-      </tr>`).join('\n')
-
-  return `<table>
-        <thead>
-          <tr><th>机场</th><th>销量样本</th><th>最低价格</th><th>流量额度</th><th>试用</th><th>专属客户端</th><th>通用订阅</th><th>状态</th></tr>
+          <tr><th>机场</th><th>最低价格</th><th>流量额度</th><th>试用</th><th>不限时</th><th>专属客户端</th><th>通用订阅</th><th>状态</th></tr>
         </thead>
         <tbody>
 ${rows}
@@ -347,8 +299,8 @@ ${riskRows.map((item) => `<tr>
 const rankingSections = airportRankingKeys.map((key) => ({
   key,
   title: airportCollections[key].dataTitle,
-  renderHtml: key === 'noExpiry' ? getNoExpiryHtmlTable : key === 'sales' ? getSalesHtmlTable : getAirportHtmlTable,
-  renderMarkdown: key === 'noExpiry' ? getNoExpiryMarkdownTable : key === 'sales' ? getSalesMarkdownTable : getAirportMarkdownTable,
+  renderHtml: key === 'noExpiry' ? getNoExpiryHtmlTable : getAirportHtmlTable,
+  renderMarkdown: key === 'noExpiry' ? getNoExpiryMarkdownTable : getAirportMarkdownTable,
 }))
 
 const datasetCreator = {
@@ -362,29 +314,29 @@ const dataPageConfigs = {
   airports: {
     file: 'airports.html',
     slug: 'airports',
-    title: '引力 全量机场推荐数据：价格、流量、客户端、历史记录与风险状态',
-    description: '引力 全量机场推荐数据 HTML 页面，汇总价格、流量、试用、客户端、历史测试记录和风险状态；当前测试数据统一来自 Siilas。',
-    keywords: '机场数据,机场推荐,机场价格,机场风险,历史测试记录,Siilas',
-    schemaName: '引力 全量机场数据',
-    schemaDescription: '引力 全量机场推荐数据集汇总机场名称、页面链接、价格、流量、客户端、适合场景、观察状态和购买风险提示；2026年8月18日前测试记录仅作历史资料，当前测试数据来自 Siilas。',
+    title: '织网 全量机场数据：价格、流量、客户端与风险状态',
+    description: '织网 全量机场数据 HTML 页面，汇总价格、流量、试用条件、客户端和风险状态；来源日期与编辑日期分开记录。',
+    keywords: '机场数据,机场推荐,机场价格,机场风险,客户端',
+    schemaName: '织网 全量机场数据',
+    schemaDescription: '织网 全量机场推荐数据集汇总机场名称、页面链接、价格、流量、客户端、适合场景、观察状态和购买风险提示；旧性能数据已移除，资料不构成当前性能结论。',
   },
   rankings: {
     file: 'rankings.html',
     slug: 'rankings',
-    title: '引力 机场推荐数据：销量、低价、Clash、ChatGPT、流媒体与历史记录',
-    description: '引力 机场推荐数据 HTML 页面，按销量样本、低价、试用、客户端、Clash、ChatGPT和流媒体场景整理资料；旧测试记录统一标记为历史。',
-    keywords: '机场榜单,机场排行榜,销量机场,稳定机场,低价机场,Clash机场,ChatGPT机场,流媒体机场',
-    schemaName: '引力 机场榜单数据',
-    schemaDescription: '引力 机场推荐数据集按销量样本、价格、试用、客户端、Clash、ChatGPT 和流媒体等场景整理机场条目；旧测试记录仅作历史资料，当前测试数据来自 Siilas。',
+    title: '织网 机场推荐数据：低价、不限时、客户端、Clash与平台资料',
+    description: '织网 机场推荐数据 HTML 页面，按低价、不限时、客户端、Clash、ChatGPT和流媒体用途整理套餐资料；不提供测速或销量排名。',
+    keywords: '机场榜单,机场套餐,低价机场,不限时套餐,Clash机场,ChatGPT机场,流媒体机场',
+    schemaName: '织网 机场榜单数据',
+    schemaDescription: '织网 机场推荐数据集按价格、有效期、客户端、Clash、ChatGPT 和流媒体用途整理套餐资料；不发布旧性能记录或销量排名。',
   },
   riskMonitor: {
     file: 'risk-monitor.html',
     slug: 'risk-monitor',
-    title: '引力 机场风险监测数据：跑路风险、官网异常、客服失联、套餐变化、节点波动与购买避坑提示汇总',
-    description: '引力 机场风险监测 HTML 页面，整理已淘汰机场、客服失联、官网异常、节点波动和购买前风险提示。',
+    title: '织网 机场风险监测数据：跑路风险、官网异常、客服失联、套餐变化、节点波动与购买避坑提示汇总',
+    description: '织网 机场风险监测 HTML 页面，整理已淘汰机场、客服失联、官网异常、节点波动和购买前风险提示。',
     keywords: '机场风险,跑路机场,机场跑路,机场监测,机场避坑',
-    schemaName: '引力 机场风险监测数据',
-    schemaDescription: '引力 机场风险监测数据集记录已淘汰机场、观察中机场、官网异常、客服失联、节点波动、套餐变化和购买前风险提示，并关联对应页面，帮助用户在购买或续费前识别机场服务的时效性风险。',
+    schemaName: '织网 机场风险监测数据',
+    schemaDescription: '织网 机场风险监测数据集记录已淘汰机场、观察中机场、官网异常、客服失联、节点波动、套餐变化和购买前风险提示，并关联对应页面，帮助用户在购买或续费前识别机场服务的时效性风险。',
   },
 }
 
@@ -405,7 +357,6 @@ export const generateAirportDataFiles = (app: any) => {
   const { airports, rankings, riskMonitor } = dataPageConfigs
 
   mkdirSync(dataDir, { recursive: true })
-  writeFileSync(`${dataDir}/siilas-tests.json`, `${JSON.stringify(siilasTestingSnapshot, null, 2)}\n`)
   writeFileSync(`${dataDir}/airports.json`, JSON.stringify({
     site: siteName,
     url: hostname,
@@ -413,11 +364,9 @@ export const generateAirportDataFiles = (app: any) => {
     lastModified: siteLastModified,
     testingPolicy: {
       effectiveDate: testingPolicyEffectiveDate,
-      yp7ConductsCurrentTests: false,
-      currentSource: currentTestingSourceName,
-      currentSourceUrl: currentTestingSourceUrl,
-      historicalRecordsNotice: historicalTestingNotice,
-      contributedRecordsNotice: '用户投稿单列来源、测试日期和环境，不代表 引力 自行测试或全部节点的当前表现',
+      yinliConductsCurrentTests: false,
+      removedRecordsNotice: historicalTestingNotice,
+      contributedRecordsNotice: '用户投稿单列来源、测试日期和环境，不代表 织网 自行测试或全部节点的当前表现',
     },
     metrics: getPublicAirportMetrics(),
     airports: data.airports,
@@ -429,14 +378,11 @@ export const generateAirportDataFiles = (app: any) => {
     lastModified: siteLastModified,
     testingPolicy: {
       effectiveDate: testingPolicyEffectiveDate,
-      yp7ConductsCurrentTests: false,
-      currentSource: currentTestingSourceName,
-      currentSourceUrl: currentTestingSourceUrl,
-      historicalRecordsNotice: historicalTestingNotice,
-      contributedRecordsNotice: '用户投稿单列来源、测试日期和环境，不代表 引力 自行测试或全部节点的当前表现',
+      yinliConductsCurrentTests: false,
+      removedRecordsNotice: historicalTestingNotice,
+      contributedRecordsNotice: '用户投稿单列来源、测试日期和环境，不代表 织网 自行测试或全部节点的当前表现',
     },
     metrics: getPublicAirportMetrics(),
-    salesSampleMeta: airportSalesSampleMeta,
     rankings: data.rankings,
   }, null, 2))
   writeFileSync(`${dataDir}/risk-monitor.json`, JSON.stringify({
@@ -448,21 +394,21 @@ export const generateAirportDataFiles = (app: any) => {
     risks: data.riskMonitor,
   }, null, 2))
   writeFileSync(`${dataDir}/airports.md`, [
-    '# 引力 机场数据',
+    '# 织网 机场数据',
     '',
     `Data updated: ${siteLastModified}; last full review: ${siteLastReviewed}`,
     '',
-    `Testing policy: ${historicalTestingNotice}；当前测试数据见 ${currentTestingSourceUrl}`,
+    `Testing policy: ${historicalTestingNotice}`,
     '',
     getAirportMarkdownTable(data.airports),
     '',
   ].join('\n'))
   writeFileSync(`${dataDir}/rankings.md`, [
-    '# 引力 机场榜单数据',
+    '# 织网 机场榜单数据',
     '',
     `Data updated: ${siteLastModified}; last full review: ${siteLastReviewed}`,
     '',
-    `Testing policy: ${historicalTestingNotice}；当前测试数据见 ${currentTestingSourceUrl}`,
+    `Testing policy: ${historicalTestingNotice}`,
     '',
     ...rankingSections.flatMap((section) => [
       `## ${section.title}`,
@@ -472,7 +418,7 @@ export const generateAirportDataFiles = (app: any) => {
     ]),
   ].join('\n'))
   writeFileSync(`${dataDir}/risk-monitor.md`, [
-    '# 引力 机场风险监测',
+    '# 织网 机场风险监测',
     '',
     `Data updated: ${siteLastModified}; last full review: ${siteLastReviewed}`,
     '',
@@ -487,14 +433,13 @@ export const generateAirportDataFiles = (app: any) => {
     keywords: airports.keywords,
     canonical: getDataCanonicalUrl(airports.slug),
     schema: getDatasetSchema(airports),
-    body: `<h1>引力 全量机场数据</h1>
+    body: `<h1>织网 全量机场数据</h1>
       <p>数据更新：${siteLastModified}；上次全面复核：${siteLastReviewed}。各条目资料日期见来源记录。</p>
-      <p>${historicalTestingNotice}。${testingPolicyEffectiveDate} 起 引力 不再自行测速，当前测试主要引用 <a href="${currentTestingSourceUrl}" target="_blank" rel="noopener noreferrer">${currentTestingSourceName}</a> 对应记录；用户投稿另列来源、测试时间和环境。</p>
+      <p>${historicalTestingNotice}。${testingPolicyEffectiveDate} 起 织网 不再自行测速；用户投稿另列来源、测试时间和环境。</p>
       <p>本页是人类可读的机场推荐数据 HTML 入口。机器读取可使用 JSON 或 Markdown 文件。</p>
       <div class="links">
         <a href="/data/airports.json">airports.json</a>
         <a href="/data/airports.md">airports.md</a>
-        <a href="/data/siilas-tests.json">Siilas 原始测速与评分接收快照</a>
         <a href="/data/rankings">rankings</a>
         <a href="/posts/jichang-heji/">机场大全</a>
         <a href="/methodology/">推荐方法</a>
@@ -507,9 +452,9 @@ export const generateAirportDataFiles = (app: any) => {
     keywords: rankings.keywords,
     canonical: getDataCanonicalUrl(rankings.slug),
     schema: getDatasetSchema(rankings),
-    body: `<h1>引力 机场榜单数据</h1>
+    body: `<h1>织网 机场榜单数据</h1>
       <p>数据更新：${siteLastModified}；上次全面复核：${siteLastReviewed}。各条目资料日期见来源记录。</p>
-      <p>${historicalTestingNotice}。${testingPolicyEffectiveDate} 起 引力 不再自行测速，当前测试主要引用 <a href="${currentTestingSourceUrl}" target="_blank" rel="noopener noreferrer">${currentTestingSourceName}</a> 对应记录；用户投稿另列来源、测试时间和环境。</p>
+      <p>${historicalTestingNotice}。${testingPolicyEffectiveDate} 起 织网 不再自行测速；用户投稿另列来源、测试时间和环境。</p>
       <p>本页是人类可读的机场推荐数据 HTML 入口。机器读取可使用 JSON 或 Markdown 文件。</p>
       <div class="links">
         <a href="/data/rankings.json">rankings.json</a>
@@ -517,7 +462,6 @@ export const generateAirportDataFiles = (app: any) => {
         <a href="/posts/jichang-heji/">机场大全</a>
         <a href="/posts/jichang-tuijian/">机场推荐</a>
         <a href="/rankings/cheap/">低价机场</a>
-        <a href="/rankings/trial/">免费试用</a>
         <a href="/rankings/no-expiry/">不限时套餐</a>
         <a href="/rankings/dedicated-client/">专属客户端</a>
         <a href="/rankings/clash/">Clash机场</a>
@@ -533,7 +477,7 @@ export const generateAirportDataFiles = (app: any) => {
     keywords: riskMonitor.keywords,
     canonical: getDataCanonicalUrl(riskMonitor.slug),
     schema: getDatasetSchema(riskMonitor),
-    body: `<h1>引力 机场风险监测数据</h1>
+    body: `<h1>织网 机场风险监测数据</h1>
       <p>数据更新：${siteLastModified}；上次全面复核：${siteLastReviewed}。各条目资料日期见来源记录。</p>
       <p>本页是人类可读的机场风险监测 HTML 入口。机器读取可使用 JSON 或 Markdown 文件。</p>
       <div class="links">

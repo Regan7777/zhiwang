@@ -7,6 +7,7 @@ interface NoExpiryPackage {
   deviceLimit: string
   validity: string
   checkedAt: string
+  sourceLabel?: string
   ownerConfirmedAt?: string
 }
 
@@ -18,16 +19,18 @@ const listed = (priceCny: number, trafficGb: number, deviceLimit: string, validi
 })
 
 export const noExpiryPackages: Record<string, NoExpiryPackage> = {
+  '/posts/yuezhi-anmian-review-2026/': {
+    ...listed(10, 100, '待核实（周期套餐标注不限设备）', '人工提供：流量不限时、用完为止；续购叠加与退款待核实', '2026-10-21'),
+    sourceLabel: '人工提供，套餐与结算未独立核验',
+  },
+  '/posts/dalaoyun-review-2026/': listed(99, 78, '不限同时在线设备', '标注不限时，用完即止；不按月重置，另有199元160GB包', '2026-10-21'),
   '/posts/jisu123-review-2026/': {
     ...listed(128, 1000 / 6, '3台', '不限时间，用完为止；6倍扣量，重购覆盖而不叠加；不支持退款', '2026-10-05'),
     trafficText: '标称1000GB／6倍计费折合约166.7GB',
   },
   '/posts/andycloud-review-2026/': listed(100, 1000, '10台', '无过期日，用完即止；重购覆盖新额度，不叠加剩余流量', '2026-10-05'),
   '/posts/tidal-review-2026/': listed(59, 128, '不限同时在线设备', '永久有效，用完为止；续购叠加及退款适用范围待核实', '2026-10-05'),
-  '/posts/yunjiexian-review-2026/': {
-    priceCny: 99, trafficGb: null, priceText: '99元', trafficText: '卡片80GB／正文300GB（冲突）', status: 'conflicting',
-    deviceLimit: '不限客户端数量', validity: '标注不限时，不按月刷新、用完重购；交付额度待核实；另有199元200GB包', checkedAt: '2026-10-05',
-  },
+  '/posts/yunjiexian-review-2026/': listed(99, 80, '不限客户端数量', '标注不限时，不按月刷新、用完重购；另有199元200GB包', '2026-10-19'),
   '/posts/lingmaowangluo-review-2026/': listed(100, 100, '不限客户端数量', '不限时，用完为止；手动重置9折，基数待核实', '2026-09-28'),
   '/posts/firefly-review-2026/': listed(100, 100, '不限时档未注明', '永久不过期，用完为止；续购规则待核实', '2026-09-28'),
   '/posts/jisucloud-review-2026/': {
@@ -72,7 +75,7 @@ export const noExpiryPackages: Record<string, NoExpiryPackage> = {
     priceCny: null, trafficGb: 120, priceText: '卡片120元／正文100元（冲突）', trafficText: '120GB', status: 'conflicting',
     deviceLimit: '不限设备数', validity: '不限时；不自动刷新，重置费待核实', checkedAt: '2026-09-27',
   },
-  '/posts/bianyuan-review-2026/': listed(100, 100, '不限设备数', '不限时；不自动刷新，重置90元', '2026-09-27'),
+  '/posts/bianyuan-review-2026/': listed(100, 100, '不限设备数', '不限时；不自动刷新，重置90元', '2026-10-21'),
   '/posts/yuzhoucloud-review-2026/': listed(110, 120, '不限设备数', '不限时；可补充流量，费用待核实', '2026-09-27'),
   '/posts/kexinyun-review-2026/': listed(50, 50, '不限设备数', '标注永久不限时；不参与活动', '2026-09-27'),
   '/posts/xingdaomeng-review-2026/': listed(100, 100, '不限设备数', '不限时；不自动重置，手动重置9折', '2026-09-27'),
@@ -82,10 +85,13 @@ export const noExpiryPackages: Record<string, NoExpiryPackage> = {
     priceCny: 150, trafficGb: null, priceText: '150元', trafficText: '列表100GB／订单确认页0GB（冲突）', status: 'conflicting',
     deviceLimit: '不限时档未注明', validity: '标注不限时；订单确认页重置选项130元，交付额度待核实', checkedAt: '2026-10-05',
   },
+  '/posts/shenxingjiasu-review-2026/': listed(99, 90, '不限同时使用客户端数量', '不限时间，用完为止；另有神行·不限时大包450GB/398元', '2026-10-19'),
+  '/posts/feiv-review-2026/': listed(189, 130, '不限同时在线设备', '标注终身不限时，用完即止；另有479元380GB与799元600GB包', '2026-10-21'),
+  '/posts/lingdongyun-review-2026/': listed(199, 150, '不限同时在线设备', '标注永久有效，用完即止；另有499元400GB与899元800GB包', '2026-10-21'),
 }
 
 export const noExpiryColumns = ['机场', '一次付款金额', '一次性总流量', '每GB成本', '设备限制', '有效期与重置', '套餐核验日期']
-export const noExpiryComparisonNotice = '按已核对的不限时入门包比较，金额为未扣优惠的整笔标价。每GB成本＝一次付款金额÷一次性总流量，保留三位小数；明确统一计费倍率时按折合传输额度计算，并在流量列注明。价格、流量或有效期存在冲突时不计算。各行注明官网套餐核验日期，后续站长补充单独记录，不代表当天重新核对全部官网或性能。'
+export const noExpiryComparisonNotice = '按已记录的不限时入门包比较，金额为未扣优惠的整笔标价。每GB成本＝一次付款金额÷一次性总流量，保留三位小数；明确统一计费倍率时按折合传输额度计算，并在流量列注明。价格、流量或有效期存在冲突时不计算。各行注明资料日期；人工提供与官网核验分别标注，后续补充单独记录，不代表当天重新核对全部官网或性能。'
 
 export const getNoExpiryPackage = (path: string) => {
   const record = noExpiryPackages[path]
@@ -104,7 +110,9 @@ export const getNoExpiryCells = (path: string) => {
   const record = getNoExpiryPackage(path)
   return [record.priceText, record.trafficText,
     record.unitPriceCnyPerGb === null ? '待核实，不计算' : `${record.unitPriceCnyPerGb.toFixed(3)}元/GB`,
-    record.deviceLimit, record.validity, record.ownerConfirmedAt
-      ? `${record.checkedAt}官网；${record.ownerConfirmedAt}站长确认价格与流量`
+    record.deviceLimit, record.validity, record.sourceLabel
+      ? `${record.checkedAt} ${record.sourceLabel}`
+      : record.ownerConfirmedAt
+      ? `${record.checkedAt}官网；${record.ownerConfirmedAt}人工确认价格与流量`
       : record.checkedAt]
 }

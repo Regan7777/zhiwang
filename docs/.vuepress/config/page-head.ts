@@ -58,7 +58,6 @@ const noindexPaths = new Set([
   '/blog/tags/',
   '/blog/categories/',
   '/blog/archives/',
-  '/friends/',
 ])
 
 const getPageTitleHead = (page: any) => {

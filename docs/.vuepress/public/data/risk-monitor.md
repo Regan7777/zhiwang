@@ -1,65 +1,21 @@
-# 引力 机场风险监测
+# 织网 机场风险监测
 
-Data updated: 2026-10-14; last full review: 2026-08-19
+Data updated: 2026-10-21; last full review: 2026-08-19
 
 | 机场 | 状态 | 风险提示 | 链接 |
 | --- | --- | --- | --- |
-| echo | 已淘汰 | 客服失联，谨慎使用 | [来源](https://yinli.blog/posts/jichang-heji/) |
-| 九云 | 资料已核对 | 不支持试用，不支持退款；并发设备数因套餐而异 | [查看](https://yinli.blog/posts/jiuyun-review-2026/) |
-| 全球云 | 主推观察 | 不支持免费试用和通用订阅；旧优惠码与退款待核实 | [查看](https://yinli.blog/posts/quanqiuyun/) |
-| 光年梯 | 资料已核对 | 套餐不退款；普通套餐不支持通用订阅，不支持免费试用，先确认设备兼容 | [查看](https://yinli.blog/posts/guangnianti-review-2026/) |
-| 网际快车 | 重点观察 | 日享限60GB/日；免费试用需填写体验券yp7net，旧优惠码与退款待核实 | [查看](https://yinli.blog/posts/wangji-kuaiche-review/) |
-| 光速云 | 备用观察 | 不支持免费试用和通用订阅；套餐不退款；流光版238GB与220GB文案冲突待核实 | [查看](https://yinli.blog/posts/guangsuyun/) |
-| xxyun | 流媒体观察 | 仅官方客户端，解锁需按节点复核 | [查看](https://yinli.blog/posts/xxyun-review-2026/) |
-| Flybit | Clash观察 | 套餐不支持退款；购买前核实并短期测试 | [查看](https://yinli.blog/posts/flybit-review-2026/) |
-| 阿达西 | 低价观察 | 入门档限速100Mbps、不支持专线；不支持免费试用，退款待核实，独享节点默认自动续费 | [查看](https://yinli.blog/posts/adaxi-review-2026/) |
-| 拼好连 | 资料已核对 | 退款待核实；专属客户端限3台，入门限200Mbps | [查看](https://yinli.blog/posts/runway-review-2026/) |
-| 唯兔云 | 流媒体观察 | 不支持免费试用和通用订阅；14.9元节假日套餐暂无定价，退款待核实 | [查看](https://yinli.blog/posts/weituyun/) |
-| 99吧 | 试用观察 | 套餐仅限内地使用，暂不支持退款，先试用 | [查看](https://yinli.blog/posts/99ba-review-2026/) |
-| 迅达 | 资料已核对 | 不支持退款，仅限个人使用；设备限5至20台，不支持免费试用 | [查看](https://yinli.blog/posts/xunda-review-2026/) |
-| ccyz | 资料已核对 | 季度起付，限5至10台设备；退款与优惠码适用范围待核实 | [查看](https://yinli.blog/posts/ccyz-review-2026/) |
-| uuone | 性价比观察 | 不支持免费试用；退款与旧优惠码待核实；设备数量和速率因套餐不同 | [查看](https://yinli.blog/posts/uuone-review-2026/) |
-| 冲上云霄 | 低价观察 | 不支持免费试用；入门限速200Mbps且无专线；退款和长周期流量重置待核实 | [查看](https://yinli.blog/posts/chongshangyunxiao/) |
-| SSONE | 订阅观察 | 购买后不退款，新套餐覆盖旧套餐；年付超值无忧按年重置流量 | [查看](https://yinli.blog/posts/ssone/) |
-| U1S1 | 专线观察 | 当前未见在售不限时套餐；定制需询价，旧优惠码与退款条件待核实 | [查看](https://yinli.blog/posts/u1s1-review-2026/) |
-| 奈云 | 停止推荐 | 2026年6月下旬外部预警显示官网异常、客服失联、节点不可用和订阅失效，暂停新购续费 | [查看](https://yinli.blog/posts/naiyun-review-2026/) |
-| 隐云 | 备用观察 | 轻量版首购季付起；两种模式限制不同；不支持免费试用，退款待核实 | [查看](https://yinli.blog/posts/yinyun-review-2026/) |
-| cocoduck | 资料已核对 | 试用无人工支持；加油包需搭配常规套餐，旧客户端需确认兼容性 | [查看](https://yinli.blog/posts/cocoduck-review/) |
-| XSUS | 性价比观察 | 无法原路退款；流量不叠加，续费不立即重置；不支持免费试用 | [查看](https://yinli.blog/posts/xsus-review-2026/) |
-| 坦克云（原坦克加速） | 新手观察 | 入门限1台设备与IP；退款与旧优惠码待核实 | [查看](https://yinli.blog/posts/tank-review-2026/) |
-| 瞬云 | 资料已核对 | 不支持免费试用和退款；周期套餐仅限个人使用，旧优惠码待核实 | [查看](https://yinli.blog/posts/shunyun-review-2026/) |
-| 极连云 | 稳定观察 | 不支持免费试用和通用订阅；不退款；不限时399元600GB已确认，重置费用待核实 | [查看](https://yinli.blog/posts/jilianyun-review-2026/) |
-| 二猫云 | 专线观察 | 部分套餐价格文案与卡片不一致；退款及旧优惠码待核实 | [查看](https://yinli.blog/posts/ermiao-vpn-review/) |
-| 寰宇云 | 资料已核对 | 售出不退款；不支持免费试用；旧优惠码待核实 | [查看](https://yinli.blog/posts/huanyuyun-review-2026/) |
-| 一翻云 | 资料已核对 | 不支持免费试用和通用订阅；退款和旧优惠码待核实；中秋限定套餐停售时间未注明 | [查看](https://yinli.blog/posts/yifanyun-review-2026/) |
-| sogo | 资料已核对 | 不限时标价与说明冲突；不支持免费试用和通用订阅；退款及旧优惠码待核实 | [查看](https://yinli.blog/posts/sogo-review-2026/) |
-| 速界 | 资料已核对 | 免费试用1天50GB需注册后联系客服领取；15元月付体验另为付费套餐且不参加优惠；不支持通用订阅；退款待核实；光速版流量说明冲突 | [查看](https://yinli.blog/posts/sujie-review-2026/) |
-| 边缘节点 | 资料已核对 | 月付体验不参加优惠；不支持免费试用和通用订阅，退款待核实；450GB不限时重置费说明冲突 | [查看](https://yinli.blog/posts/bianyuan-review-2026/) |
-| 宇宙云 | 资料已核对 | 不支持免费试用；退款及旧优惠码待核实；周期重置费基数与补流量费用需确认 | [查看](https://yinli.blog/posts/yuzhoucloud-review-2026/) |
-| 快狸 | 客户端观察 | 不支持免费试用；季付与年付优惠文案需核对；退款及旧优惠码待核实 | [查看](https://yinli.blog/posts/kuaili-review-2026/) |
-| 可信云 | 资料已核对 | 不支持免费试用和通用订阅；退款待核实；50GB不限时包不参加优惠活动 | [查看](https://yinli.blog/posts/kexinyun-review-2026/) |
-| 星岛梦 | 资料已核对 | 年付与一次性包规则不同；旧优惠码与退款条件待核实 | [查看](https://yinli.blog/posts/xingdaomeng-review-2026/) |
-| 隐形人 | 资料已核对 | 不限时包设备数卡片与详情冲突；不支持试用和通用订阅，退款待核实 | [查看](https://yinli.blog/posts/yinxingren-review-2026/) |
-| 闪电鼠 | 资料已核对 | 不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对 | [查看](https://yinli.blog/posts/shandianshu-review-2026/) |
-| 环球梯 | 资料已核对 | 按量包详情限365天，与卡片终身标签不同；不支持免费试用和通用订阅，退款待核实 | [查看](https://yinli.blog/posts/huanqiuti-review-2026/) |
-| 跨界云 | 资料已核对 | 20GB试用需注册后联系客服领取，期限未说明；通用订阅需购买订阅后联系客服领取；退款待核实，不限时包不参与优惠，中秋老用户套餐停售日期未明确 | [查看](https://yinli.blog/posts/kuajieyun-review-2026/) |
-| Edge-X | 资料已核对 | 不支持免费试用；普通订阅需关闭DNS覆写，特殊网络按专用教程；全年流量包不退款；月付退款须流量≤5GB、支付宝付款及生效未满12小时同时满足并提交工单；优惠叠加与结算未验证 | [查看](https://yinli.blog/posts/edge-x-review-2026/) |
-| 闪跃 | 资料已核对 | 不支持免费试用；Clash订阅链接需联系客服获取；退款待核实；两档不限时包订单确认页流量额度均显示0GB，与列表100GB／200GB冲突，付款前需核实 | [查看](https://yinli.blog/posts/shanyue-review-2026/) |
-| 无忧链接 | 资料已核对 | 不支持免费试用；通用订阅需向客服索取；退款、设备限制及具体订阅格式待核实；定制套餐需先联系客服 | [查看](https://yinli.blog/posts/wuyoulianjie-review-2026/) |
-| 榴莲云 | 资料已核对 | 不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认 | [查看](https://yinli.blog/posts/liulianyun-review-2026/) |
-| 鲤云 | 资料已核对 | 不支持免费试用；周期套餐不退款；59元200GB包客服确认有效期1年（站长2026-10-05提供），此前官网含永久文案 | [查看](https://yinli.blog/posts/liyun-review-2026/) |
-| 山水云 | 资料已核对 | 不支持免费试用；退款待核实；同时在线3台；365天包有到期时间 | [查看](https://yinli.blog/posts/shanshuiyun-review-2026/) |
-| 秒秒云 | 资料已核对 | 不支持免费试用；普通套餐退款待核实；59元不限时包额度单位、49.9元365天包刷新量不清楚；特惠说明仅支持年付与订单页可选半年和一年冲突 | [查看](https://yinli.blog/posts/miaomiaoyun-review-2026/) |
-| 锦云 | 资料已核对 | 不支持免费试用；套餐不退款；按套餐限3至5台设备，365天包不等于不限时 | [查看](https://yinli.blog/posts/jinyun-review-2026/) |
-| 熊猫cloud | 资料已核对 | 不支持免费试用；套餐不退款；66元600GB包客服确认有效期1年（站长2026-10-05提供），此前官网商品名写不限时 | [查看](https://yinli.blog/posts/xiongmaocloud-review-2026/) |
-| 云图 | 资料已核对 | 不支持免费试用；套餐不退款；仅限5台个人设备；78元包为每月50GB、持续12个月，不属于不限时；119元商品期限与刷新规则仍待核实；新购套餐会替换当前有效套餐 | [查看](https://yinli.blog/posts/yuntu-review-2026/) |
-| 灵猫网络 | 资料已核对 | 不支持免费试用；支持通用订阅；退款、不限时重置9折基数待核实，定制需联系客服询价 | [查看](https://yinli.blog/posts/lingmaowangluo-review-2026/) |
-| Firefly | 资料已核对 | 不支持免费试用；通用订阅需向客服索取；退款、不限时设备数及重置规则待核实 | [查看](https://yinli.blog/posts/firefly-review-2026/) |
-| 神行加速 | 资料已核对 | 基础与尊享正文流量单位错误，采用卡片260GB和520GB仍需复核；不支持免费试用；通用订阅需购买订阅后联系客服领取；退款待核实 | [查看](https://yinli.blog/posts/shenxingjiasu-review-2026/) |
-| 极速Cloud | 资料已核对 | 全套餐10倍倍率；新人档不能续费；设备数与知识库通用文案冲突；不支持免费试用 | [查看](https://yinli.blog/posts/jisucloud-review-2026/) |
-| 杏花云 | 资料已核对 | 不支持免费试用；退款、倍率与月额度重置日期待核实；20元总量包只有一年有效期 | [查看](https://yinli.blog/posts/xinghuayun-review-2026/) |
-| AnDy Cloud | 资料已核对 | 不支持免费试用；退款、计费倍率与重置费用待核实；订阅导入需先购买；一次性重购覆盖额度，不叠加余量 | [查看](https://yinli.blog/posts/andycloud-review-2026/) |
-| Tidal潮汐加速 | 资料已核对 | 不支持免费试用；取消套餐按使用比例退回账户余额，不等于原路退款；年付优惠期限、叠加与结算未验证 | [查看](https://yinli.blog/posts/tidal-review-2026/) |
-| 云界线 | 资料已核对 | 月付卡片22/40/66元与正文25/45/75元冲突；99元不限时包卡片80GB与正文300GB冲突；不支持免费试用；通用订阅向客服领取，具体格式先确认；退款及优惠结算待核实 | [查看](https://yinli.blog/posts/yunjiexian-review-2026/) |
-| 极速123 | 资料已核对 | 商品标注6倍扣量；文档与卡片设备数、一次性有效期存在差异；不支持免费试用；月付退款与重置费待核实 | [查看](https://yinli.blog/posts/jisu123-review-2026/) |
-| 灯塔加速器 | 资料已核对 | 订阅导出受套餐周期限制，Clash格式未确认；入门与轻量无退款保障，帮助页泛化退款说明有冲突；试用额度和期限以账户显示为准 | [查看](https://yinli.blog/posts/dengta-review-2026/) |
+| 蜜雪冰城 | 疑似跑路（待核实） | 搜索收录的翻翻墙条目含2026-10-17疑似跑路、官网无法访问预警；当前预览未稳定复现该更新，尚未独立确认停运。暂停新购与续费。 | [来源](https://t.me/s/ffqchannel/15149?q=%23tuic) |
+| 滕王阁 | 高风险（跑路待核实） | 公开用户记录反映服务异常及售后响应问题，工具箱作者列入黑名单；尚未取得可追溯的停运公告或跑路确认。暂停新购与续费。 | [来源](https://tools.adoyle.me/for-china.html) |
+| 上帝世界 | 高风险（跑路待核实） | 翻翻墙2026-05-20更新转述用户反馈并建议不购买；现有公开记录不足以确认已经停运或跑路。暂停新购与续费，继续核实官方公告及售后。 | [来源](https://t.me/s/ffqchannel?q=%23%E4%B8%8A%E5%B8%9D%E4%B8%96%E7%95%8C) |
+| echo | 已淘汰 | 旧站内编辑记录称客服失联；原始公告与发生日期未留存，当前状态待独立复核，不建议新购 | [来源](https://zhiwang.one/risk-monitor/#已淘汰或高风险记录) |
+| 神行加速 | 资料已核对 | 不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取 | [查看](https://zhiwang.one/posts/shenxingjiasu-review-2026/) |
+| 榴莲云 | 资料已核对 | 不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认 | [查看](https://zhiwang.one/posts/liulianyun-review-2026/) |
+| 云界线 | 资料已核对 | 实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实 | [查看](https://zhiwang.one/posts/yunjiexian-review-2026/) |
+| 闪电鼠 | 资料已核对 | 不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对 | [查看](https://zhiwang.one/posts/shandianshu-review-2026/) |
+| 环球梯 | 资料已核对 | 按量包详情限365天，与卡片终身标签不同；不支持免费试用和通用订阅，退款待核实 | [查看](https://zhiwang.one/posts/huanqiuti-review-2026/) |
+| 月之暗面 | 新收录观察 | 人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录 | [查看](https://zhiwang.one/posts/yuezhi-anmian-review-2026/) |
+| 大佬云 | 资料已核对 | 不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包 | [查看](https://zhiwang.one/posts/dalaoyun-review-2026/) |
+| 边缘节点 | 资料已核对 | 15元体验小包不参加优惠；全系不支持免费试用与通用订阅；退款条款待核实；依赖专属客户端生态 | [查看](https://zhiwang.one/posts/bianyuan-review-2026/) |
+| 快狸 | 资料已核对 | 官方公告遇恶意攻击抢修；不支持免费试用；夜狸季付高于连续月付；退款待核实 | [查看](https://zhiwang.one/posts/kuaili-review-2026/) |
+| 飞V | 资料已核对 | 不支持免费试用与通用订阅；全套餐不接受退款；新客8折码fly20不适用买断包 | [查看](https://zhiwang.one/posts/feiv-review-2026/) |
+| 灵动云 | 资料已核对 | 不支持免费试用与通用订阅；全套餐不接受退款；优惠码需加入官方Telegram群获取 | [查看](https://zhiwang.one/posts/lingdongyun-review-2026/) |

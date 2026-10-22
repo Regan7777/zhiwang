@@ -1,6 +1,6 @@
 // Optional maintenance command. PNGs and their SVG sources are checked in;
 // production builds need neither Sharp nor the local font/rendering runtime.
-// Install Sharp locally, or set YP7_SHARP_MODULE to an existing Sharp module.
+// Install Sharp locally, or set SHARP_MODULE to an existing Sharp module.
 import { createRequire } from 'node:module'
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
@@ -11,7 +11,7 @@ const root = fileURLToPath(new URL('../', import.meta.url))
 const docs = join(root, 'docs')
 const output = join(docs, '.vuepress/public/covers')
 const require = createRequire(import.meta.url)
-const sharp = require(process.env.YP7_SHARP_MODULE || 'sharp')
+const sharp = require(process.env.SHARP_MODULE || 'sharp')
 const { airportData } = loadConfig('airports.ts')
 const airports = new Map(airportData.map((airport) => [airport.path, airport.name]))
 const escape = (text) => String(text).replace(/[&<>"']/g, (char) => ({
@@ -27,21 +27,21 @@ const value = (frontmatter, key) => frontmatter.match(new RegExp(`^${key}:\\s*(.
 const special = {
   '/': ['科学上网工具与机场推荐', '按设备选择客户端，再获取订阅', '入门指南', 'devices'],
   '/posts/jichang-tuijian/': ['机场推荐怎么选', '价格 · 客户端 · 购买限制', '机场选择', 'compare'],
-  '/posts/jichang-heji/': ['机场大全', '横向比较套餐与订阅方式', '机场资料', 'compare'],
+  '/posts/jichang-heji/': ['机场大全', '价格、流量、客户端与套餐对比', '机场资料', 'compare'],
   '/rankings/cheap/': ['低价机场选择', '付款周期 · 流量 · 使用限制', '场景筛选', 'compare'],
   '/rankings/no-expiry/': ['不限时与总量套餐', '有效期 · 总流量 · 计费倍率', '场景筛选', 'compare'],
-  '/rankings/trial/': ['免费试用机场', '领取条件 · 额度 · 期限', '场景筛选', 'compare'],
   '/rankings/dedicated-client/': ['专属客户端机场', '按设备与操作系统选择', '场景筛选', 'devices'],
   '/rankings/clash/': ['Clash订阅机场', '订阅格式与客户端兼容性', '场景筛选', 'devices'],
-  '/rankings/chatgpt/': ['ChatGPT节点记录', '按日期与原始记录比较', '应用资料', 'records'],
-  '/rankings/streaming/': ['流媒体节点记录', 'YouTube与播放状态资料', '应用资料', 'records'],
+  '/rankings/chatgpt/': ['ChatGPT机场', '套餐 · 客户端 · 风险提示', '应用资料', 'records'],
+  '/rankings/streaming/': ['流媒体机场资料', '平台规则 · 套餐 · 官方入口', '应用资料', 'records'],
   '/rankings/coupons/': ['机场优惠码', '适用条件与结算金额', '购买资料', 'compare'],
   '/risk-monitor/': ['机场风险监测', '服务状态 · 套餐变化 · 购买风险', '风险资料', 'records'],
-  '/methodology/': ['推荐方法与资料来源', '区分套餐核验、测试与历史记录', '编辑原则', 'records'],
-  '/about/': ['关于yp7.net', '内容范围 · 商业披露 · 纠错', '关于本站', 'records'],
+  '/methodology/': ['推荐方法与资料来源', '套餐核验 · 来源日期 · 购买限制', '编辑原则', 'records'],
+  '/about/': ['关于织网', '内容范围 · 商业披露 · 纠错', '关于本站', 'records'],
   '/posts/ai-tools-node-guide-2026/': ['AI工具节点选择', 'ChatGPT · Claude · Gemini', '使用指南', 'devices'],
   '/posts/ai-tools-not-working/': ['AI工具连接排查', 'ChatGPT · Claude · Gemini', '故障排查', 'records'],
   '/posts/google-youtube-github-gmail-not-working/': ['海外网站连接排查', 'Google · YouTube · GitHub · Gmail', '故障排查', 'records'],
+  '/posts/speedtest-vpn/': ['机场测速方法详解', '延迟 · 吞吐 · 个人连接记录', '验证方法', 'records'],
   '/posts/router-vpn-setup-2026/': ['路由器网络配置', 'OpenWrt · 订阅 · 连接排查', '使用指南', 'devices'],
   '/posts/vpn-alternatives-risk-guide/': ['VPN替代方案怎么选', '客户端 · 订阅 · 购买限制', '使用指南', 'compare'],
 }
@@ -95,9 +95,9 @@ const pages = walk(docs).map((file) => {
   const source = readFileSync(file, 'utf8')
   const fm = source.match(/^---\n([\s\S]*?)\n---/)?.[1] || ''
   const route = value(fm, 'permalink') || (relative(docs, file) === 'index.md' ? '/' : undefined)
-  if (!route || route === '/friends/' || /robots:[^\n]*noindex|draft:\s*true/.test(fm)) return undefined
+  if (!route || /robots:[^\n]*noindex|draft:\s*true/.test(fm)) return undefined
   const name = airports.get(route)
-  const title = value(fm, 'title') || 'yp7.net'
+  const title = value(fm, 'title') || '织网'
   const shortTitle = title.split(/[：:？?｜|]/)[0].replace(/^2026\s*/, '')
   const [heading, subtitle, label, kind] = special[route] || (name
     ? [name, '套餐 · 客户端 · 订阅规则', '机场资料', 'network']
@@ -113,7 +113,7 @@ for (const page of pages) {
   // Short, readable labels; illustrations carry the rest of the topic.
   const lines = wrap(page.heading)
   const size = lines.length > 2 ? 46 : 54
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><title>${escape(page.heading)}</title><desc>${escape(page.subtitle)}</desc><rect width="1280" height="720" fill="#f7fafb"/><circle cx="1166" cy="72" r="294" fill="${tint}"/><circle cx="48" cy="720" r="235" fill="${tint}" opacity=".6"/>${text(76, 86, 'yp7.net', 28, ink, 700)}${text(76, 219, page.label, 22, accent, 500)}${lines.map((part, i) => text(72, 320 + i * 72, part, size, '#192e3b', 700)).join('')}${text(76, 355 + lines.length * 72, page.subtitle, 25, '#586b75')}${line(76, 573, 181, 573, accent, 5)}${text(76, 624, '资料整理与使用指南', 19, '#75848a')}${illustration(page.kind, ink, accent)}</svg>`
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><title>${escape(page.heading)}</title><desc>${escape(page.subtitle)}</desc><rect width="1280" height="720" fill="#f7fafb"/><circle cx="1166" cy="72" r="294" fill="${tint}"/><circle cx="48" cy="720" r="235" fill="${tint}" opacity=".6"/>${text(76, 86, '织网', 28, ink, 700)}${text(76, 219, page.label, 22, accent, 500)}${lines.map((part, i) => text(72, 320 + i * 72, part, size, '#192e3b', 700)).join('')}${text(76, 355 + lines.length * 72, page.subtitle, 25, '#586b75')}${line(76, 573, 181, 573, accent, 5)}${text(76, 624, '资料整理与使用指南', 19, '#75848a')}${illustration(page.kind, ink, accent)}</svg>`
   writeFileSync(join(output, 'sources', `${page.slug}.svg`), `${svg}\n`)
   await sharp(Buffer.from(svg)).png({ compressionLevel: 9, palette: true }).toFile(join(output, `${page.slug}.png`))
 }

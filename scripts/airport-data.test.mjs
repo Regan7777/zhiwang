@@ -21,15 +21,13 @@ const replaceServiceFact = (service, name, value) => {
   )).join('\n')
 }
 
-test('ChatGPT and streaming lists contain only airports with Siilas original records', () => {
-  const recordedNames = [
-    'Flybit', '拼好连', '光年梯', 'cocoduck', '网际快车',
-    '全球云', 'XSUS', 'xxyun', '边缘节点',
-  ]
-  for (const key of ['chatgpt', 'streaming']) {
-    assert.deepEqual(airportCollections[key].items.map((airport) => airport.name), recordedNames)
-    assert.ok(!airportCollections[key].items.some((airport) => airport.name === 'U1S1'))
-  }
+test('ChatGPT and streaming lists contain candidate airports', () => {
+  assert.deepEqual(airportCollections.chatgpt.items.map((airport) => airport.name), [
+    '神行加速', '榴莲云', '闪电鼠',
+  ])
+  assert.deepEqual(airportCollections.streaming.items.map((airport) => airport.name), [
+    '神行加速', '榴莲云', '云界线',
+  ])
 })
 
 test('page candidates, public collections and Schema preserve the editorial names and order', () => {
@@ -45,12 +43,13 @@ test('page candidates, public collections and Schema preserve the editorial name
 
 test('price changes use the same record and hidden services disappear from all collections', () => {
   const updated = structuredClone(airportData)
-  const airport = updated.find((item) => item.name === '99吧')
+  const airport = updated.find((item) => item.name === '月之暗面')
   airport.price = 8.5
   airport.priceText = '8.5元/月'
   airport.traffic = '80GB/月'
-  for (const key of ['all', 'cheap', 'clash', 'trial', 'noExpiry']) {
-    assert.equal(createAirportCollections(updated)[key].items.find((item) => item.name === '99吧'), airport)
+  airport.trial = true
+  for (const key of ['all', 'cheap', 'clash', 'noExpiry']) {
+    assert.equal(createAirportCollections(updated)[key].items.find((item) => item.name === '月之暗面'), airport)
   }
   airport.status = '停止推荐'
   assert.ok(Object.values(createAirportCollections(updated)).every((collection) => !collection.items.includes(airport)))
@@ -58,7 +57,7 @@ test('price changes use the same record and hidden services disappear from all c
 
 for (const status of ['停止推荐', '已淘汰', '下架']) {
   test(`loading source with a ${status} main recommendation excludes it from public collections`, async (t) => {
-    const fixture = mkdtempSync(join(tmpdir(), 'yp7-hidden-main-source-'))
+    const fixture = mkdtempSync(join(tmpdir(), 'yinli-hidden-main-source-'))
     t.after(() => rmSync(fixture, { recursive: true, force: true }))
     const configDir = join(fixture, 'docs/.vuepress/config')
     const loaderPath = join(fixture, 'scripts/lib/load-config.mjs')
@@ -71,13 +70,13 @@ for (const status of ['停止推荐', '已淘汰', '下架']) {
     // retirement does. Mutating an already-loaded clone misses initialization errors.
     const sourcePath = join(configDir, 'airports.ts')
     const source = readFileSync(sourcePath, 'utf8')
-    const edited = source.replace(/(name: 'Flybit'[\s\S]*?\bstatus: ')[^']*'/, `$1${status}'`)
+    const edited = source.replace(/("name":\s*"神行加速"[\s\S]*?"status":\s*")[^"]*(")/, `$1${status}$2`)
     assert.notEqual(edited, source, 'fixture must update the main recommendation status')
     writeFileSync(sourcePath, edited)
     const { loadConfig: loadFixtureConfig } = await import(pathToFileURL(loaderPath).href)
     const fixtureAirports = loadFixtureConfig('airports.ts')
     const { airportCollections: collections } = loadFixtureConfig('airport-collections.ts')
-    const hidden = fixtureAirports.airportData.find((airport) => airport.name === 'Flybit')
+    const hidden = fixtureAirports.airportData.find((airport) => airport.name === '神行加速')
     assert.equal(hidden.status, status)
     assert.ok(!fixtureAirports.visibleAirportData.some((airport) => airport.path === hidden.path))
     for (const [key, collection] of Object.entries(collections)) {
@@ -111,68 +110,18 @@ for (const status of ['停止推荐', '已淘汰', '下架']) {
 
 test('capability changes remove an editorial candidate only from affected collections', () => {
   const updated = structuredClone(airportData)
-  const airport = updated.find((item) => item.name === '99吧')
+  const airport = updated.find((item) => item.name === '月之暗面')
   airport.universalSubscription = false
-  airport.trial = false
   const collections = createAirportCollections(updated)
   assert.ok(!collections.clash.items.includes(airport))
-  assert.ok(!collections.trial.items.includes(airport))
-  assert.ok(collections.cheap.items.includes(airport))
   assert.ok(collections.all.items.includes(airport))
-})
-
-test('unverified trials stay unknown in public tables and Service schema and leave the trial collection', (t) => {
-  const airport = airportData.find((item) => item.name === '99吧')
-  const originalTrial = airport.trial
-  const originalTrialItems = airportCollections.trial.items
-  const dest = mkdtempSync(join(tmpdir(), 'yp7-unverified-trial-'))
-  t.after(() => {
-    airport.trial = originalTrial
-    airportCollections.trial.items = originalTrialItems
-    rmSync(dest, { recursive: true, force: true })
-  })
-  assert.ok(createAirportCollections(airportData).trial.items.includes(airport))
-  airport.trial = null
-  const collections = createAirportCollections(airportData)
-  assert.ok(!collections.trial.items.includes(airport))
-  assert.ok(collections.all.items.includes(airport))
-  // A build loads these derived collections after reading the source data.
-  airportCollections.trial.items = collections.trial.items
-
-  generateAirportDataFiles({ dir: { dest: (file = '') => join(dest, file) } })
-  const read = (file) => readFileSync(join(dest, 'data', file), 'utf8')
-  const publicAirport = JSON.parse(read('airports.json')).airports.find((item) => item.path === airport.path)
-  assert.equal(publicAirport.trial, null)
-  assert.ok(!JSON.parse(read('rankings.json')).rankings.trial.some((item) => item.path === airport.path))
-  for (const rows of [htmlTables(read('airports.html'))[0], markdownTables(read('airports.md'))[0]]) {
-    const row = rows.find((item) => item.cells['机场'] === airport.name)
-    assert.equal(row.cells['试用'], '待核实')
-    assert.equal(row.cells['流量额度'], airport.traffic)
-    assert.deepEqual(validateAirportRows([row], [airport], 'unknown trial'), [])
-    row.cells['试用'] = '不支持'
-    assert.ok(validateAirportRows([row], [airport], 'stale trial').some((error) => error.includes('试用')))
-  }
-  const recommendation = markdownTables(`| 机场 | 价格与试用 | 免费试用 |\n|---|---|---|\n| [${airport.name}](${airport.path}) | ${airport.priceText}，试用待核实 | 待核实 |\n`)[0]
-  assert.deepEqual(validateAirportRows(recommendation, [airport], 'recommendation'), [])
-  const evidence = markdownTables(`| 项目 | 当前记录 |\n|---|---|\n| 套餐价格 | ${airport.priceText}，${airport.traffic} |\n| 免费试用 | 待核实 |\n`)[0]
-  const evidenceAirport = { priceText: airport.priceText, traffic: airport.traffic, trial: airport.trial }
-  assert.deepEqual(validateReviewEvidence(evidence, evidenceAirport, 'review'), [])
-  evidence.find((row) => row.cells['项目'] === '免费试用').cells['当前记录'] = '不支持'
-  assert.ok(validateReviewEvidence(evidence, evidenceAirport, 'stale review').some((error) => error.includes('免费试用')))
-  const service = getPageSchema({ path: airport.path, frontmatter: {}, data: {}, content: '' })['@graph']
-    .find((item) => item['@type'] === 'Service')
-  assert.ok(service.description.includes('\n免费试用：待核实\n'))
-  assert.ok(service.description.includes(`\n流量额度：${airport.traffic}\n`))
-  assert.deepEqual(validateServiceSchema(service, airport, 'unknown trial'), [])
-  replaceServiceFact(service, '免费试用', '不支持')
-  assert.ok(validateServiceSchema(service, airport, 'stale Service').some((error) => error.includes('免费试用')))
 })
 
 test('unverified universal subscriptions stay unknown and are excluded from Clash candidates', (t) => {
-  const airport = airportData.find((item) => item.name === '99吧')
+  const airport = airportData.find((item) => item.name === '月之暗面')
   const originalValue = airport.universalSubscription
   const originalClashItems = airportCollections.clash.items
-  const dest = mkdtempSync(join(tmpdir(), 'yp7-unverified-subscription-'))
+  const dest = mkdtempSync(join(tmpdir(), 'yinli-unverified-subscription-'))
   t.after(() => {
     airport.universalSubscription = originalValue
     airportCollections.clash.items = originalClashItems
@@ -202,44 +151,25 @@ test('unverified universal subscriptions stay unknown and are excluded from Clas
   assert.ok(validateServiceSchema(service, airport, 'unverified subscription').some((error) => error.includes('通用订阅')))
 })
 
-test('rendered HTML and Markdown retain the historical evidence exported to JSON', (t) => {
-  const dest = mkdtempSync(join(tmpdir(), 'yp7-airport-data-'))
+test('rendered HTML, Markdown and JSON omit historical performance evidence', (t) => {
+  const dest = mkdtempSync(join(tmpdir(), 'yinli-airport-data-'))
   t.after(() => rmSync(dest, { recursive: true, force: true }))
   generateAirportDataFiles({ dir: { dest: (file = '') => join(dest, file) } })
   const read = (file) => readFileSync(join(dest, 'data', file), 'utf8')
   const json = JSON.parse(read('airports.json'))
   const html = htmlTables(read('airports.html'))[0]
   const markdown = markdownTables(read('airports.md'))[0]
-  const flybit = airportData.find((airport) => airport.name === 'Flybit')
-  const publicFlybit = json.airports.find((airport) => airport.path === flybit.path)
-  assert.deepEqual(publicFlybit.subscriptionClients, flybit.subscriptionClients)
-  assert.deepEqual(publicFlybit.informationSources, flybit.informationSources)
-  assert.ok(!('historicalEvidence' in publicFlybit), 'Flybit has no traceable historical performance record')
+  const yuezhi = airportData.find((airport) => airport.name === '月之暗面')
+  const publicYuezhi = json.airports.find((airport) => airport.path === yuezhi.path)
+  assert.deepEqual(publicYuezhi.subscriptionClients, yuezhi.subscriptionClients)
+  assert.deepEqual(publicYuezhi.informationSources, yuezhi.informationSources)
+  assert.ok(!('historicalEvidence' in publicYuezhi), '月之暗面 has no traceable historical performance record')
   assert.deepEqual(validateAirportRows(html, airportCollections.all.items, 'HTML'), [])
   assert.deepEqual(validateAirportRows(markdown, airportCollections.all.items, 'Markdown'), [])
-  const guangnianti = json.airports.find((airport) => airport.name === '光年梯')
-  assert.equal(guangnianti.historicalEvidence.evidenceLevel, null)
-  assert.equal(guangnianti.historicalEvidence.latencyMs, null)
-  assert.ok(guangnianti.historicalEvidence.evidenceSources.some((source) => source.url === '/guangnianticesu1.jpg'))
+  for (const record of json.airports) assert.ok(!('historicalEvidence' in record) && !('performance' in record))
   for (const table of [html, markdown]) {
-    const row = table.find((item) => item.cells['机场'] === '光年梯')
-    assert.equal(row.cells['历史证据'], '未评级')
-    assert.equal(row.cells['历史延迟'], '未证实')
+    for (const row of table) assert.ok(!Object.keys(row.cells).some((key) => key.startsWith('历史')))
   }
-  for (const name of ['光速云', 'xxyun', '阿达西']) {
-    assert.ok(!('historicalEvidence' in json.airports.find((airport) => airport.name === name)), `${name}: unsupported old claims are not exported as test evidence`)
-  }
-  for (const source of airportData.filter((airport) => airport.performance)) {
-    const record = json.airports.find((airport) => airport.path === source.path)
-    assert.equal(record.historicalEvidence.lastTestedAt, source.performance.lastTestedAt)
-    assert.equal(record.historicalEvidence.recordStatus, 'historical')
-    assert.deepEqual(record.historicalEvidence.evidenceSources, source.performance.evidenceSources || [])
-    assert.ok(!('performance' in record))
-    const row = html.find((item) => item.cells['机场'] === source.name)
-    row.cells['历史测试日期'] = '无历史记录'
-  }
-  assert.equal(validateAirportRows(html, airportCollections.all.items, 'broken HTML').length,
-    airportData.filter((airport) => airport.performance).length)
   const rankings = JSON.parse(read('rankings.json')).rankings
   const table = markdownTableAfterHeading(read('rankings.md'), '## Clash 机场')
   assert.deepEqual(validateAirportRows(table, rankings.clash, 'Clash Markdown'), [])
@@ -263,7 +193,7 @@ test('consistency checks reject stale prices, wrong capabilities, extra names an
 
 test('compact recommendation cells validate shared facts before editorial line breaks', () => {
   const airport = { name: '示例', path: '/example/', priceText: '15元/月', traffic: '128GB/月', trial: null, dedicatedClient: true, universalSubscription: true }
-  const columns = ['机场', '适用场景', '套餐与试用', '客户端与限制', '测试依据']
+  const columns = ['机场', '适用场景', '套餐与试用', '客户端与限制', '资料依据']
   const packageCell = '15元/月，128GB/月；试用待核实<br>另有36元128GB不限时包'
   const clientCell = '专属客户端、通用订阅<br>入门套餐限3台'
   const markdown = `| ${columns.join(' | ')} |\n|---|---|---|---|---|\n| [示例](/example/) | 新手 | ${packageCell} | ${clientCell} | 仅资料 |\n`
@@ -284,7 +214,7 @@ test('compact recommendation cells validate shared facts before editorial line b
 })
 
 test('table sync updates compact recommendation facts and preserves every editorial note', (t) => {
-  const dest = mkdtempSync(join(tmpdir(), 'yp7-compact-table-'))
+  const dest = mkdtempSync(join(tmpdir(), 'yinli-compact-table-'))
   t.after(() => rmSync(dest, { recursive: true, force: true }))
   const copySource = (file, content = readFileSync(file, 'utf8')) => {
     const target = join(dest, file)
@@ -296,8 +226,8 @@ test('table sync updates compact recommendation facts and preserves every editor
     ...Object.values(airportCollections).map((item) => item.sourceFile).filter(Boolean),
     'docs/风险监测/机场风险监测.md', 'docs/.vuepress/config/airports.ts',
   ])) copySource(file)
-  const rows = collection.items.map((airport) => `| [${airport.name}](#${airport.name.toLowerCase()}) | 人工场景 | 旧价格；旧试用<br>另有备用包；折扣需核对<br>第二条说明 | 旧客户端<br>入门限制需核对 | 人工测试依据 |`)
-  copySource(collection.sourceFile, `<!-- recommendation-scope:start -->\n旧数量\n<!-- recommendation-scope:end -->\n\n${collection.heading}\n\n| 机场 | 适用场景 | 套餐与试用 | 客户端与限制 | 测试依据 |\n|---|---|---|---|---|\n${rows.join('\n')}\n`)
+  const rows = collection.items.map((airport) => `| [${airport.name}](#${airport.name.toLowerCase()}) | 人工场景 | 旧价格；旧试用<br>另有备用包；折扣需核对<br>第二条说明 | 旧客户端<br>入门限制需核对 | 人工资料依据 |`)
+  copySource(collection.sourceFile, `<!-- recommendation-scope:start -->\n旧数量\n<!-- recommendation-scope:end -->\n\n${collection.heading}\n\n| 机场 | 适用场景 | 套餐与试用 | 客户端与限制 | 资料依据 |\n|---|---|---|---|---|\n${rows.join('\n')}\n`)
   const synced = spawnSync(process.execPath, [resolve('scripts/sync-airport-tables.mjs')], { cwd: dest, encoding: 'utf8' })
   assert.equal(synced.status, 0, synced.stderr)
   const source = readFileSync(join(dest, collection.sourceFile), 'utf8')
@@ -307,14 +237,14 @@ test('table sync updates compact recommendation facts and preserves every editor
     assert.ok(row.rawCells['套餐与试用'].endsWith('<br>另有备用包；折扣需核对<br>第二条说明'))
     assert.ok(row.rawCells['客户端与限制'].endsWith('<br>入门限制需核对'))
     assert.equal(row.cells['适用场景'], '人工场景')
-    assert.equal(row.cells['测试依据'], '人工测试依据')
+    assert.equal(row.cells['资料依据'], '人工资料依据')
   }
   const checked = spawnSync(process.execPath, [resolve('scripts/sync-airport-tables.mjs'), '--check'], { cwd: dest, encoding: 'utf8' })
   assert.equal(checked.status, 0, checked.stderr)
 })
 
 test('Service validation detects a capability or price contradiction', () => {
-  const airport = airportData.find((item) => item.name === '99吧')
+  const airport = airportData.find((item) => item.name === '月之暗面')
   const service = getPageSchema({ path: airport.path, frontmatter: {}, data: {}, content: '' })['@graph']
     .find((item) => item['@type'] === 'Service')
   assert.deepEqual(validateServiceSchema(service, airport, 'fixture'), [])
@@ -324,12 +254,13 @@ test('Service validation detects a capability or price contradiction', () => {
 })
 
 test('Service validation detects missing clients and stale information source URLs or dates', () => {
-  const airport = airportData.find((item) => item.name === 'Flybit')
+  const airport = airportData.find((item) => item.name === '神行加速')
   const service = getPageSchema({ path: airport.path, frontmatter: {}, data: {}, content: '' })['@graph']
     .find((item) => item['@type'] === 'Service')
   assert.deepEqual(validateServiceSchema(service, airport, 'fixture'), [])
-  replaceServiceFact(service, '一键订阅客户端', 'Clash Meta')
+  service.description += '\n一键订阅客户端：Clash Meta'
   assert.ok(validateServiceSchema(service, airport, 'fixture').some((error) => error.includes('一键订阅客户端')))
+  service.description = service.description.replace('\n一键订阅客户端：Clash Meta', '')
   const source = service.subjectOf[1]
   source.url = 'https://example.com/stale'
   assert.ok(validateServiceSchema(service, airport, 'fixture').some((error) => error.includes('sources/URLs/review dates')))

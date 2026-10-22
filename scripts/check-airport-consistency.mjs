@@ -12,12 +12,12 @@ const dist = join(root, 'docs/.vuepress/dist')
 const read = (path) => readFileSync(path, 'utf8')
 const { airportData, visibleAirportData } = loadConfig('airports.ts')
 const { airportCollections, airportRankingKeys } = loadConfig('airport-collections.ts')
+const { externalRiskRecords } = loadConfig('external-risks.ts')
 const { hostname } = loadConfig('site.ts')
 const { getNoExpiryPackage, getNoExpiryCells, noExpiryColumns } = loadConfig('no-expiry-packages.ts')
 const errors = []
-const dataColumns = ['机场', '最低价格', '流量额度', '试用', '不限时', '专属客户端', '通用订阅', '历史证据', '历史测试日期', '历史延迟', '历史速度区间', '状态']
-const salesColumns = ['机场', '销量样本', '最低价格', '流量额度', '试用', '专属客户端', '通用订阅', '状态']
-const recommendationColumns = ['机场', '适用场景', '套餐与试用', '客户端与限制', '测试依据']
+const dataColumns = ['机场', '最低价格', '流量额度', '试用', '不限时', '专属客户端', '通用订阅', '状态']
+const recommendationColumns = ['机场', '适用场景', '套餐与试用', '客户端与限制', '资料依据']
 const validateNoExpiryRows = (rows, airports, context) => {
   const found = validateAirportRows(rows, airports, context, { requiredColumns: noExpiryColumns })
   airports.forEach((airport, index) => {
@@ -46,15 +46,7 @@ try {
     }
     if (record.url !== `${hostname}${airport.path}` || 'performance' in record) errors.push(`airports.json: ${airport.name} invalid public record`)
     if (airport.noExpiry && !isDeepStrictEqual(record.noExpiryPackage, getNoExpiryPackage(airport.path))) errors.push(`airports.json: ${airport.name} no-expiry package differs`)
-    if (airport.performance) {
-      if (record.historicalEvidence?.recordStatus !== 'historical') errors.push(`airports.json: ${airport.name} missing historical status`)
-      for (const field of ['evidenceLevel', 'lastTestedAt', 'testWindow', 'testRegion', 'testNetwork', 'testDevice', 'latencyMs', 'downloadMbpsRange', 'evidenceSummary']) {
-        if (record.historicalEvidence?.[field] !== airport.performance[field]) errors.push(`airports.json: ${airport.name} historical ${field} differs`)
-      }
-      if (!isDeepStrictEqual(record.historicalEvidence?.evidenceSources, airport.performance.evidenceSources || [])) {
-        errors.push(`airports.json: ${airport.name} historical evidence sources differ`)
-      }
-    } else if (record.historicalEvidence) errors.push(`airports.json: ${airport.name} unexpected historical evidence`)
+    if (record.historicalEvidence) errors.push(`airports.json: ${airport.name} unexpected historical evidence`)
 
     const reviewHtml = read(join(dist, airport.path, 'index.html'))
     const service = jsonLdGraph(reviewHtml).find((schema) => schema['@type'] === 'Service')
@@ -80,7 +72,7 @@ try {
         errors.push(...validateNoExpiryRows(htmlTableAfterHeading(rankingHtml, heading), collection.items, `rankings.html ${key}`))
         errors.push(...validateNoExpiryRows(markdownTableAfterHeading(rankingMd, heading), collection.items, `rankings.md ${key}`))
       } else {
-        const options = { requiredColumns: key === 'sales' ? salesColumns : dataColumns }
+        const options = { requiredColumns: dataColumns }
         errors.push(...validateAirportRows(htmlTableAfterHeading(rankingHtml, heading), collection.items, `rankings.html ${key}`, options))
         errors.push(...validateAirportRows(markdownTableAfterHeading(rankingMd, heading), collection.items, `rankings.md ${key}`, options))
       }
@@ -105,7 +97,20 @@ try {
   }
 
   const riskJson = JSON.parse(read(join(dist, 'data/risk-monitor.json')))
-  if (!isDeepStrictEqual(riskJson.risks.map((risk) => risk.name), ['echo', ...airportData.map((airport) => airport.name)])) {
+  // The catalogue has secondary tables: check them independently of its main table.
+  const catalogue = airportCollections.all
+  const catalogueMd = read(join(root, catalogue.sourceFile))
+  const catalogueHtml = read(join(dist, catalogue.pagePath, 'index.html'))
+  for (const [heading, collection] of [
+    ['## 便宜的机场汇总', airportCollections.cheap],
+    ['## 专属客户端机场汇总', airportCollections.dedicatedClient],
+  ]) {
+    errors.push(...validateAirportRows(markdownTableAfterHeading(catalogueMd, heading), collection.items, `catalogue Markdown ${heading}`, { hostname }))
+    errors.push(...validateAirportRows(htmlTableAfterHeading(catalogueHtml, heading), collection.items, `catalogue HTML ${heading}`, { hostname }))
+  }
+  errors.push(...validateNoExpiryRows(markdownTableAfterHeading(catalogueMd, '## 不限时机场套餐对比'), airportCollections.noExpiry.items, 'catalogue Markdown no-expiry'))
+  errors.push(...validateNoExpiryRows(htmlTableAfterHeading(catalogueHtml, '## 不限时机场套餐对比'), airportCollections.noExpiry.items, 'catalogue HTML no-expiry'))
+  if (!isDeepStrictEqual(riskJson.risks.map((risk) => risk.name), [...externalRiskRecords.map((risk) => risk.name), 'echo', ...airportData.map((airport) => airport.name)])) {
     errors.push('risk-monitor.json: risk names/order differ from source data')
   }
   const riskHtmlRows = htmlTables(read(join(dist, 'data/risk-monitor.html')))[0]
@@ -115,6 +120,10 @@ try {
     errors.push('risk-monitor: JSON/Markdown/HTML names/order differ')
   }
   const riskRows = [...riskHtmlRows, ...riskMdRows]
+  for (const expected of externalRiskRecords) {
+    const actual = riskJson.risks.find((risk) => risk.name === expected.name)
+    if (!isDeepStrictEqual(actual, expected)) errors.push(`risk-monitor.json: ${expected.name} external source or status differs`)
+  }
   for (const risk of riskJson.risks) {
     const source = sourceByName.get(risk.name)
     if (source && (risk.status !== source.status || risk.risk !== source.risk || risk.url !== `${hostname}${source.path}`)) errors.push(`risk-monitor.json: ${risk.name} differs`)

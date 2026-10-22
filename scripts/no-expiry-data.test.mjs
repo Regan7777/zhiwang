@@ -13,7 +13,7 @@ const { getPageSchema } = loadConfig('schema.ts')
 const { airportData, airportMetrics, airportDataLastModified, airportDataLastReviewed } = loadConfig('airports.ts')
 
 test('no-expiry comparison keeps one-off facts consistent without relabelling monthly prices', (t) => {
-  const dest = mkdtempSync(join(tmpdir(), 'yp7-no-expiry-'))
+  const dest = mkdtempSync(join(tmpdir(), 'yinli-no-expiry-'))
   t.after(() => rmSync(dest, { recursive: true, force: true }))
   generateAirportDataFiles({ dir: { dest: (file = '') => join(dest, file) } })
   const read = (file) => readFileSync(join(dest, 'data', file), 'utf8')
@@ -77,7 +77,7 @@ test('a conflicting package must never acquire a computed unit price', () => {
 })
 
 test('finite-duration packages stay excluded from no-expiry summaries and exports', (t) => {
-  const dest = mkdtempSync(join(tmpdir(), 'yp7-conflicting-validity-'))
+  const dest = mkdtempSync(join(tmpdir(), 'yinli-conflicting-validity-'))
   t.after(() => rmSync(dest, { recursive: true, force: true }))
   generateAirportDataFiles({ dir: { dest: (file = '') => join(dest, file) } })
   const read = (file) => readFileSync(join(dest, 'data', file), 'utf8')
@@ -94,7 +94,7 @@ test('finite-duration packages stay excluded from no-expiry summaries and export
   assert.equal(airportMetrics.noExpiryCount, confirmedNoExpiry.length)
   assert.equal(airportMetrics.noExpiryUnverifiedCount, 0)
   assert.equal(unresolvedNoExpiry.length, 0)
-  assert.equal(airportCollections.noExpiry.items.length, 40)
+  assert.equal(airportCollections.noExpiry.items.length, 7)
   assert.equal(airportCollections.noExpiry.items.length, confirmedNoExpiry.length + unresolvedNoExpiry.length)
   const noExpirySource = readFileSync(airportCollections.noExpiry.sourceFile, 'utf8')
   const noExpiryTables = [
@@ -102,8 +102,8 @@ test('finite-duration packages stay excluded from no-expiry summaries and export
     markdownTableAfterHeading(read('rankings.md'), `## ${airportCollections.noExpiry.dataTitle}`),
     htmlTableAfterHeading(read('rankings.html'), `## ${airportCollections.noExpiry.dataTitle}`),
   ]
-  assert.match(noExpirySource, /当前列出40家候选/)
-  for (const name of ['鲤云', '熊猫cloud', '云图']) {
+  assert.match(noExpirySource, /当前列出7家候选/)
+  for (const name of ['榴莲云', '闪电鼠']) {
     const airport = airportData.find((item) => item.name === name)
     assert.equal(airport.noExpiry, false)
     assert.equal(noExpiryPackages[airport.path], undefined)
@@ -125,20 +125,14 @@ test('finite-duration packages stay excluded from no-expiry summaries and export
     assert.match(service.description, /不限时套餐：不支持/)
     assert.deepEqual(validateServiceSchema(service, airport, 'validity'), [])
   }
-  const yunTu = airportData.find((item) => item.name === '云图')
-  assert.throws(() => getNoExpiryPackage(yunTu.path), /Missing no-expiry package record/)
-  const yunTuPublic = data.airports.find((item) => item.name === '云图')
-  assert.equal(yunTuPublic.summary, yunTu.summary)
-  assert.match(yunTu.summary, /78元一次支付[^。]*每月50GB[^。]*12个月/)
-  assert.match(yunTu.summary, /119元[^。]*期限[^。]*刷新[^。]*待核实/)
-  assert.match(yunTu.summary, /不能套用78元档的12个月规则/)
-  assert.ok(yunTu.informationSources.some((item) => item.checkedAt === '2026-10-10' && /78元.*12个月/.test(item.name)))
+  const liulianyun = airportData.find((item) => item.name === '榴莲云')
+  assert.throws(() => getNoExpiryPackage(liulianyun.path), /Missing no-expiry package record/)
   const noExpirySchema = getPageSchema({ path: airportCollections.noExpiry.pagePath, title: airportCollections.noExpiry.name,
     frontmatter: {}, data: {}, content: noExpirySource })
   const noExpiryList = noExpirySchema['@graph'].find((item) => item['@type'] === 'ItemList')
-  assert.equal(noExpiryList.numberOfItems, 40)
-  assert.equal(noExpiryList.itemListElement.some((entry) => entry.item.name === '云图'), false)
-  assert.equal(noExpiryList.itemListElement.some((entry) => entry.item.url === `https://yp7.net${yunTu.path}`), false)
+  assert.equal(noExpiryList.numberOfItems, 7)
+  assert.equal(noExpiryList.itemListElement.some((entry) => entry.item.name === '榴莲云'), false)
+  assert.equal(noExpiryList.itemListElement.some((entry) => entry.item.url === `https://zhiwang.one${liulianyun.path}`), false)
   assert.equal(data.lastModified, airportDataLastModified)
   assert.equal(data.lastReviewed, airportDataLastReviewed)
   assert.match(airportDataLastModified, /^\d{4}-\d{2}-\d{2}$/)

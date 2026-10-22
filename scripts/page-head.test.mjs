@@ -11,7 +11,7 @@ const configDir = fileURLToPath(new URL('../docs/.vuepress/config/', import.meta
 const { extendPageWithSeo } = loadConfig(join(configDir, 'page-head.ts'))
 const { patchGeneratedHtml } = loadConfig(join(configDir, 'generated.ts'))
 const { defaultRobots, siteName } = loadConfig(join(configDir, 'site.ts'))
-const homepageTitle = 'yp7.net｜机场资料、风险监测与科学上网教程'
+const homepageTitle = '织网｜机场资料、风险监测与科学上网教程'
 
 const makePage = (path, title = '') => {
   const page = { path, title, frontmatter: {}, data: {}, content: '', contentRendered: '' }
@@ -40,22 +40,22 @@ test('homepage title is in serialized page data and overrides the default site s
 test('404 title and noindex are in page data before HTML generation', () => {
   const page = makePage('/404.html')
   const clientPage = JSON.parse(JSON.stringify(page))
-  assert.deepEqual(getTitles(resolveHead(clientPage)), ['页面未找到｜引力'])
+  assert.deepEqual(getTitles(resolveHead(clientPage)), ['页面未找到｜织网'])
   assert.deepEqual(getRobots(resolveHead(clientPage)), ['noindex, follow'])
 })
 
 test('article titles retain the VuePress site suffix and normal indexing policy', () => {
   const page = makePage('/posts/example/', '文章标题')
-  assert.deepEqual(getTitles(resolveHead(page)), ['文章标题 | 引力'])
+  assert.deepEqual(getTitles(resolveHead(page)), ['文章标题 | 织网'])
   assert.deepEqual(getRobots(resolveHead(page)), [defaultRobots])
 })
 
 test('airport sharing uses a dedicated wide cover without changing the original logo', () => {
-  const page = makePage('/posts/jiuyun-review-2026/', '九云机场套餐')
+  const page = makePage('/posts/shenxingjiasu-review-2026/', '神行加速套餐')
   const head = resolveHead(page)
   const social = Object.fromEntries(head.filter(([tag, attrs]) => tag === 'meta' && attrs.property)
     .map(([, attrs]) => [attrs.property, attrs.content]))
-  assert.equal(social['og:image'], 'https://yinli.blog/covers/posts-jiuyun-review-2026.png')
+  assert.equal(social['og:image'], 'https://zhiwang.one/covers/posts-shenxingjiasu-review-2026.png')
   assert.equal(social['og:image:width'], '1280')
   assert.equal(social['og:image:height'], '720')
   const { airportData } = loadConfig(join(configDir, 'airports.ts'))
@@ -63,7 +63,7 @@ test('airport sharing uses a dedicated wide cover without changing the original 
 })
 
 test('the explicit content date drives the footer and metadata without losing Git contributors', () => {
-  const contributors = [{ name: 'yp7', commits: 3 }]
+  const contributors = [{ name: 'yinli', commits: 3 }]
   const gitTime = Date.parse('2026-09-23T13:59:00Z')
   const page = {
     filePathRelative: 'example.md',
@@ -83,7 +83,7 @@ test('the explicit content date drives the footer and metadata without losing Gi
 })
 
 test('post-generation cleanup preserves the head that the client will take over', (t) => {
-  const dest = mkdtempSync(join(tmpdir(), 'yp7-page-head-'))
+  const dest = mkdtempSync(join(tmpdir(), 'yinli-page-head-'))
   t.after(() => rmSync(dest, { recursive: true, force: true }))
   const fixtures = [
     ['index.html', makePage('/', homepageTitle)],

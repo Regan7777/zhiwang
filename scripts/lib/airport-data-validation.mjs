@@ -60,10 +60,15 @@ const booleanValue = (value) => /^(支持|✔)/.test(value) ? true
   : /^(不支持|无试用|❌)/.test(value) ? false
     : /^(待核实|试用待核实)$/.test(value) ? null : undefined
 const yesNo = (value) => value === null ? '待核实' : value ? '支持' : '不支持'
+// Markdown renderers serialize internationalized domains as ASCII/Punycode.
+// Compare equivalent absolute URLs without dropping query strings or fragments.
+const normalizeSourceUrl = (value) => {
+  try { return new URL(value).href } catch { return value }
+}
 const clients = (airport) => [airport.dedicatedClient && '专属客户端', airport.universalSubscription && '通用订阅']
   .filter(Boolean).join('、') || '无专属客户端'
 
-export const validateAirportRows = (rows, airports, context, { sectionLinks = false, hostname = 'https://yp7.net', requiredColumns = [] } = {}) => {
+export const validateAirportRows = (rows, airports, context, { sectionLinks = false, hostname = 'https://zhiwang.one', requiredColumns = [] } = {}) => {
   const errors = []
   if (!Array.isArray(rows)) return [`${context}: missing table`]
   for (const column of requiredColumns) {
@@ -76,18 +81,12 @@ export const validateAirportRows = (rows, airports, context, { sectionLinks = fa
   airports.forEach((airport, index) => {
     const row = rows[index]
     if (!row || row.cells['机场'] !== airport.name) return
-    const evidence = airport.performance || airport.historicalEvidence
     const expected = {
       价格: airport.priceText, 最低价格: airport.priceText,
       价格与试用: `${airport.priceText}，${airport.trial === null ? '试用待核实' : airport.trial ? '支持试用' : '无试用'}`,
       月流量: airport.traffic, 流量额度: airport.traffic, 流量: airport.traffic,
       客户端: clients(airport), '订阅/客户端': clients(airport),
       当前状态: airport.status, 状态: airport.status, 风险提示: airport.risk,
-      销量样本: String(airport.salesSample),
-      历史证据: evidence ? evidence.evidenceLevel || '未评级' : '无',
-      历史测试日期: evidence?.lastTestedAt || '无历史记录',
-      历史延迟: evidence ? evidence.latencyMs === null ? '未证实' : `${evidence.latencyMs}ms` : '无历史记录',
-      历史速度区间: evidence?.downloadMbpsRange || '无历史记录',
     }
     const primaryValues = {
       套餐与试用: `${airport.priceText}，${airport.traffic}；${airport.trial === null ? '试用待核实' : airport.trial ? '支持试用' : '无试用'}`,
@@ -117,7 +116,7 @@ export const validateAirportRows = (rows, airports, context, { sectionLinks = fa
   return errors
 }
 
-export const validateItemList = (schema, airports, context, hostname = 'https://yp7.net', ordered = false) => {
+export const validateItemList = (schema, airports, context, hostname = 'https://zhiwang.one', ordered = false) => {
   if (!schema) return [`${context}: missing ItemList`]
   const expected = airports.map((airport, index) => ({ name: airport.name, path: airport.path, position: index + 1 }))
   const actual = (schema.itemListElement || []).map((entry) => ({ name: entry.item?.name, path: entry.item?.url?.replace(/^https?:\/\/[^/]+/, ''), position: entry.position }))
@@ -179,7 +178,7 @@ export const validateReviewEvidence = (rows, airport, context) => {
   for (const label of ['一键订阅客户端', '资料来源', '资料复核日期']) {
     if (!(label in expected) && byLabel.has(label)) errors.push(`${context}: review unexpected ${label}`)
   }
-  if (airport.informationSources?.length && JSON.stringify(byLabel.get('资料来源')?.hrefs) !== JSON.stringify(airport.informationSources.filter((source) => source.link !== false).map((source) => source.url))) {
+  if (airport.informationSources?.length && JSON.stringify(byLabel.get('资料来源')?.hrefs?.map(normalizeSourceUrl)) !== JSON.stringify(airport.informationSources.filter((source) => source.link !== false).map((source) => normalizeSourceUrl(source.url)))) {
     errors.push(`${context}: review information source URLs differ from airport data`)
   }
   return errors

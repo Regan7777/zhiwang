@@ -23,7 +23,7 @@
 
 ### Sitemaps
 
-- [ ] 确认 `https://yp7.net/sitemap.xml` 已处理，发现的 URL 数量与本次构建一致。
+- [ ] 确认 `https://zhiwang.one/sitemap.xml` 已处理，发现的 URL 数量与本次构建一致。
 - [ ] 确认旧重定向 URL、永久删除 URL 未出现在 Sitemap 中。
 - [ ] 记录处理时间、发现 URL 数量和任何抓取错误。
 

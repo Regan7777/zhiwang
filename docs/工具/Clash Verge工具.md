@@ -1,202 +1,102 @@
 ---
-title: Clash Verge下载与使用教程：安装、配置、订阅导入与TUN模式
+title: Clash Verge Rev下载与使用教程：安装、订阅导入与TUN排查
 createTime: 2026/05/02
-dateModified: 2026/10/07
+dateModified: 2026/10/21
 permalink: /posts/clash-verge-guide-2026/
 tags:
   - Clash Verge
+  - Clash Verge Rev
   - Clash教程
   - Clash Verge下载
   - Clash Verge配置
   - 网络工具
-description: Clash Verge是什么？本文整理 Clash Verge 下载、安装、订阅导入、系统代理、TUN模式、节点选择和常见连接问题。
+description: 按Clash Verge Rev官方项目说明选择Windows、macOS或Linux安装包，完成兼容订阅导入、节点与分流选择，区分系统代理、TUN和连接排查。
 ---
 
-更新时间：2026年10月7日（调整导读文字；下载入口仍需按项目发布页核对）
+更新时间：2026年10月21日（统一Clash Verge Rev名称，修正安装顺序、代理端口与权限排查说明）
 
-## 使用风险提示
+本页的下载入口指向 **Clash Verge Rev**，不是所有叫作“Clash Verge”的旧版或第三方安装包。Rev项目提供Windows、macOS和Linux客户端，使用Mihomo内核；客户端本身不提供机场订阅。[官方项目](https://github.com/clash-verge-rev/clash-verge-rev)
 
-本文内容具有时效性，软件下载入口、账号规则、节点可用性、支付方式和平台政策都可能变化。涉及下载、注册、支付、账号交易或跨境网络访问时，请优先核对官方信息和当地规则；本文只提供教程与经验参考，不承诺任何工具、节点或账号长期可用。
-
-本文按下载、安装、订阅导入和连接检查说明 Clash Verge 的基础使用方法，适合 Windows、macOS 和 Linux 用户参考。开始前请准备支持 Clash 格式的订阅或配置文件。
-
-本文下载入口对应 Clash Verge Rev。希望在安卓和电脑上使用同一款客户端，可并列参考 [FlClash 下载与使用教程](/posts/flclash-guide-2026/)。
+开始前准备与你系统和架构匹配的软件，以及客户端能够读取的配置或订阅链接。菜单名称可能随版本变化，下方图片用于说明操作位置，不作为最新版界面保证。
 
 <!-- more -->
 
-## Clash Verge是什么
+## 下载与安装
 
-Clash Verge 是一款基于 Clash 内核的桌面客户端，支持配置导入、系统代理、TUN 模式、规则分流等功能，适用于 Windows、macOS 和 Linux 系统。
+从[官方发布页](https://github.com/clash-verge-rev/clash-verge-rev/releases)选择与你的系统、CPU架构及项目要求匹配的安装包。发布页会说明依赖与已知问题，不要仅凭文件名中的“最新版”判断适用性。
 
-对于新手来说，可以简单理解为：
+- Windows：核对系统与架构，按安装程序提示完成安装。
+- macOS：区分Apple Silicon与Intel版本，按项目当前说明安装。
+- Linux：核对发行版、包格式及依赖，使用对应发行版支持的安装方式。
 
-- 电脑端常用的代理客户端
-- 需要搭配配置或订阅使用
-- 支持浏览器和部分软件使用
-- 开启 TUN 模式后兼容性更强
+安装包名称会随版本变化，本页不提供固定旧文件名的安装命令。无法核对来源或系统要求时，应先停止安装并查看项目说明。
 
-## Clash Verge下载地址
+首次启动先完成配置导入，再启用系统代理；没有可用配置时先开启代理，可能使原来可用的应用无法连接。
 
-官方发布页：
+## 导入订阅或配置
 
-[https://github.com/clash-verge-rev/clash-verge-rev/releases](https://github.com/clash-verge-rev/clash-verge-rev/releases)
+1. 在服务商后台核对套餐、有效期和订阅格式。
+2. 打开客户端的订阅或配置页面，选择新建远程订阅或导入文件。
+3. 填写名称，粘贴完整地址并保存，按界面提示更新。
+4. 查看是否成功读取节点与策略组，然后启用该配置。
 
-根据系统选择版本：
+![订阅配置页面示意](/clashVerge1.png)
 
-- Windows：.exe
-- macOS：Intel 或 Apple Silicon
-- Linux：.deb 或 .rpm
+![填写订阅地址示意](/clashVerge2.png)
 
-建议优先使用官方版本下载。
+订阅链接通常含账户令牌，不要公开贴出。节点为空、格式错误或更新失败时，先记录报错并看[订阅导入排查](/posts/clash-subscription-troubleshooting/)，不要反复购买或修改未知配置。
 
-## Clash Verge安装教程
+## 节点、策略组与代理模式
 
-### Windows安装方法
+进入代理页面，按配置选择节点或自动策略组。只有配置提供自动选择时，客户端才有相应选项；延迟测试结果也不能替代吞吐或应用验证。
 
-1. 下载 Windows 安装包
-2. 双击 .exe 文件
-3. 完成安装
-4. 打开 Clash Verge
-5. 开启系统代理
+![策略组与节点页面示意](/clashVerge3.png)
 
-![clashverge系统代理](/clashVerge4.png)
+Mihomo的Rule、Global和Direct处理已进入内核的流量，分别按规则、全局策略或直连处理。它们不等于“系统中的所有应用都已经使用代理”。模式定义可查[Mihomo全局配置](https://wiki.metacubex.one/config/general/)。
 
-如无法启动，可尝试以管理员身份运行。
+## 系统代理与TUN分别做什么？
 
-### macOS安装方法
+系统代理供遵循该设置的应用使用。启用后，应核对当前配置、节点与客户端显示的监听端口，而不是直接套用他人截图里的端口。
 
-1. 下载对应版本
-2. 拖入应用程序
-3. 首次运行授权
-4. 开启系统代理
-5. 可选开启 TUN 模式
+![系统代理开关示意](/clashVerge4.png)
 
-### Linux安装方法
+TUN用于接入更多网络流量，仍受路由、DNS与分流配置影响。它可能需要安装或启动服务组件及相应系统权限；按项目当前文档处理，不把“以管理员运行整个应用”或“用sudo启动GUI”当作通用修复。
 
-Ubuntu 或 Debian：
+如果只有某个应用不使用系统代理，先检查该应用的独立设置，再判断是否需要TUN。排查前记录原设置，避免同时运行多款争用网络配置的软件。
 
-```bash
-sudo dpkg -i Clash.Verge.Linux.x64.deb
+## 怎样验证连接？
 
-```
+先在同一设备打开自己常用的测试页面，并在客户端连接记录中查看该请求使用的规则与节点。成功仅说明当时这项请求可用，不能证明所有应用、账户或平台功能都正常。
 
-## Clash Verge配置教程
-
-### 导入配置
-
-1. 打开订阅或配置页面
-
-![clashverge系统代理](/clashVerge1.png)
-
-2. 点击新建
-3. 填写名称
-4. 粘贴配置地址
-5. 保存
-
-![clashverge系统代理](/clashVerge2.png)
-
-6. 更新配置
-
-### 选择节点
-
-进入代理页面：
-
-- 选择延迟低的节点
-- 或使用自动选择
-
-![clashverge系统代理](/clashVerge3.png)
-
-
-### 开启系统代理
-
-在首页开启系统代理。
-
-### 开启 TUN 模式
-
-TUN 模式可以让更多应用走代理。
-
-适用于：
-
-- 软件无法连接
-- 游戏或客户端不生效
-- 需要全局代理
-
-开启时可能需要管理员权限。
-
-## 测试是否成功
-
-访问：
-
-- [https://www.google.com](https://www.google.com)
-- [https://www.youtube.com](https://www.youtube.com)
-
-能正常打开说明成功。
+随后检查实际需要的应用。浏览器可用但Git或其他软件异常时，查看该工具是否读取系统代理；相关说明见[外网应用排查](/posts/google-youtube-github-gmail-not-working/)。
 
 ## 常见问题
 
-### 无法连接
+### 软件打不开或闪退
 
-原因：
+核对系统版本、CPU架构、包来源与项目依赖要求，记录完整错误。更新或重新安装前备份必要配置，不要先删除全部资料。
 
-- 配置失效
-- 节点不可用
-- 网络异常
+### 节点已导入但网页打不开
 
-解决：
+分别核对配置是否启用、策略组是否已选节点、系统代理是否开启，以及浏览器有无独立代理设置。每次只改一项，再观察结果。
 
-- 更新配置
-- 切换节点
-- 更换网络
+### 代理端口是不是127.0.0.1:7890？
 
-### 速度慢
+这只是可能出现的本地配置示例。实际地址与端口以客户端当前显示为准；端口不同，照抄示例就无法连接。
 
-优化：
+### TUN无法启动
 
-- 更换节点
-- 避开高峰
-- 关闭占带宽程序
-
-### 软件无法使用
-
-解决：
-
-- 开启 TUN 模式
-- 检查代理端口：`127.0.0.1:7890`
-
-### TUN 模式无法开启
-
-解决：
-
-- Windows：管理员运行
-- macOS：授权权限
-- Linux：使用 `sudo`
-- 关闭其他代理软件
-
-## 使用建议
-
-- 使用稳定配置
-- 定期更新
-- 避免多个代理同时运行
-- 优先选择低延迟节点
-
-## 总结
-
-Clash Verge 使用流程：
-
-1. 下载软件
-2. 导入配置
-3. 选择节点
-4. 开启代理
-
-完成即可使用。
+查看客户端服务状态、系统授权与具体日志，按官方项目说明处理。不要通过关闭安全保护或同时开启多个代理来碰运气。
 
 ## 相关阅读
 
-- [机场工具推荐与官方下载指南](/posts/airport-tools/)
+- [客户端下载与设备选择](/posts/airport-tools/)
+- [Clash Mi使用教程](/posts/clash-mi-guide-2026/)
+- [Hiddify使用教程](/posts/hiddify-guide-2026/)
+- [FlClash使用教程](/posts/flclash-guide-2026/)
+- [机场推荐](/posts/jichang-tuijian/)
+- [Clash节点与配置入门](/posts/clash-guide/)
+- [订阅导入失败排查](/posts/clash-subscription-troubleshooting/)
+- [v2rayN使用教程](/posts/v2rayn-guide-2026/)
 
-- [FlClash下载与使用教程：安卓与电脑订阅配置](/posts/flclash-guide-2026/)
-- [机场推荐（2026更新）](/posts/jichang-tuijian/)
-- [什么是Clash](/posts/clash-guide/)
-- [Clash订阅链接导入失败怎么办](/posts/clash-subscription-troubleshooting/)
-- [v2rayN 使用教程：Windows 节点导入、订阅更新和测速](/posts/v2rayn-guide-2026/)
-- [Google、YouTube、GitHub、Gmail打不开排查](/posts/google-youtube-github-gmail-not-working/)
+资料核对：2026年10月21日。核对范围为官方项目与文档；本页没有新增节点或平台可用性测试。

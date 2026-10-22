@@ -6,15 +6,21 @@ export default {
     app.component('HomeStart', HomeStart)
   },
   mounted() {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = 'zh-CN'
+      document.documentElement.setAttribute('translate', 'no')
+      document.documentElement.classList.add('notranslate')
+    }
     const getImageAlt = (img) => {
       const src = img.getAttribute('src') || ''
       const filename = src.split('/').pop()?.split(/[?#]/)[0]?.replace(/\.[^.]+$/, '')
 
-      return filename ? `yp7 ${filename} 图片` : 'yp7机场推荐图片'
+      return filename ? `织网 ${filename} 图片` : '织网机场推荐图片'
     }
     const fixAlt = () => {
       document.querySelectorAll('img').forEach(img => {
-        if (!img.getAttribute('alt')) {
+        // An explicit empty alt is intentional for decorative images.
+        if (!img.hasAttribute('alt')) {
           img.setAttribute('alt', getImageAlt(img))
         }
       })

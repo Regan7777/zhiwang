@@ -12,21 +12,25 @@ import { theme } from './config/theme'
 
 // Plume uses H2 for every feature card; keep H2 for homepage sections and H3 for cards.
 const homeFeatureComponent = fileURLToPath(new URL('./theme/components/VPHomeFeature.vue', import.meta.url))
+const blogHeadingComponent = fileURLToPath(new URL('./theme/components/VPBlogWithHeading.vue', import.meta.url))
 
 export default defineUserConfig({
   lang: 'zh-CN',
   title: siteName,
   description: siteDescription,
   head: [
-    ['meta', { name: 'author', content: '引力' }],
-    ['meta', { name: 'theme-color', content: '#17654f' }],
+    ['meta', { name: 'google', content: 'notranslate' }],
+    ['meta', { httpEquiv: 'Content-Language', content: 'zh-CN' }],
+    ['meta', { name: 'author', content: '织网' }],
+    ['meta', { name: 'theme-color', content: '#141518' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
+    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
     ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
   ],
   plugins: [
     {
-      name: 'yp7-link-rel',
+      name: 'yinli-link-rel',
       extendsMarkdownOptions: (options: any) => {
         options.links ||= {}
         options.links.externalAttrs = {
@@ -37,7 +41,7 @@ export default defineUserConfig({
       },
     },
     {
-      name: 'yp7-generated-html-cleanup',
+      name: 'yinli-generated-html-cleanup',
       onGenerated: (app: any) => {
         patchGeneratedHtml(app)
         generateAirportDataFiles(app)
@@ -53,6 +57,7 @@ export default defineUserConfig({
       resolve: {
         alias: {
           '@theme/Home/VPHomeFeature.vue': homeFeatureComponent,
+          '@theme/Blog/VPBlog.vue': blogHeadingComponent,
         },
       },
       build: {

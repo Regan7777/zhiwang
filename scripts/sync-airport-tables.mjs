@@ -123,7 +123,6 @@ const columnGetters = {
   风险提示: (airport) => airport.risk,
   状态: (airport) => airport.status,
   排名: (_airport, index) => String(index + 1),
-  销量样本: (airport) => String(airport.salesSample),
 }
 
 const { visibleAirportData } = loadConfig('airports.ts')
@@ -148,6 +147,17 @@ const tableConfigs = [
     heading: '## 站内观察状态',
     items: visibleAirportData,
   },
+  {
+    filePath: airportCollections.all.sourceFile,
+    heading: '## 不限时机场套餐对比',
+    noExpiryComparison: true,
+    items: airportCollections.noExpiry.items,
+  },
+  {
+    filePath: airportCollections.all.sourceFile,
+    heading: '## 专属客户端机场汇总',
+    items: airportCollections.dedicatedClient.items,
+  },
 ]
 
 const syncRiskOverview = (content) => {
@@ -165,10 +175,8 @@ const syncRiskOverview = (content) => {
 }
 
 const syncRecommendationScope = (content) => {
-  const recordedNames = new Set(airportCollections.chatgpt.items.map((airport) => airport.name))
   const recommendations = airportCollections.mainRecommendation.items
-  const recordedCount = recommendations.filter((airport) => recordedNames.has(airport.name)).length
-  const scope = `本站已整理[${visibleAirportData.length}家机场资料](/posts/jichang-heji/)，本页按客户端、预算与套餐周期精选${recommendations.length}款，其中${recordedCount}款附[Siilas带日期测试记录](#测试证据摘要)。`
+  const scope = `本站已整理[${visibleAirportData.length}家机场资料](/posts/jichang-heji/)，本页按客户端、预算与套餐周期精选${recommendations.length}款。`
   const pattern = /<!-- recommendation-scope:start -->[\s\S]*?<!-- recommendation-scope:end -->/
   if (!pattern.test(content)) fail('docs/机场推荐/机场推荐.md: missing recommendation scope markers')
 

@@ -1,7 +1,7 @@
 ---
 title: FlClash下载与使用教程：安卓、Windows、macOS安装与订阅导入
 createTime: 2026/09/09
-dateModified: 2026/09/09
+dateModified: 2026/10/21
 permalink: /posts/flclash-guide-2026/
 tags:
   - FlClash
@@ -13,7 +13,7 @@ tags:
 description: FlClash怎么用？整理官方下载安装、安卓与电脑安装包选择、URL订阅导入、节点切换、系统代理、TUN模式、WebDAV备份和常见问题，并对比Clash Verge Rev的适用场景。
 ---
 
-更新时间：2026年9月9日。本文按官方正式版 **v0.8.96** 的发布文件、中文界面文案和配置流程整理；后续版本的按钮位置可能调整。
+更新时间：2026年10月21日。官方最新发布页本次指向 **v0.9.1**；下文具体菜单、文件名与源码引用仍以 **v0.8.96** 为版本化示例。v0.9.1 已调整仪表盘、策略组和部分 TUN 设置，不能把示例截图或旧版路径当作当前界面实测。
 
 **FlClash 是支持安卓和电脑的代理客户端。** 基础使用顺序是：安装软件 → 导入订阅 → 选中配置和节点 → 启动代理 → 验证访问。软件本身不附送机场账号、套餐或可用节点，需要准备兼容的订阅或配置文件。
 
@@ -31,15 +31,15 @@ FlClash 是基于 Clash.Meta／Mihomo 内核的开源客户端，提供订阅管
 | Windows 电脑 | 有 | 安装 EXE，启动后开启系统代理或按需使用虚拟网卡 |
 | Mac | 有 | 按 Intel 或 Apple 芯片选择 DMG |
 | Linux 电脑 | 有 | 按发行版和处理器选择 DEB、RPM 或 AppImage |
-| iPhone、iPad | 本次官方发行包未提供 | 参考 [Shadowrocket 教程](/posts/shadowrocket-guide-2026/) |
+| iPhone、iPad | 官方发行包未提供 | 推荐免外区付费的 [Clash Mi 教程](/posts/clash-mi-guide-2026/) 或 [Shadowrocket 教程](/posts/shadowrocket-guide-2026/) |
 
-还不清楚“机场”“节点”和“订阅”的区别，可先阅读 [机场与订阅链接入门](/posts/airport-node-subscription-guide/)。FlClash 是客户端名称，不能仅凭机场写了“通用订阅”就认定所有配置都能直接使用。
+还不清楚“机场”“节点”和“订阅”的区别，可先阅读 [机场与订阅链接入门](/posts/airport-node-subscription-guide/)。FlClash 是客户端名称，不能仅凭机场写了“通用订阅”就认定所有配置都能直接使用。如需体验现代 Sing-box 多协议生态，也可参考 [Hiddify 教程](/posts/hiddify-guide-2026/)。
 
 ## FlClash官方下载地址与安装包选择
 
 优先从 **[FlClash 官方最新发布页](https://github.com/chen08209/FlClash/releases/latest)** 下载。展开页面中的 **Assets**，选择与你设备匹配的安装文件；不要误把 `Source code` 源码压缩包当作安装包。
 
-截至本文复核时，最新正式版为 [v0.8.96，2026年8月17日发布](https://github.com/chen08209/FlClash/releases/tag/v0.8.96)。后续下载以官方最新发布页为准，下面列出的是这一版本的文件识别方式。
+本文原有操作示例对应 [v0.8.96，2026年8月17日发布](https://github.com/chen08209/FlClash/releases/tag/v0.8.96)。2026年10月21日重新查阅时，[最新正式版为 v0.9.1，10月17日发布](https://github.com/chen08209/FlClash/releases/tag/v0.9.1)。下载与兼容性以当前发布页为准；下面仅保留 v0.8.96 的文件识别示例，不承诺当前版本提供完全相同的包名。
 
 | 系统或架构 | 文件名中的识别部分 | 怎么选 |
 |---|---|---|
@@ -193,23 +193,27 @@ TUN 用于接收流量，接收后如何分流仍由规则和出站模式决定�
 
 FlClash 客户端开源免费；节点、流量与套餐由你使用的服务商提供，或由你自行搭建。安装客户端不会自动获得付费机场服务。需要筛选服务时，可参考 [Clash与通用订阅机场榜](/rankings/clash/)，购买前确认格式、设备限制和有效期。
 
-### FlClash和Clash Verge Rev选哪个？
+### FlClash、Clash Mi与Clash Verge Rev选哪个？
 
 | 使用需求 | 可优先阅读的教程 |
 |---|---|
 | 安卓手机和电脑希望使用相近的界面 | 本篇 FlClash 教程 |
+| iPhone 或 iPad 希望免外区付费使用通用订阅 | [Clash Mi 教程](/posts/clash-mi-guide-2026/) |
 | 主要使用电脑，希望了解 Rev 的配置增强与桌面功能 | [Clash Verge Rev 教程](/posts/clash-verge-guide-2026/) |
+| 偏好 Sing-box 内核与 VLESS Reality、Hysteria 2 等新协议 | [Hiddify 教程](/posts/hiddify-guide-2026/) |
+| 已经习惯 iOS 小火箭且已有海外账号 | [Shadowrocket 教程](/posts/shadowrocket-guide-2026/) |
 | 已经有一款运行正常，只想更换机场 | 先更新订阅，无需仅为换机场而更换客户端 |
-| iPhone 或 iPad | [Shadowrocket 教程](/posts/shadowrocket-guide-2026/) |
 
 两款客户端都采用 Mihomo 体系；具体协议与配置兼容性仍取决于所带内核版本。FlClash 也提供配置覆写功能，不能简单理解成“只能导入订阅的精简版”。选择时看设备、配置需求和操作习惯，不用 GitHub 星标数判断连接速度。[FlClash 配置覆写](https://github.com/chen08209/FlClash/tree/v0.8.96/lib/views/profiles/overwrite)、[Clash Verge Rev 功能介绍](https://github.com/clash-verge-rev/clash-verge-rev#features)
 
 ## 相关阅读
 
 - [机场工具推荐与官方下载指南](/posts/airport-tools/)
-
+- [Clash Mi下载与使用教程](/posts/clash-mi-guide-2026/)
+- [Hiddify下载与使用教程](/posts/hiddify-guide-2026/)
 - [Clash Verge Rev下载与使用教程](/posts/clash-verge-guide-2026/)
 - [Clash Meta安卓安装与订阅配置](/posts/clash-for-android-guide-2026/)
+- [Shadowrocket小火箭使用教程](/posts/shadowrocket-guide-2026/)
 - [机场是什么：节点与订阅链接入门](/posts/airport-node-subscription-guide/)
 - [Clash订阅链接导入失败怎么办](/posts/clash-subscription-troubleshooting/)
 - [2026机场推荐：套餐、客户端与风险对比](/posts/jichang-tuijian/)

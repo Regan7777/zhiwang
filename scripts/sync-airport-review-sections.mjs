@@ -9,8 +9,6 @@ const airportReviewDir = join(root, 'docs/机场评测')
 const airportsPath = join(root, 'docs/.vuepress/config/airports.ts')
 const checkOnly = process.argv.includes('--check')
 const testingPolicyEffectiveDate = '2026-08-18'
-const currentTestingSourceName = 'Siilas 测速中心'
-const currentTestingSourceUrl = 'https://siilas.com/test/'
 
 const fail = (message) => {
   console.error(message)
@@ -58,12 +56,10 @@ const clientSummary = (airport) => {
 }
 
 const scenarioLabels = {
-  stable: '稳定',
   cheap: '低价',
   clash: 'Clash',
-  chatgpt: 'ChatGPT',
-  streaming: '流媒体',
-  trial: '试用',
+  chatgpt: 'ChatGPT资料',
+  streaming: '流媒体资料',
   newbie: '新手',
 }
 
@@ -72,8 +68,6 @@ const scenarioRankingLinks = {
   cheap: { label: '低价机场榜', link: '/rankings/cheap/' },
   clash: { label: 'Clash机场榜', link: '/rankings/clash/' },
   chatgpt: { label: 'ChatGPT机场榜', link: '/rankings/chatgpt/' },
-  streaming: { label: '流媒体机场榜', link: '/rankings/streaming/' },
-  trial: { label: '免费试用机场榜', link: '/rankings/trial/' },
 }
 
 const formatDate = (value = '') => {
@@ -115,7 +109,7 @@ const renderEvidenceSection = (airport, airportDataLastReviewed, displayName, hi
   if (hiddenAirportStatuses.has(airport.status)) {
     const rows = [
       ['风险复核时间', formatDate(airportDataLastReviewed)],
-      ['当前测试数据来源', `[${currentTestingSourceName}](${currentTestingSourceUrl})（yp7.net 不再自行测试）`],
+      ['当前测试数据说明', '2026-08-18 起 织网 不再自行测试'],
       ['当前状态', airport.status],
       ['购买建议', '不建议新购或续费'],
       ['历史套餐价格', `${airport.priceText}，${airport.traffic}`],
@@ -134,45 +128,28 @@ const renderEvidenceSection = (airport, airportDataLastReviewed, displayName, hi
     ].join('\n')
   }
 
-  const performance = airport.performance
-  const hasPerformance = Boolean(performance)
   const rows = [
     ...(airport.informationSources?.length ? [
       ['资料来源', airport.informationSources.map((source) => source.link === false ? source.name : `[${source.name}](${source.url})`).join('；')],
       ['资料复核日期', airport.informationSources.map((source) => `${source.name}：${source.checkedAt}`).join('；')],
     ] : []),
-    ['当前测试数据来源', `[${currentTestingSourceName}](${currentTestingSourceUrl})；${testingPolicyEffectiveDate} 起 yp7.net 不再自行测试`],
-    ['历史记录状态', hasPerformance ? 'yp7.net 历史资料，不代表当前表现' : '无 yp7.net 历史测试记录'],
-    ['历史测试时间', hasPerformance ? formatDate(performance.lastTestedAt) : '无历史记录'],
-    ['历史测试时段', performance?.testWindow || '无历史记录'],
-    ['历史测试地区', performance?.testRegion || '无历史记录'],
-    ['历史测试网络', performance?.testNetwork || '无历史记录'],
-    ['历史测试设备', performance?.testDevice || '无历史记录'],
+    ['当前测试数据说明', `${testingPolicyEffectiveDate} 起 织网 不再自行测试，仅核验套餐与客户端资料`],
     ['客户端资料', clientSummary(airport)],
     ...(airport.subscriptionClients?.length ? [['一键订阅客户端', airport.subscriptionClients.join('、')]] : []),
     ['套餐价格', `${airport.priceText}，${airport.traffic}`],
     ['免费试用', booleanText(airport.trial)],
     ['不限时套餐', booleanText(airport.noExpiry)],
     ['通用订阅', booleanText(airport.universalSubscription)],
-    ['适合场景', scenarioSummary(airport)],
-    ['历史 ChatGPT 表现', performance?.chatgptResult || '无历史记录；请查看 Siilas 最新记录'],
-    ['历史 YouTube 4K 表现', performance?.youtube4kResult || '无历史记录；请查看 Siilas 最新记录'],
-    ['历史下载速度', performance?.downloadMbpsRange || '无历史记录；请查看 Siilas 最新记录'],
-    ['历史稳定性判断', performance?.stability || '无历史测试判断'],
-    ['历史证据等级', performance ? performance.evidenceLevel ? `${performance.evidenceLevel}级` : '未评级；按原始记录的具体范围阅读' : '无历史测试证据'],
-    ...(performance?.evidenceSources?.length ? [['历史原始资料', performance.evidenceSources.map((source) => `[${source.name}](${source.url})`).join('；')]] : []),
+    ['资料用途标签（非平台实测）', scenarioSummary(airport)],
     ['风险记录', airport.risk],
-    ['历史证据摘要', performance?.evidenceSummary || '无 yp7.net 历史测试记录；当前页面只整理推荐资料与风险提示'],
   ]
 
   return [
-    `## ${displayName}${hasPerformance ? '套餐资料与历史记录' : '套餐与使用资料汇总'}`,
+    `## ${displayName}套餐与使用资料汇总`,
     '',
     '| 项目 | 当前记录 |',
     '|---|---|',
     ...rows
-      .filter(([label]) => hasPerformance || !label.startsWith('历史'))
-      .filter(([label, value]) => !label.startsWith('历史') || !/未覆盖|无历史记录|无历史测试/.test(value))
       .map(([label, value]) => `| ${escapeTableCell(label)} | ${escapeTableCell(value)} |`),
   ].join('\n')
 }
@@ -183,8 +160,6 @@ const membershipLabels = {
   cheap: '低价机场榜',
   clash: 'Clash机场榜',
   chatgpt: 'ChatGPT机场榜',
-  streaming: '流媒体机场榜',
-  trial: '免费试用机场榜',
   noExpiry: '不限时套餐榜',
   dedicatedClient: '专属客户端机场榜',
 }
@@ -224,9 +199,9 @@ const renderRelatedSection = (airport, relatedAirportsByPath, displayNameByPath,
       '',
       renderMarkdownLinks([
         { label: '机场风险监测', link: '/risk-monitor/' },
-        { label: '机场推荐方法与测试数据来源', link: '/methodology/' },
+        { label: '机场推荐方法与资料来源', link: '/methodology/' },
         { label: '机场推荐：2026场景筛选与风险提示', link: '/posts/jichang-tuijian/' },
-        { label: '机场大全：价格、流量、试用与风险状态', link: '/posts/jichang-heji/' },
+        { label: '机场大全：价格、流量、客户端与套餐对比', link: '/posts/jichang-heji/' },
       ]),
     ].join('\n')
   }
@@ -237,16 +212,16 @@ const renderRelatedSection = (airport, relatedAirportsByPath, displayNameByPath,
   const primaryScenarioLink = airport.scenarios
     .map((scenario) => scenarioRankingLinks[scenario])
     .find((link) => link && (
-      !['/rankings/chatgpt/', '/rankings/streaming/'].includes(link.link)
+      !['/rankings/chatgpt/'].includes(link.link)
       || membershipPaths.has(link.link)
     ))
 
   const links = uniqueLinks([
     { label: '机场推荐：2026场景筛选与风险提示', link: '/posts/jichang-tuijian/' },
     primaryScenarioLink,
-    { label: '机场大全：价格、流量、试用与风险状态', link: '/posts/jichang-heji/' },
+    { label: '机场大全：价格、流量、客户端与套餐对比', link: '/posts/jichang-heji/' },
     { label: '机场风险监测', link: '/risk-monitor/' },
-    { label: '机场推荐方法与测试数据来源', link: '/methodology/' },
+    { label: '机场推荐方法与资料来源', link: '/methodology/' },
     ...peerAirports.map((item) => ({
       label: `${displayNameByPath.get(normalizeRoute(item.path)) || item.name}机场怎么样？`,
       link: item.path,
@@ -336,11 +311,6 @@ const syncReviewSections = () => {
     let next = `${withEvidence.trimEnd()}\n\n${membershipSection}\n\n${relatedSection}\n`
 
     if (next !== page.content) {
-      // Generated links may change after a newer editorial edit. Never regress its date.
-      const currentDate = getFrontmatterValue(parseFrontmatter(page.content), 'dateModified')?.replace(/\//g, '-')
-      if (!currentDate || currentDate < airportDataLastModified) {
-        next = next.replace(/^dateModified: .+$/m, `dateModified: ${airportDataLastModified.replace(/-/g, '/')}`)
-      }
       if (!checkOnly) writeFileSync(page.filePath, next)
       changedFiles.push(toProjectPath(page.filePath))
     }

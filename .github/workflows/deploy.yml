@@ -83,6 +83,9 @@ jobs:
       - name: Check content health
         run: pnpm run docs:check-content
 
+      - name: Check built links and sitemap
+        run: pnpm run docs:check-links
+
       - name: Write deployment version marker
         run: printf '%s' "$GITHUB_SHA" > docs/.vuepress/dist/deploy-sha.txt
 
