@@ -19,6 +19,7 @@ export default defineUserConfig({
   title: siteName,
   description: siteDescription,
   head: [
+    ['meta', { name: 'msvalidate.01', content: '8BEA8052606A0C15AACD9FF35D7E6180' }],
     ['meta', { name: 'google', content: 'notranslate' }],
     ['meta', { httpEquiv: 'Content-Language', content: 'zh-CN' }],
     ['meta', { name: 'author', content: '织网' }],
