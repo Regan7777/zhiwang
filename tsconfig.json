@@ -11,6 +11,7 @@
       "node"
     ]
   },
+  // TypeScript configuration for zhiwang.one
   "include": [
     "docs/.vuepress/**/*.ts"
   ]

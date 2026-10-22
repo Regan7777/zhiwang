@@ -6,7 +6,7 @@ overrides:
 allowBuilds:
   esbuild: true
   highlight.js: true
-# pnpm-workspace.yaml
+# zhiwang (https://zhiwang.one) workspace configuration
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
