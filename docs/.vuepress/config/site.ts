@@ -13,7 +13,7 @@ export const siteAuthorUrl = `${hostname}/about/`
 export const sitePublishingPrinciplesUrl = `${hostname}/about/#编辑原则`
 export const siteContactUrl = 'https://t.me/wanfengzn7'
 export const monitoredAirportCount = airportMetrics.count
-export const defaultImage = `${hostname}${pageCovers['/']}`
+export const defaultImage = `${hostname}/logo.png`
 export const defaultRobots = 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
 
 const airportPageImages = Object.fromEntries(
@@ -21,7 +21,7 @@ const airportPageImages = Object.fromEntries(
 )
 
 export const pageImages: Record<string, string> = {
-  '/': '/shouye.png',
+  '/': '/logo.png',
   '/blog/': '/shouye.png',
   '/about/': '/shouye.png',
   '/posts/jichang-tuijian/': '/shouye.png',
