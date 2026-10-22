@@ -19,6 +19,7 @@ export default defineUserConfig({
   title: siteName,
   description: siteDescription,
   head: [
+    ['meta', { name: 'google-site-verification', content: 'cqm96i-difY9qiLSeQqCh2VvjzY0qWPhs60TfdRyOX4' }],
     ['meta', { name: 'msvalidate.01', content: '8BEA8052606A0C15AACD9FF35D7E6180' }],
     ['meta', { name: 'google', content: 'notranslate' }],
     ['meta', { httpEquiv: 'Content-Language', content: 'zh-CN' }],
