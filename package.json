@@ -1,5 +1,5 @@
 {
-  "name": "yinli-blog",
+  "name": "zhiwang-blog",
   "type": "module",
   "version": "1.0.0",
   "description": "织网博客 - 科学上网工具与机场推荐（VPN、翻墙、梯子）",
@@ -12,6 +12,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:dev-clean": "vuepress dev docs --clean-cache --clean-temp",
     "docs:build": "vuepress build docs --clean-cache --clean-temp",
+    "docs:covers": "node scripts/generate-page-covers.mjs",
     "docs:sync-tables": "node scripts/sync-airport-tables.mjs",
     "docs:check-tables": "node scripts/sync-airport-tables.mjs --check",
     "docs:sync-review-sections": "node scripts/sync-airport-review-sections.mjs",
@@ -33,6 +34,7 @@
     "@vuepress/bundler-vite": "2.0.0-rc.24",
     "@vuepress/helper": "2.0.0-rc.112",
     "http-server": "^14.1.1",
+    "sharp": "^0.35.5",
     "typescript": "^5.9.3",
     "vue": "^3.5.44",
     "vuepress": "2.0.0-rc.24",
