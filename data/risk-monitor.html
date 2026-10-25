@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="织网 机场风险监测 HTML 页面，整理已淘汰机场、客服失联、官网异常、节点波动和购买前风险提示。数据页提供机器可读 JSON、Markdown 和 HTML 表格，覆盖价格、流量、试用、客户端、订阅兼容和风险状态，方便搜索引擎与读者引用。">
+    <meta name="keywords" content="机场风险,跑路机场,机场跑路,机场监测,机场避坑">
+    <link rel="canonical" href="https://zhiwang.one/data/risk-monitor">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="织网">
+    <meta property="og:title" content="织网 机场风险监测数据：跑路风险、官网异常、客服失联、套餐变化、节点波动与购买避坑提示汇总">
+    <meta property="og:description" content="织网 机场风险监测 HTML 页面，整理已淘汰机场、客服失联、官网异常、节点波动和购买前风险提示。数据页提供机器可读 JSON、Markdown 和 HTML 表格，覆盖价格、流量、试用、客户端、订阅兼容和风险状态，方便搜索引擎与读者引用。">
+    <meta property="og:url" content="https://zhiwang.one/data/risk-monitor">
+    <meta property="og:image" content="https://zhiwang.one/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="织网 机场风险监测数据：跑路风险、官网异常、客服失联、套餐变化、节点波动与购买避坑提示汇总">
+    <meta name="twitter:description" content="织网 机场风险监测 HTML 页面，整理已淘汰机场、客服失联、官网异常、节点波动和购买前风险提示。数据页提供机器可读 JSON、Markdown 和 HTML 表格，覆盖价格、流量、试用、客户端、订阅兼容和风险状态，方便搜索引擎与读者引用。">
+    <meta name="twitter:image" content="https://zhiwang.one/logo.png">
+    <meta name="theme-color" content="#141518">
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/logo.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"织网 机场风险监测数据","description":"织网 机场风险监测数据集记录已淘汰机场、观察中机场、官网异常、客服失联、节点波动、套餐变化和购买前风险提示，并关联对应页面，帮助用户在购买或续费前识别机场服务的时效性风险。","url":"https://zhiwang.one/data/risk-monitor","dateModified":"2026-10-21","license":"https://zhiwang.one/methodology/","creator":{"@type":"Organization","@id":"https://zhiwang.one/#organization","name":"织网","url":"https://zhiwang.one"}}</script>
+    <title>织网 机场风险监测数据：跑路风险、官网异常、客服失联、套餐变化、节点波动与购买避坑提示汇总</title>
+    <style>
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #111827; background: #f8fafc; }
+      main { width: min(1120px, calc(100vw - 32px)); margin: 0 auto; padding: 40px 0 64px; }
+      h1 { margin: 0 0 12px; font-size: clamp(30px, 5vw, 48px); line-height: 1.1; }
+      p { color: #475569; line-height: 1.8; }
+      a { color: #2563eb; }
+      .card { overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; box-shadow: 0 12px 30px rgba(15, 23, 42, .06); }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      th, td { border-bottom: 1px solid #e2e8f0; padding: 12px; text-align: left; vertical-align: top; }
+      th { background: #f1f5f9; color: #334155; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+      .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+      .links a { border: 1px solid #bfdbfe; border-radius: 999px; background: #eff6ff; padding: 8px 12px; font-size: 13px; font-weight: 700; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>织网 机场风险监测数据</h1>
+      <p>数据更新：2026-10-21；上次全面复核：2026-08-19。各条目资料日期见来源记录。</p>
+      <p>本页是人类可读的机场风险监测 HTML 入口。机器读取可使用 JSON 或 Markdown 文件。</p>
+      <div class="links">
+        <a href="/data/risk-monitor.json">risk-monitor.json</a>
+        <a href="/data/risk-monitor.md">risk-monitor.md</a>
+        <a href="/data/rankings">rankings</a>
+        <a href="/risk-monitor/">风险监测页</a>
+        <a href="/methodology/">推荐方法与数据来源</a>
+      </div>
+      <div class="card"><table>
+        <thead>
+          <tr><th>机场</th><th>状态</th><th>风险提示</th><th>链接</th></tr>
+        </thead>
+        <tbody>
+<tr>
+        <td>蜜雪冰城</td>
+        <td>疑似跑路（待核实）</td>
+        <td>搜索收录的翻翻墙条目含2026-10-17疑似跑路、官网无法访问预警；当前预览未稳定复现该更新，尚未独立确认停运。暂停新购与续费。</td>
+        <td><a href="https://t.me/s/ffqchannel/15149?q=%23tuic" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>滕王阁</td>
+        <td>高风险（跑路待核实）</td>
+        <td>公开用户记录反映服务异常及售后响应问题，工具箱作者列入黑名单；尚未取得可追溯的停运公告或跑路确认。暂停新购与续费。</td>
+        <td><a href="https://tools.adoyle.me/for-china.html" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>上帝世界</td>
+        <td>高风险（跑路待核实）</td>
+        <td>翻翻墙2026-05-20更新转述用户反馈并建议不购买；现有公开记录不足以确认已经停运或跑路。暂停新购与续费，继续核实官方公告及售后。</td>
+        <td><a href="https://t.me/s/ffqchannel?q=%23%E4%B8%8A%E5%B8%9D%E4%B8%96%E7%95%8C" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>echo</td>
+        <td>已淘汰</td>
+        <td>旧站内编辑记录称客服失联；原始公告与发生日期未留存，当前状态待独立复核，不建议新购</td>
+        <td><a href="/risk-monitor/#已淘汰或高风险记录" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>神行加速</td>
+        <td>资料已核对</td>
+        <td>不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取</td>
+        <td><a href="/posts/shenxingjiasu-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>榴莲云</td>
+        <td>资料已核对</td>
+        <td>不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认</td>
+        <td><a href="/posts/liulianyun-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>云界线</td>
+        <td>资料已核对</td>
+        <td>实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实</td>
+        <td><a href="/posts/yunjiexian-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>闪电鼠</td>
+        <td>资料已核对</td>
+        <td>不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对</td>
+        <td><a href="/posts/shandianshu-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>环球梯</td>
+        <td>资料已核对</td>
+        <td>按量包详情限365天，与卡片终身标签不同；不支持免费试用和通用订阅，退款待核实</td>
+        <td><a href="/posts/huanqiuti-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>月之暗面</td>
+        <td>新收录观察</td>
+        <td>人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录</td>
+        <td><a href="/posts/yuezhi-anmian-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>大佬云</td>
+        <td>资料已核对</td>
+        <td>不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包</td>
+        <td><a href="/posts/dalaoyun-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>边缘节点</td>
+        <td>资料已核对</td>
+        <td>15元体验小包不参加优惠；全系不支持免费试用与通用订阅；退款条款待核实；依赖专属客户端生态</td>
+        <td><a href="/posts/bianyuan-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>快狸</td>
+        <td>资料已核对</td>
+        <td>官方公告遇恶意攻击抢修；不支持免费试用；夜狸季付高于连续月付；退款待核实</td>
+        <td><a href="/posts/kuaili-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>飞V</td>
+        <td>资料已核对</td>
+        <td>不支持免费试用与通用订阅；全套餐不接受退款；新客8折码fly20不适用买断包</td>
+        <td><a href="/posts/feiv-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+<tr>
+        <td>灵动云</td>
+        <td>资料已核对</td>
+        <td>不支持免费试用与通用订阅；全套餐不接受退款；优惠码需加入官方Telegram群获取</td>
+        <td><a href="/posts/lingdongyun-review-2026/" rel="noopener noreferrer">查看</a></td>
+      </tr>
+        </tbody>
+      </table></div>
+    </main>
+  </body>
+</html>
