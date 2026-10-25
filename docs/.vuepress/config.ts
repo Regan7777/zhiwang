@@ -21,7 +21,7 @@ export default defineUserConfig({
   description: siteDescription,
   head: [
     ['meta', { name: 'google-site-verification', content: 'cqm96i-difY9qiLSeQqCh2VvjzY0qWPhs60TfdRyOX4' }],
-    ['meta', { name: 'msvalidate.01', content: '8BEA8052606A0C15AACD9FF35D7E6180' }],
+    ['meta', { name: 'msvalidate.01', content: '7ec54bed5e684bee9e50ea059b0e5538' }],
     ['meta', { name: 'google', content: 'notranslate' }],
     ['meta', { httpEquiv: 'Content-Language', content: 'zh-CN' }],
     ['meta', { name: 'author', content: '织网' }],
