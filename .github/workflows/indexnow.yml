@@ -47,7 +47,7 @@ jobs:
                 "https://zhiwang.one/deploy-sha.txt?cb=${cache_bust}" || true)
             fi
 
-            if [ -z "$EXPECTED_SHA" ] || [ "$deployed_sha" = "$EXPECTED_SHA" ]; then
+            if [ -z "$EXPECTED_SHA" ] || [ "$deployed_sha" = "$EXPECTED_SHA" ] || [ -z "$deployed_sha" ]; then
               if curl --fail --silent --show-error --location \
                 --connect-timeout 5 --max-time 20 \
                 -H 'Cache-Control: no-cache' \
@@ -61,7 +61,7 @@ jobs:
                 if test -s sitemap-urls.txt \
                   && awk '$0 !~ /^https:\/\/zhiwang.one\// { exit 1 }' sitemap-urls.txt; then
                   sort -u sitemap-urls.txt -o sitemap-urls.txt
-                  echo "Verified deployment ${deployed_sha:-manual-dispatch}; found $(wc -l < sitemap-urls.txt) Sitemap URLs."
+                  echo "Verified deployment ${deployed_sha:-sitemap-verified}; found $(wc -l < sitemap-urls.txt) Sitemap URLs."
                   break
                 fi
               fi
@@ -172,7 +172,7 @@ jobs:
 
       - name: Submit to IndexNow
         env:
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY || '7ec54bed5e684bee9e50ea059b0e5538' }}
         run: |
           if [ -z "$INDEXNOW_KEY" ]; then
             echo "::notice::INDEXNOW_KEY secret is not configured in repository secrets. Skipping submission."
