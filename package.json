@@ -11,7 +11,8 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:dev-clean": "vuepress dev docs --clean-cache --clean-temp",
-    "docs:build": "vuepress build docs --clean-cache --clean-temp",
+    "docs:build": "node scripts/generate-affiliate-redirects.mjs && vuepress build docs --clean-cache --clean-temp",
+    "docs:affiliates": "node scripts/generate-affiliate-redirects.mjs",
     "docs:covers": "node scripts/generate-page-covers.mjs",
     "docs:sync-tables": "node scripts/sync-airport-tables.mjs",
     "docs:check-tables": "node scripts/sync-airport-tables.mjs --check",

@@ -48,6 +48,7 @@ const getDataPageDescription = (description = '') => {
 }
 
 export const isSponsoredLink = (href = '') => {
+  if (href.startsWith('/go/')) return true
   if (!/^https?:\/\//.test(href)) return false
 
   return /(\?|&|#)(code|aff|r|c|from|ref)=/i.test(href)
