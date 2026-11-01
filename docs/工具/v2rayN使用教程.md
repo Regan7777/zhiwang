@@ -9,7 +9,7 @@ tags:
   - Windows科学上网
   - 节点导入
   - 订阅链接
-description: v2rayN怎么用？本文整理 Windows 电脑安装 v2rayN、导入机场订阅、更新节点、测速、设置系统代理、路由模式和常见连接失败排查方法。
+description: v2rayN怎么用？Windows电脑科学上网新手图文教程：从GitHub官方正版下载安装、添加订阅分组、更新V2Ray/VLESS/Xray节点，到真连接延迟测速、系统代理开启、绕过大陆路由规则与常见连不上排错全流程指南。
 howto:
   name: "v2rayN Windows 安装与订阅配置教程"
   description: "指导在 Windows 电脑上下载解压 v2rayN 客户端，添加机场订阅、更新节点并开启系统代理上网。"

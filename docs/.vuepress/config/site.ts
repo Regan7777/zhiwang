@@ -3,7 +3,7 @@ import { pageCovers } from './page-covers'
 
 export const hostname = 'https://zhiwang.one'
 export const siteName = '织网'
-export const siteDescription = '织网 专注2026机场推荐、套餐与客户端信息整理、风险提示和科学上网教程。'
+export const siteDescription = '织网 专注2026翻墙机场推荐、科学上网教程与客户端配置指南。提供低价与不限时机场对比、Clash/v2rayN/小火箭节点配置、流媒体与ChatGPT解锁方案及跑路风险实时监测，帮助用户安全稳定选购。'
 export const siteKeywords = '织网,机场推荐,VPN推荐,Clash节点,Clash教程,Shadowrocket,科学上网,翻墙机场,ChatGPT机场,TikTok节点,流媒体解锁'
 export const siteLastReviewed = airportDataLastReviewed
 export const siteLastModified = airportDataLastModified

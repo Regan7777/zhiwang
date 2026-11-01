@@ -11,7 +11,7 @@ tags:
   - 节点订阅
   - VPN配置
   - 机场教程
-description: 说明Shadowrocket官方App Store入口、自己的Apple账户、订阅导入、连接与分流核对步骤，区分应用购买和节点服务，处理导入及连接问题。
+description: Shadowrocket小火箭苹果iOS下载与使用完全指南：指导使用美区Apple ID安全下载正版小火箭，完成机场节点URL订阅导入、扫码添加、智能规则分流与全局路由设置，并针对iOS连不上、订阅更新超时提供快速排错解决办法。
 howto:
   name: "Shadowrocket（小火箭）iOS下载与订阅配置教程"
   description: "指导在 iPhone/iPad 上通过官方 App Store 安装 Shadowrocket，并完成机场通用订阅的导入与连接验证。"

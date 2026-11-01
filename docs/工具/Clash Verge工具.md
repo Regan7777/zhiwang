@@ -10,7 +10,7 @@ tags:
   - Clash Verge下载
   - Clash Verge配置
   - 网络工具
-description: 按Clash Verge Rev官方项目说明选择Windows、macOS或Linux安装包，完成兼容订阅导入、节点与分流选择，区分系统代理、TUN和连接排查。
+description: Clash Verge Rev下载与新手配置教程：提供Windows、macOS与Linux官方正版安装包指引，手把手演示机场通用订阅URL导入、规则分流选择、系统代理开启与TUN虚拟网卡模式设置，并附带节点超时与服务异常深度排查步骤。
 howto:
   name: "Clash Verge Rev 下载安装与配置教程"
   description: "指导在 Windows/macOS/Linux 上下载安装 Clash Verge Rev 客户端，并完成订阅导入、节点选择与系统代理/TUN模式设置。"
