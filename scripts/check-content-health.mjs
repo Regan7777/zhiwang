@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { extname, join, relative } from 'node:path'
 import { loadConfig } from './lib/load-config.mjs'
 import { markdownTables } from './lib/airport-data-validation.mjs'
+import { affiliateProviders } from './lib/affiliates.mjs'
 
 const root = process.cwd()
 const docsDir = join(root, 'docs')
@@ -453,6 +454,7 @@ const generatedRoutes = new Set([
   '/data/airports/',
   '/data/rankings/',
   '/data/risk-monitor/',
+  ...affiliateProviders.map((item) => `/go/${item.slug}/`),
 ])
 const generatedCleanHtmlResourcePaths = new Set([
   '/data/airports',
@@ -921,7 +923,7 @@ if (!existsSync(distDir)) {
     errors.push('docs/.vuepress/dist/llms.txt: retired file must not be generated')
   }
 
-  const htmlFiles = walkFiles(distDir).filter((filePath) => filePath.endsWith('.html'))
+  const htmlFiles = walkFiles(distDir).filter((filePath) => filePath.endsWith('.html') && !filePath.replace(/\\/g, '/').includes('/dist/go/'))
   const sitemapPath = join(distDir, 'sitemap.xml')
 
   for (const filePath of htmlFiles) {
