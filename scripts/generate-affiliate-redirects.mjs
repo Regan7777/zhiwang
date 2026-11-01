@@ -22,7 +22,9 @@ export function generateAffiliateRedirects() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>正在前往 ${item.name} 官网...</title>
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="正在安全前往 ${item.name} 官网，请稍候...">
+  <link rel="canonical" href="https://zhiwang.one/go/${item.slug}/">
+  <meta name="robots" content="noindex, nofollow, noarchive">
   <meta http-equiv="refresh" content="0; url=${item.target}">
   <style>
     body {
@@ -71,7 +73,7 @@ export function generateAffiliateRedirects() {
 </head>
 <body>
   <div class="spinner"></div>
-  <p>正在为您安全连接至 <strong>${item.name}</strong> 官网，请稍候...</p>
+  <h1 style="font-size: 15px; font-weight: normal; margin: 0 0 12px 0;">正在为您安全连接至 <strong>${item.name}</strong> 官网，请稍候...</h1>
   <p style="font-size: 13px;">如果页面未自动跳转，请 <a href="${item.target}" rel="sponsored nofollow">点击此处直接直达</a></p>
 </body>
 </html>
