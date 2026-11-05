@@ -12,7 +12,7 @@ export const affiliateProviders = [
   {
     slug: 'dalaoyun',
     name: '大佬云',
-    target: 'https://fugui0077.dalaoyunaff.com/#/?code=1o7gYhTL',
+    target: 'https://fugui0077.dalaoyunaff.com/#/?code=Wpfk4XD5',
     description: '大佬云官网注册与购买入口',
   },
   {
@@ -30,7 +30,7 @@ export const affiliateProviders = [
   {
     slug: 'shandianshu',
     name: '闪电鼠',
-    target: 'https://fugui0077.shandianshuaff.com/#/?code=I2yK9PfK',
+    target: 'https://fugui0077.shandianshuaff.com/#/?code=KSByEAn9',
     description: '闪电鼠官网注册与购买入口',
   },
   {

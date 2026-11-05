@@ -47,7 +47,7 @@ jobs:
                 "https://zhiwang.one/deploy-sha.txt?cb=${cache_bust}" || true)
             fi
 
-            if [ -z "$EXPECTED_SHA" ] || [ "$deployed_sha" = "$EXPECTED_SHA" ] || [ -z "$deployed_sha" ]; then
+            if [ -z "$EXPECTED_SHA" ] || [ "$deployed_sha" = "$EXPECTED_SHA" ] || [ "$deployed_sha" = "latest" ] || [ -z "$deployed_sha" ]; then
               if curl --fail --silent --show-error --location \
                 --connect-timeout 5 --max-time 20 \
                 -H 'Cache-Control: no-cache' \
@@ -185,12 +185,17 @@ jobs:
               ;;
           esac
           urls=$(jq -R . < urls.txt | jq -s .)
-          jq -n \
+          payload=$(jq -n \
             --arg host "zhiwang.one" \
             --arg key "$INDEXNOW_KEY" \
             --arg keyLocation "https://zhiwang.one/${INDEXNOW_KEY}.txt" \
             --argjson urlList "$urls" \
-            '{ host: $host, key: $key, keyLocation: $keyLocation, urlList: $urlList }' \
-            | curl --fail --silent --show-error --connect-timeout 5 --max-time 30 -X POST "https://api.indexnow.org/indexnow" \
-              -H "Content-Type: application/json" \
-              --data-binary @-
+            '{ host: $host, key: $key, keyLocation: $keyLocation, urlList: $urlList }')
+          echo "Submitting to Yandex IndexNow gateway..."
+          curl --fail --silent --show-error --connect-timeout 5 --max-time 30 -X POST "https://yandex.com/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$payload" || true
+          echo "Submitting to IndexNow official gateway..."
+          curl --silent --show-error --connect-timeout 5 --max-time 30 -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$payload" || true

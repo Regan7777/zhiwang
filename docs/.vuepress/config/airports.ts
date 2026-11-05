@@ -399,7 +399,7 @@ export const airportData: AirportData[] = [
       },
       {
         "name": "大佬云官网邀请入口",
-        "url": "https://fugui0077.dalaoyunaff.com/#/?code=1o7gYhTL",
+        "url": "https://fugui0077.dalaoyunaff.com/#/?code=Wpfk4XD5",
         "checkedAt": "2026-10-21"
       }
     ]
