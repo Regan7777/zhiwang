@@ -24,7 +24,7 @@ export const affiliateProviders = [
   {
     slug: 'yunjiexian',
     name: '云界线',
-    target: 'https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW',
+    target: 'https://fugui0077.yunjiexianaff.com/#/?code=FVkiFyAx',
     description: '云界线官网注册与购买入口',
   },
   {

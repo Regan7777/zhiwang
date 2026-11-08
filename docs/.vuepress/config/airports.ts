@@ -211,7 +211,7 @@ export const airportData: AirportData[] = [
       },
       {
         "name": "云界线官网邀请入口",
-        "url": "https://fugui0077.yunjiexianaff.com/#/?code=qA3LF6hW",
+        "url": "https://fugui0077.yunjiexianaff.com/#/?code=FVkiFyAx",
         "checkedAt": "2026-10-21"
       }
     ]
