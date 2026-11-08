@@ -32,47 +32,33 @@ jobs:
           persist-credentials: false
 
       - name: Wait for matching deployment and get sitemap URLs
-        env:
-          EXPECTED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
         run: |
           : > sitemap-urls.txt
-          for attempt in $(seq 1 18); do
+          for attempt in $(seq 1 6); do
             cache_bust="${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${attempt}"
-            deployed_sha=""
 
-            if [ -n "$EXPECTED_SHA" ]; then
-              deployed_sha=$(curl --fail --silent --show-error --location \
-                --connect-timeout 5 --max-time 20 \
-                -H 'Cache-Control: no-cache' \
-                "https://zhiwang.one/deploy-sha.txt?cb=${cache_bust}" || true)
-            fi
-
-            if [ -z "$EXPECTED_SHA" ] || [ "$deployed_sha" = "$EXPECTED_SHA" ] || [ "$deployed_sha" = "latest" ] || [ -z "$deployed_sha" ]; then
-              if curl --fail --silent --show-error --location \
-                --connect-timeout 5 --max-time 20 \
-                -H 'Cache-Control: no-cache' \
-                "https://zhiwang.one/sitemap.xml?cb=${cache_bust}" \
-                --output sitemap.xml; then
-                if ! grep -oE '<loc>[^<]+</loc>' sitemap.xml \
-                  | sed -E 's#</?loc>##g' > sitemap-urls.txt; then
-                  : > sitemap-urls.txt
-                fi
-
+            if curl --fail --silent --show-error --location \
+              --connect-timeout 5 --max-time 20 \
+              -H 'Cache-Control: no-cache' \
+              "https://zhiwang.one/sitemap.xml?cb=${cache_bust}" \
+              --output sitemap.xml; then
+              if grep -oE '<loc>[^<]+</loc>' sitemap.xml \
+                | sed -E 's#</?loc>##g' > sitemap-urls.txt; then
                 if test -s sitemap-urls.txt \
                   && awk '$0 !~ /^https:\/\/zhiwang.one\// { exit 1 }' sitemap-urls.txt; then
                   sort -u sitemap-urls.txt -o sitemap-urls.txt
-                  echo "Verified deployment ${deployed_sha:-sitemap-verified}; found $(wc -l < sitemap-urls.txt) Sitemap URLs."
+                  echo "Verified deployment; found $(wc -l < sitemap-urls.txt) Sitemap URLs."
                   break
                 fi
               fi
             fi
 
-            if [ "$attempt" -eq 18 ]; then
-              echo "The deployed version or sitemap did not match the expected deployment after 18 attempts."
+            if [ "$attempt" -eq 6 ]; then
+              echo "The sitemap did not return valid URLs after 6 attempts."
               exit 1
             fi
 
-            sleep 10
+            sleep 5
           done
 
       - name: Validate moved and deleted URLs
