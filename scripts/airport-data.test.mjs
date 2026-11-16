@@ -43,13 +43,13 @@ test('page candidates, public collections and Schema preserve the editorial name
 
 test('price changes use the same record and hidden services disappear from all collections', () => {
   const updated = structuredClone(airportData)
-  const airport = updated.find((item) => item.name === '月之暗面')
+  const airport = updated.find((item) => item.name === '神行加速')
   airport.price = 8.5
   airport.priceText = '8.5元/月'
   airport.traffic = '80GB/月'
   airport.trial = true
-  for (const key of ['all', 'cheap', 'clash', 'noExpiry']) {
-    assert.equal(createAirportCollections(updated)[key].items.find((item) => item.name === '月之暗面'), airport)
+  for (const key of ['all', 'clash', 'noExpiry']) {
+    assert.equal(createAirportCollections(updated)[key].items.find((item) => item.name === '神行加速'), airport)
   }
   airport.status = '停止推荐'
   assert.ok(Object.values(createAirportCollections(updated)).every((collection) => !collection.items.includes(airport)))
@@ -110,7 +110,7 @@ for (const status of ['停止推荐', '已淘汰', '下架']) {
 
 test('capability changes remove an editorial candidate only from affected collections', () => {
   const updated = structuredClone(airportData)
-  const airport = updated.find((item) => item.name === '月之暗面')
+  const airport = updated.find((item) => item.name === '神行加速')
   airport.universalSubscription = false
   const collections = createAirportCollections(updated)
   assert.ok(!collections.clash.items.includes(airport))
@@ -118,7 +118,7 @@ test('capability changes remove an editorial candidate only from affected collec
 })
 
 test('unverified universal subscriptions stay unknown and are excluded from Clash candidates', (t) => {
-  const airport = airportData.find((item) => item.name === '月之暗面')
+  const airport = airportData.find((item) => item.name === '神行加速')
   const originalValue = airport.universalSubscription
   const originalClashItems = airportCollections.clash.items
   const dest = mkdtempSync(join(tmpdir(), 'yinli-unverified-subscription-'))
@@ -159,11 +159,11 @@ test('rendered HTML, Markdown and JSON omit historical performance evidence', (t
   const json = JSON.parse(read('airports.json'))
   const html = htmlTables(read('airports.html'))[0]
   const markdown = markdownTables(read('airports.md'))[0]
-  const yuezhi = airportData.find((airport) => airport.name === '月之暗面')
+  const yuezhi = airportData.find((airport) => airport.name === '神行加速')
   const publicYuezhi = json.airports.find((airport) => airport.path === yuezhi.path)
   assert.deepEqual(publicYuezhi.subscriptionClients, yuezhi.subscriptionClients)
   assert.deepEqual(publicYuezhi.informationSources, yuezhi.informationSources)
-  assert.ok(!('historicalEvidence' in publicYuezhi), '月之暗面 has no traceable historical performance record')
+  assert.ok(!('historicalEvidence' in publicYuezhi), '神行加速 has no traceable historical performance record')
   assert.deepEqual(validateAirportRows(html, airportCollections.all.items, 'HTML'), [])
   assert.deepEqual(validateAirportRows(markdown, airportCollections.all.items, 'Markdown'), [])
   for (const record of json.airports) assert.ok(!('historicalEvidence' in record) && !('performance' in record))

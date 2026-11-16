@@ -40,6 +40,11 @@ export const theme = plumeTheme({
       ],
     },
     {
+      text: 'AI订阅充值',
+      link: '/posts/ai-subscription-guide-2026/',
+      icon: 'material-symbols:smart-toy-outline',
+    },
+    {
       text: '站点信息',
       icon: 'material-symbols:info-outline',
       items: [

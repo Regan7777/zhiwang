@@ -69,4 +69,10 @@ export const affiliateProviders = [
     target: 'https://fanxiaobin.kuailiaff.com/#/?code=K0WKmH8h',
     description: '快狸官网注册与购买入口',
   },
+  {
+    slug: 'ezsub',
+    name: 'EzSub',
+    target: 'https://ezsubzhiwang.ezsub.com/zh-cn',
+    description: 'EzSub AI订阅充值平台官网入口',
+  },
 ]

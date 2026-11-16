@@ -26,10 +26,10 @@ export default defineUserConfig({
     ['meta', { httpEquiv: 'Content-Language', content: 'zh-CN' }],
     ['meta', { name: 'author', content: '织网' }],
     ['meta', { name: 'theme-color', content: '#141518' }],
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
-    ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
-    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
-    ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg?v=2' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/logo.png?v=2' }],
+    ['link', { rel: 'shortcut icon', href: '/favicon.ico?v=2' }],
+    ['link', { rel: 'apple-touch-icon', href: '/logo.png?v=2' }],
   ],
   plugins: [
     {

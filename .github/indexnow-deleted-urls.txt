@@ -2,6 +2,5 @@
 # 发布流程会确认这些 URL 返回 404/410，再与 Sitemap URL 一起提交 IndexNow。
 https://zhiwang.one/article/gqs2dway/
 https://zhiwang.one/article/tj38tso3/
-https://zhiwang.one/llms.txt
 https://zhiwang.one/posts/lesu/
 https://zhiwang.one/posts/vpnres/

@@ -11,9 +11,6 @@ const distDir = join(root, 'docs/.vuepress/dist')
 const hostname = 'https://zhiwang.one'
 
 const errors = []
-if (existsSync(join(publicDir, 'llms.txt'))) {
-  errors.push('docs/.vuepress/public/llms.txt: retired file must not be published')
-}
 const toProjectPath = (filePath) => relative(root, filePath).replace(/\\/g, '/')
 
 const walkFiles = (dir, shouldSkip = () => false) => {
@@ -275,10 +272,6 @@ if (existsSync(deletedUrlsPath)) {
   })
 } else {
   errors.push(`${toProjectPath(deletedUrlsPath)}: missing deleted URL list for IndexNow`)
-}
-
-if (!deletedUrlPaths.has(normalizeRoute('/llms.txt'))) {
-  errors.push(`${toProjectPath(deletedUrlsPath)}: missing retired URL ${hostname}/llms.txt`)
 }
 
 const getSitemapHtmlPath = (pathname) => {
@@ -919,10 +912,6 @@ if (airportData.length) {
 if (!existsSync(distDir)) {
   errors.push('docs/.vuepress/dist: missing build output. Run pnpm run docs:build first.')
 } else {
-  if (existsSync(join(distDir, 'llms.txt'))) {
-    errors.push('docs/.vuepress/dist/llms.txt: retired file must not be generated')
-  }
-
   const htmlFiles = walkFiles(distDir).filter((filePath) => filePath.endsWith('.html') && !filePath.replace(/\\/g, '/').includes('/dist/go/'))
   const sitemapPath = join(distDir, 'sitemap.xml')
 

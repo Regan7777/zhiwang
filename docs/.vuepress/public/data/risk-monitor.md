@@ -10,10 +10,10 @@ Data updated: 2026-10-21; last full review: 2026-08-19
 | echo | 已淘汰 | 旧站内编辑记录称客服失联；原始公告与发生日期未留存，当前状态待独立复核，不建议新购 | [来源](https://zhiwang.one/risk-monitor/#已淘汰或高风险记录) |
 | 神行加速 | 资料已核对 | 不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取 | [查看](https://zhiwang.one/posts/shenxingjiasu-review-2026/) |
 | 榴莲云 | 资料已核对 | 不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认 | [查看](https://zhiwang.one/posts/liulianyun-review-2026/) |
-| 云界线 | 资料已核对 | 实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实 | [查看](https://zhiwang.one/posts/yunjiexian-review-2026/) |
+| 云界线 | 资料已核对 | 不支持免费试用；通用订阅可向客服领取；退款待核实 | [查看](https://zhiwang.one/posts/yunjiexian-review-2026/) |
 | 闪电鼠 | 资料已核对 | 不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对 | [查看](https://zhiwang.one/posts/shandianshu-review-2026/) |
 | 环球梯 | 资料已核对 | 按量包详情限365天，与卡片终身标签不同；不支持免费试用和通用订阅，退款待核实 | [查看](https://zhiwang.one/posts/huanqiuti-review-2026/) |
-| 月之暗面 | 新收录观察 | 人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录 | [查看](https://zhiwang.one/posts/yuezhi-anmian-review-2026/) |
+| 月之暗面 | 停止推荐 | 人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录 | [查看](https://zhiwang.one/posts/yuezhi-anmian-review-2026/) |
 | 大佬云 | 资料已核对 | 不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包 | [查看](https://zhiwang.one/posts/dalaoyun-review-2026/) |
 | 边缘节点 | 资料已核对 | 15元体验小包不参加优惠；全系不支持免费试用与通用订阅；退款条款待核实；依赖专属客户端生态 | [查看](https://zhiwang.one/posts/bianyuan-review-2026/) |
 | 快狸 | 资料已核对 | 官方公告遇恶意攻击抢修；不支持免费试用；夜狸季付高于连续月付；退款待核实 | [查看](https://zhiwang.one/posts/kuaili-review-2026/) |

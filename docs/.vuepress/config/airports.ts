@@ -73,9 +73,9 @@ export const airportData: AirportData[] = [
     "name": "神行加速",
     "path": "/posts/shenxingjiasu-review-2026/",
     "image": "/shouye.png",
-    "price": 23,
-    "priceText": "23元/月",
-    "traffic": "150GB/月",
+    "price": 19.88,
+    "priceText": "19.88元/月",
+    "traffic": "100GB/月",
     "trial": false,
     "noExpiry": true,
     "dedicatedClient": true,
@@ -88,7 +88,7 @@ export const airportData: AirportData[] = [
     ],
     "status": "资料已核对",
     "risk": "不支持退款；不支持免费试用；通用订阅需购买订阅后联系客服领取",
-    "summary": "月付23元150GB（年付240元）、40元300GB、72元666GB；96元年付特惠60GB/月（折约8元/月）。另有90GB 99元、450GB 398元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
+    "summary": "月付19.88元100GB（新客7折码sx0077首月仅需13.92元）、24.88元150GB、38.88元300GB、68.88元666GB；96元年付特惠60GB/月（折约8元/月）。另有100GB 99元、333GB 298元（神行·不限时大包）不限时包。Windows账号登录专属客户端，iOS Nextin专属码sxjs。新客7折优惠码sx0077（特惠版和不限时套餐不享受折扣）。不支持免费试用，通用订阅需购买后联系客服领取，不接受退款。",
     "informationSources": [
       {
         "name": "神行加速套餐页",
@@ -125,9 +125,9 @@ export const airportData: AirportData[] = [
     "name": "榴莲云",
     "path": "/posts/liulianyun-review-2026/",
     "image": "/shouye.png",
-    "price": 24,
-    "priceText": "24元/月",
-    "traffic": "140GB/月",
+    "price": 15,
+    "priceText": "15元/月",
+    "traffic": "50GB/月",
     "trial": false,
     "noExpiry": false,
     "dedicatedClient": true,
@@ -140,7 +140,7 @@ export const airportData: AirportData[] = [
     ],
     "status": "资料已核对",
     "risk": "不支持免费试用；通用订阅需购买后向客服领取，具体格式与客户端兼容先确认；退款待核实；ll88七折码适用及叠加条件需确认",
-    "summary": "不支持免费试用；通用订阅需购买订阅后向客服领取，具体格式与客户端兼容先确认。可见最低月付24元140GB，40元260GB、60元420GB、100元750GB；96元年付提供60GB/月，购买日起每30天刷新，不限同时使用客户端数量。四端账号登录客户端，iOS Nextin专属码lly；公告展示ll88七折码，结算未验证。IPLC及原生IP、AI与流媒体为商家说明。",
+    "summary": "不支持免费试用；通用订阅需购买订阅后向客服领取，具体格式与客户端兼容先确认。榴莲皮·轻量入门月付15元50GB（不享受折扣），轻享包24元140GB、畅享包40元260GB、猫山王60元420GB、大黑刺100元750GB；96元年付提供60GB/月，购买日起每30天刷新，不限同时使用客户端数量。官网提供不限时流量包（以官网为准）。四端账号登录客户端，iOS Nextin专属码lly；公告展示ll88七折码（限时版与年付特惠除外）。IPLC及原生IP、AI与流媒体为商家说明。",
     "informationSources": [
       {
         "name": "榴莲云试用与订阅规则（人工补充）",
@@ -171,9 +171,9 @@ export const airportData: AirportData[] = [
     "name": "云界线",
     "path": "/posts/yunjiexian-review-2026/",
     "image": "/shouye.png",
-    "price": 22,
-    "priceText": "22元/月",
-    "traffic": "150GB/月",
+    "price": 19.88,
+    "priceText": "19.88元/月",
+    "traffic": "130GB/月",
     "trial": false,
     "noExpiry": true,
     "dedicatedClient": true,
@@ -182,8 +182,8 @@ export const airportData: AirportData[] = [
       "newbie"
     ],
     "status": "资料已核对",
-    "risk": "实测订单结算为22/40/66元（正文标价25/45/75元已澄清为原标价）；不支持免费试用；通用订阅可向客服领取；退款待核实",
-    "summary": "实测订单结算为22/40/66元。不支持免费试用，通用订阅可向客服领取，具体客户端格式先确认。96元年付小包60GB/月，从购买日起每30天刷新，重置20元。轻云150GB、凌云300GB、御云600GB月付实测结算22/40/66元，重置分别22/40/66元且不延长有效期。99元80GB与199元200GB不限时包均不按月刷新，用完重购。Windows账号登录自有客户端，iOS用Nextin识别码yjx，另有Android与Mac教程。yjx888新客七折适用轻云/凌云/御云各周期，每人一次不可叠加，排除年付小包与不限时包。线路、速率及解锁为商家说明。",
+    "risk": "不支持免费试用；通用订阅可向客服领取；退款待核实",
+    "summary": "轻云·基础版月付19.88元130GB（结账输入首单7折码yjx888仅需13.92元/月），凌云·进阶版24.88元180GB、御云·高级版45.88元350GB；96元年付小包60GB/月（从购买日起每30天刷新，折约8元/月）。另有99元80GB与199元200GB不限时随心包。Windows账号登录自有客户端，iOS用Nextin识别码yjx，另有Android与Mac教程。新客7折码yjx888排除年付小包与不限时包。不支持免费试用，通用订阅向客服领取，退款待核实。",
     "informationSources": [
       {
         "name": "云界线试用与订阅规则（人工补充）",
@@ -220,9 +220,9 @@ export const airportData: AirportData[] = [
     "name": "闪电鼠",
     "path": "/posts/shandianshu-review-2026/",
     "image": "/shouye.png",
-    "price": 22,
-    "priceText": "22元/月",
-    "traffic": "120GB/月",
+    "price": 15,
+    "priceText": "15元/月",
+    "traffic": "50GB/月",
     "trial": false,
     "noExpiry": false,
     "dedicatedClient": true,
@@ -234,7 +234,7 @@ export const airportData: AirportData[] = [
     ],
     "status": "资料已核对",
     "risk": "不支持免费试用和通用订阅；退款待核实；首购优惠适用范围需核对",
-    "summary": "不支持免费试用和通用订阅。22元月付120GB起，另有40元250GB、70元500GB月付及96元年付60GB/月；流量每30天重置。提供四平台客户端教程，iOS使用Nextin识别码sd88。公告列出新用户首购7折码sd88，未验证适用套餐与叠加条件；专线、解锁及不限设备为商家说明。",
+    "summary": "不支持免费试用和通用订阅。闪电鼠·限时版月付15元50GB（不享受折扣），闪电鼠·性价比版19.88元100GB、进阶版24.88元150GB、疾速版38.88元250GB、雀跃版68.88元500GB；96元年付小包60GB/月（折约8元/月）。另有破风版268元200~220GB与擎天版498元500~688GB不限时包（以官网为准）。提供四平台客户端教程，iOS使用Nextin识别码sd88。公告7折码sd88（限时版与年付特惠除外）。退款待核实。",
     "informationSources": [
       {
         "name": "闪电鼠试用与订阅规则（人工补充）",
@@ -272,9 +272,9 @@ export const airportData: AirportData[] = [
     "name": "环球梯",
     "path": "/posts/huanqiuti-review-2026/",
     "image": "/shouye.png",
-    "price": 23,
-    "priceText": "23元/月",
-    "traffic": "120GB/月",
+    "price": 15,
+    "priceText": "15元/月",
+    "traffic": "50GB/月",
     "trial": false,
     "noExpiry": false,
     "dedicatedClient": true,
@@ -286,7 +286,7 @@ export const airportData: AirportData[] = [
     ],
     "status": "资料已核对",
     "risk": "按量包详情限365天，与卡片终身标签不同；不支持免费试用和通用订阅，退款待核实",
-    "summary": "不支持免费试用和通用订阅。23元月付120GB起，96元年付60GB/月；39元240GB、69元600GB月付，设备分别限3、5、10台。按量包99元80GB、299元400GB，有效期均为365天，不属于不限时套餐。提供四平台客户端教程，iOS使用Nextin识别码HQ66。公告七折码HQ66限2000份、每人一次、不可叠加，截止2026年11月30日，结算与余量未验证；流媒体和AI支持为商家说明。",
+    "summary": "不支持免费试用和通用订阅。环球微享月付15元50GB（3台，不享受折扣），环球轻享19元100GB（3台）、环球畅享29元200GB（5台）、环球尊享39元300GB（5台）、环球通勤52元450GB（5台）、环球极享69元600GB（8台）、环球极客128元1.2TB（10台）；96元学生年付套餐60GB/月（3台，折约8元/月）。备用按量包39元30GB、99元80GB、299元400GB、688元1TB，均为365天有效期（非永久不过期）。提供四平台客户端教程，iOS使用Nextin识别码HQ66。公告全场7折码HQ66（学生套餐与按量包除外）。退款待核实。",
     "informationSources": [
       {
         "name": "环球梯试用与订阅规则（人工补充）",
@@ -325,11 +325,8 @@ export const airportData: AirportData[] = [
     "noExpiry": true,
     "dedicatedClient": false,
     "universalSubscription": true,
-    "scenarios": [
-      "cheap",
-      "clash"
-    ],
-    "status": "新收录观察",
+    "scenarios": [],
+    "status": "停止推荐",
     "risk": "人工确认官网可访问、Clash订阅可导入；套餐与结算未独立核验；周期套餐不退款；不限时包退款、设备限制及续购叠加待核实；具体客户端与内核版本未记录",
     "summary": "2026-10-21人工补充：月付5元100GB、10元200GB、15元300GB、20元500GB；25元年付50GB/月，购买日重置、不参加促销且当月不能购买重置包。不限时总量包10元100GB、20元200GB、50元500GB、80元1000GB。无专属客户端，提供Clash订阅，不支持免费试用；周期套餐文案明确不退款。同日人工确认官网可访问、Clash订阅可导入，具体客户端与内核版本未提供。AnyTLS、海外BGP中转、港台日美新、1倍率、不限速及平台解锁为商家说明，未作本站性能测试。",
     "informationSources": [
@@ -356,9 +353,9 @@ export const airportData: AirportData[] = [
     "name": "大佬云",
     "path": "/posts/dalaoyun-review-2026/",
     "image": "/shouye.png",
-    "price": 19.99,
-    "priceText": "19.99元/月",
-    "traffic": "100GB/月",
+    "price": 15,
+    "priceText": "15元/月",
+    "traffic": "50GB/月",
     "trial": false,
     "noExpiry": true,
     "dedicatedClient": true,
@@ -371,7 +368,7 @@ export const airportData: AirportData[] = [
     ],
     "status": "资料已核对",
     "risk": "不支持直接免费试用（入群领体验包）；退款条款待核实；换购套餐覆盖余量不退款；7折码不适用年付与不限时包",
-    "summary": "初云·福利版月付19.99元100GB起，另有25元150GB、43元300GB、73元600GB月付，以及96元年付特惠（60GB/月，折约8元/月）。提供99元78GB与199元160GB不限时包。Windows、macOS与Android提供自研客户端，iOS使用Nextin专属码dly，支持通用订阅。新客7折码dly88（排除年付活动包与不限时包）。换购套餐覆盖余量且不退款，退款政策待核实。",
+    "summary": "福云·限时版月付15元50GB（不享受折扣），财云·福利版19.99元100GB、初云·进阶版25元150GB、御云·高级版73元600GB；96元年付特惠60GB/月（折约8元/月）。另有268元200GB与498元500GB不限时包。Windows、macOS与Android提供自研客户端，iOS使用Nextin专属码dly，支持通用订阅。新客7折码dly88（排除年付特惠、限时版与不限时包）。换购套餐覆盖余量且不退款，退款政策待核实。",
     "informationSources": [
       {
         "name": "大佬云试用与订阅规则（人工补充）",

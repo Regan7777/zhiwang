@@ -24,10 +24,7 @@ test('月之暗面 preserves owner-provided prices, source limits and explicit C
   assert.match(brand.risk, /人工确认官网可访问、Clash订阅可导入/)
   assert.match(brand.informationSources[1].name, /可导入（人工确认/)
   assert.equal(brand.informationSources[2].name, '月之暗面官网入口')
-  for (const key of ['all', 'cheap', 'clash', 'noExpiry']) {
-    assert.ok(airportCollections[key].items.some((airport) => airport.path === brand.path), key)
-  }
-  for (const key of ['mainRecommendation', 'chatgpt', 'streaming', 'dedicatedClient']) {
+  for (const key of ['all', 'mainRecommendation', 'cheap', 'clash', 'noExpiry', 'chatgpt', 'streaming', 'dedicatedClient']) {
     assert.ok(!airportCollections[key].items.some((airport) => airport.path === brand.path), key)
   }
   assert.ok(!('performance' in brand))

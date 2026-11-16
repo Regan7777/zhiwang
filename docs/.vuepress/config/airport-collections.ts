@@ -58,23 +58,21 @@ const definitions = {
     pagePath: '/posts/jichang-heji/', sourceFile: 'docs/机场推荐/机场合集.md',
     heading: '## 机场价格总表', sectionLinks: true,
     select: (airports) => selectNames(airports, [
-      '神行加速', '榴莲云', '云界线', '闪电鼠', '环球梯', '月之暗面', '大佬云', '边缘节点', '快狸', '飞V', '灵动云',
+      '神行加速', '榴莲云', '云界线', '闪电鼠', '环球梯', '大佬云', '边缘节点', '快狸', '飞V', '灵动云',
     ], () => true, true),
   },
   cheap: {
     name: '2026低价机场筛选', dataTitle: '低价机场',
     pagePath: '/rankings/cheap/', sourceFile: 'docs/机场榜单/低价机场榜.md',
     heading: '## 低价机场候选',
-    select: (airports) => selectNames(airports, [
-      '月之暗面',
-    ], (airport) => airport.price <= 10 || airport.scenarios.includes('cheap')),
+    select: (airports) => selectNames(airports, [], (airport) => airport.price <= 10 || airport.scenarios.includes('cheap')),
   },
   clash: {
     name: '2026 Clash机场筛选', dataTitle: 'Clash 机场',
     pagePath: '/rankings/clash/', sourceFile: 'docs/机场榜单/Clash机场榜.md',
     heading: '## Clash机场候选',
     select: (airports) => selectNames(airports, [
-      '月之暗面', '神行加速', '榴莲云', '云界线', '大佬云', '快狸',
+      '神行加速', '榴莲云', '云界线', '大佬云', '快狸',
     ], (airport) => airport.universalSubscription === true),
   },
   chatgpt: {

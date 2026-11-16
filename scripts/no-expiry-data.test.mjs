@@ -94,7 +94,7 @@ test('finite-duration packages stay excluded from no-expiry summaries and export
   assert.equal(airportMetrics.noExpiryCount, confirmedNoExpiry.length)
   assert.equal(airportMetrics.noExpiryUnverifiedCount, 0)
   assert.equal(unresolvedNoExpiry.length, 0)
-  assert.equal(airportCollections.noExpiry.items.length, 7)
+  assert.equal(airportCollections.noExpiry.items.length, 6)
   assert.equal(airportCollections.noExpiry.items.length, confirmedNoExpiry.length + unresolvedNoExpiry.length)
   const noExpirySource = readFileSync(airportCollections.noExpiry.sourceFile, 'utf8')
   const noExpiryTables = [
@@ -102,7 +102,7 @@ test('finite-duration packages stay excluded from no-expiry summaries and export
     markdownTableAfterHeading(read('rankings.md'), `## ${airportCollections.noExpiry.dataTitle}`),
     htmlTableAfterHeading(read('rankings.html'), `## ${airportCollections.noExpiry.dataTitle}`),
   ]
-  assert.match(noExpirySource, /当前列出7家候选/)
+  assert.match(noExpirySource, /当前列出6家候选/)
   for (const name of ['榴莲云', '闪电鼠']) {
     const airport = airportData.find((item) => item.name === name)
     assert.equal(airport.noExpiry, false)
@@ -130,7 +130,7 @@ test('finite-duration packages stay excluded from no-expiry summaries and export
   const noExpirySchema = getPageSchema({ path: airportCollections.noExpiry.pagePath, title: airportCollections.noExpiry.name,
     frontmatter: {}, data: {}, content: noExpirySource })
   const noExpiryList = noExpirySchema['@graph'].find((item) => item['@type'] === 'ItemList')
-  assert.equal(noExpiryList.numberOfItems, 7)
+  assert.equal(noExpiryList.numberOfItems, 6)
   assert.equal(noExpiryList.itemListElement.some((entry) => entry.item.name === '榴莲云'), false)
   assert.equal(noExpiryList.itemListElement.some((entry) => entry.item.url === `https://zhiwang.one${liulianyun.path}`), false)
   assert.equal(data.lastModified, airportDataLastModified)

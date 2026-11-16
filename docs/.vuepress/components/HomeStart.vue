@@ -10,18 +10,18 @@
 </div><p class="note">优先使用 GitHub 发布页，项目说明见<a href="https://github.com/chen08209/FlClash" target="_blank" rel="noopener">FlClash 官方仓库</a>。下载前核对版本、设备架构与发布者；首页不再提供未经安装包核验的第三方镜像。</p></section>
 <div class="connector" aria-hidden="true"></div>
 <section aria-labelledby="subscribe"><div class="stephead"><span class="number">2</span><h2 id="subscribe">获取神行加速订阅与客户端</h2><span class="more-airports">神行加速为本站推荐机场，更多机场选择访问<a href="/posts/jichang-tuijian/">机场推荐 →</a>，本站所有机场见<a href="/posts/jichang-heji/">机场合集 →</a></span></div>
-<div class="flybit"><div><h3>神行加速</h3><p><strong>新用户 7 折优惠码：sx0077</strong>（特惠版与不限时除外）</p><p>月付 23 元 150GB 起，年付特惠 96 元。支持专属客户端与通用订阅。</p></div><div><a class="cta" target="_blank" rel="sponsored nofollow noopener" href="https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8">前往神行加速官网 ↗</a><span class="invite">邀请码：WUQMrgI8 · 链接已携带</span></div></div>
-<ol class="workflow"><li><strong>注册账号</strong><p>从官网入口进入并注册，填写邀请码 WUQMrgI8 登录后台。</p></li><li><strong>选购套餐</strong><p>选择尝鲜包、基础包或年付特惠，结算时输入 7 折优惠码 sx0077（特惠版与不限时除外）。</p></li><li><strong>下载客户端或获取配置</strong><p>下载 Windows/iOS 专属客户端，或联系客服领取通用订阅。</p></li><li><strong>连接节点</strong><p>启动代理客户端并选择节点，打开常用网站验证连接。</p></li></ol>
+<div class="flybit"><div><h3>神行加速</h3><p><strong>新用户 7 折优惠码：sx0077</strong>（特惠版与不限时除外）</p><p>月付性价比包 19.88 元 100GB 起（券后仅需 ¥13.92），年付特惠 96 元。支持专属客户端与通用订阅。</p></div><div><a class="cta" target="_blank" rel="sponsored nofollow noopener" href="https://wuhan01.shenxingaff.com/#/?code=WUQMrgI8">前往神行加速官网 ↗</a><span class="invite">邀请码：WUQMrgI8 · 链接已携带</span></div></div>
+<ol class="workflow"><li><strong>注册账号</strong><p>从官网入口进入并注册，填写邀请码 WUQMrgI8 登录后台。</p></li><li><strong>选购套餐</strong><p>选择性价比包、基础包或年付特惠，结算输入 7 折优惠码 sx0077（特惠版与不限时除外，性价比包券后首月仅 ¥13.92）。</p></li><li><strong>下载客户端或获取配置</strong><p>下载 Windows/iOS 专属客户端，或联系客服领取通用订阅。</p></li><li><strong>连接节点</strong><p>启动代理客户端并选择节点，打开常用网站验证连接。</p></li></ol>
 <p class="note">下载客户端不附送节点。通用订阅需购买后联系客服领取。<a href="/posts/shenxingjiasu-review-2026/">神行加速套餐与使用说明</a> · <a href="/posts/clash-subscription-troubleshooting/">查看导入排错</a><br>推广披露：通过上述链接注册或购买，本站可能获得佣金；价格与套餐规则以服务后台为准。</p>
 </section>
 <section class="more-info" aria-labelledby="home-help">
 <h2 id="home-help">机场订阅与客户端使用说明</h2>
 <p>客户端用于导入配置和连接节点，机场提供订阅与流量套餐。神行加速是本站编辑首选，提供专属客户端、通用订阅及新客优惠；“最佳选择”是本站推荐判断，不是持续速度或稳定性的保证。</p>
-<details><summary>神行加速套餐价格和新客优惠怎么选？</summary><p>月付尝鲜包23元150GB起，年付特惠96元含60GB/月，另有99元90GB不限时包；新客输入优惠码sx0077享7折（特惠版和不限时套餐不享受折扣）。本站邀请链接已携带邀请码WUQMrgI8。<a href="/posts/shenxingjiasu-review-2026/">查看神行加速套餐与使用说明</a>。</p></details>
+<details><summary>神行加速套餐价格和新客优惠怎么选？</summary><p>入门性价比包月付19.88元100GB起，输入新客优惠码sx0077首月实付仅需¥13.92（特惠版和不限时套餐不享受折扣）；年付特惠96元含60GB/月，另有99元100GB与298元333GB不限时包。本站邀请链接已携带邀请码WUQMrgI8。<a href="/posts/shenxingjiasu-review-2026/">查看神行加速套餐与使用说明</a>。</p></details>
 <details><summary>Clash客户端安装后为什么没有节点？</summary><p>安装软件不会自动获得节点。需先取得匹配的订阅地址，再导入并启用配置。连接异常可看<a href="/posts/clash-subscription-troubleshooting/">订阅导入失败排查</a>，基本概念见<a href="/posts/airport-node-subscription-guide/">机场与订阅入门</a>。</p></details>
 <p>按需求比较：<a href="/rankings/cheap/">低价机场</a> · <a href="/rankings/no-expiry/">不限时套餐</a> · <a href="/rankings/clash/">Clash订阅</a> · <a href="/rankings/chatgpt/">ChatGPT机场</a> · <a href="/rankings/streaming/">流媒体资料</a></p>
 <p>使用指南：<a href="/posts/airport-tools/">全部客户端工具</a> · <a href="/posts/vpn-guide-2026/">科学上网入门</a> · <a href="/posts/ai-tools-not-working/">AI工具排错</a></p>
-<p class="note">套餐整理与评测日期分别记录，建议新购前优先月付验证。<a href="/methodology/">推荐方法与资料来源</a> · <a href="/risk-monitor/">机场风险监测</a> · <a href="/about/">关于本站与商业披露</a>。本页文案更新：2026年10月21日。</p>
+<p class="note">套餐整理与评测日期分别记录，建议新购前优先月付验证。<a href="/methodology/">推荐方法与资料来源</a> · <a href="/risk-monitor/">机场风险监测</a> · <a href="/about/">关于本站与商业披露</a>。本页文案更新：2026年11月12日。</p>
 </section></main>
 </template>
 <style scoped>

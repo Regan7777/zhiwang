@@ -63,7 +63,7 @@ description: Clash节点是什么？2026新手小白入门科普指南：全面�
 
 ### 2️⃣ 获取节点订阅
 
-- 提供兼容订阅的机场（例如：[神行加速](/posts/shenxingjiasu-review-2026/) / [月之暗面](/posts/yuezhi-anmian-review-2026/) / [云界线](/posts/yunjiexian-review-2026/)）。购买前确认订阅领取条件和目标客户端格式。
+- 提供兼容订阅的机场（例如：[神行加速](/posts/shenxingjiasu-review-2026/) / [云界线](/posts/yunjiexian-review-2026/)）。购买前确认订阅领取条件和目标客户端格式。
 
 ### 3️⃣ 导入节点
 
