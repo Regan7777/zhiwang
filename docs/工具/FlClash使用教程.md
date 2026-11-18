@@ -10,7 +10,7 @@ tags:
   - 订阅配置
   - Clash教程
   - 网络工具
-description: FlClash怎么用？整理官方下载安装、安卓与电脑安装包选择、URL订阅导入、节点切换、系统代理、TUN模式、WebDAV备份和常见问题，并对比Clash Verge Rev的适用场景。
+description: FlClash 怎么用？2026多平台代理客户端完整图文使用指南：整理GitHub官方正版下载渠道、Windows/Mac/Android/Linux安装包选型、机场订阅链接导入、节点按延迟测速排序与规则分流设置。详解TUN虚拟网卡模式、WebDAV云端同步备份及与Clash Verge Rev的使用场景对比。
 howto:
   name: "FlClash 多平台下载与订阅配置教程"
   description: "指导在 Android、Windows、macOS 上下载安装 FlClash 开源客户端，并完成通用订阅导入、节点选择与代理启动。"

@@ -12,7 +12,7 @@ tags:
   - iOS翻墙
   - 科学上网
   - 订阅配置
-description: Clash Mi（Karing体系）怎么用？整理官方开源下载、全平台客户端安装（特别是iOS端免美区付费小火箭替代方案）、Clash/V2Ray/通用订阅导入、分流模式切换、TUN模式及常见连接排错指南。
+description: Clash Mi（基于Karing内核体系）2026新手安装与配置全攻略：整理GitHub官方开源下载途径，详解Windows、Mac、Android及iOS端免美区Apple ID免费安装替代小火箭方案。涵盖Clash/V2Ray/通用订阅导入、自定义分流规则、TUN透明代理开启与常见网络排错指南。
 ---
 
 更新时间：2026年10月21日。
