@@ -1,7 +1,7 @@
 ---
-title: Clash Mi下载与使用教程：全平台Mihomo客户端安装、iOS免外区付费与订阅导入
+title: 2026 Clash Mi下载与使用教程：全平台Mihomo客户端安装、iPhone/iOS免外区配置与订阅导入
 createTime: 2026/10/21
-dateModified: 2026/10/21
+dateModified: 2026/11/20
 permalink: /posts/clash-mi-guide-2026/
 tags:
   - Clash Mi
@@ -12,10 +12,10 @@ tags:
   - iOS翻墙
   - 科学上网
   - 订阅配置
-description: Clash Mi（基于Karing内核体系）2026新手安装与配置全攻略：整理GitHub官方开源下载途径，详解Windows、Mac、Android及iOS端免美区Apple ID免费安装替代小火箭方案。涵盖Clash/V2Ray/通用订阅导入、自定义分流规则、TUN透明代理开启与常见网络排错指南。
+description: Clash Mi（基于Karing内核体系）2026官方下载安装与使用配置全攻略：提供GitHub最新版下载途径，详解Windows、Mac、Android及iPhone/iOS免外区Apple ID安装教程。演示神行加速等服务商一键订阅导入、分流规则配置与常见网络排错。
 ---
 
-更新时间：2026年10月21日。
+更新时间：2026年11月20日。
 
 **Clash Mi 是一款基于新一代 Mihomo（原 Clash.Meta）内核与 Karing 体系构建的跨平台代理客户端。** 与传统客户端相比，它的核心突破在于**全平台一致体验与出色的苹果生态兼容**——特别是对于 iPhone 和 iPad 用户，不需要另外注册美区 Apple ID 并付费购买 [Shadowrocket（小火箭）](/posts/shadowrocket-guide-2026/)，即可直接通过官方商店或渠道免费安装，并直接导入通用 Clash、V2Ray 或通用订阅链接。
 
@@ -80,19 +80,20 @@ Clash Mi（同源自 Karing 架构体系）是一款主打现代、极简与全�
 
 ## 如何导入机场订阅？
 
-Clash Mi 兼容标准的 Clash / Clash.Meta / 通用 V2Ray 订阅链接。
+Clash Mi 兼容标准的 Clash / Clash.Meta / 通用 V2Ray 订阅链接，支持手动 URL 导入与一键唤醒导入。
 
 ### 第一步：获取你的订阅链接
-1. 登录你使用的机场用户后台（例如参考 [2026机场推荐榜单](/posts/jichang-tuijian/) 中支持通用订阅的服务商）。
-2. 在“订阅管理”或“仪表盘”中，找到“复制 Clash 订阅”或“通用订阅链接”。
-3. 完整复制该 URL（通常以 `https://` 开头，含有个人密钥 token）。**请切勿公开泄漏你的订阅链接。**
+以[神行加速](/posts/shenxingjiasu-review-2026/)为例：
+1. 登录神行加速用户后台控制台；
+2. 找到“便捷导入”选项，或向在线客服索取通用的 Clash 订阅 URL；
+3. 完整复制该订阅链接（通常以 `https://` 开头，含有个人密钥 token，请勿向他人公开）。若在 iPhone 手机或移动端操作，也可直接在网页控制台点击“一键导入到 Clash Mi”唤起客户端完成自动载入。
 
 ### 第二步：在 Clash Mi 中添加配置
 1. 打开 Clash Mi，进入左侧或底部的 **“配置” (Profiles)** 页面。
 2. 点击右上角的 **“+”** 号或 **“添加配置”** 按钮。
 3. 选择 **“从 URL 导入” (Import from URL)**。
 4. 在弹出的输入框中填写：
-   - **配置名称**：自定义备注（如“我的主力机场”）。
+   - **配置名称**：自定义备注（如“神行加速主力”）。
    - **订阅 URL**：粘贴第一步复制的完整订阅链接。
 5. 点击 **“保存” (Save)** 或 **“下载”**，客户端会自动向服务器发起请求并解析节点列表。
 
