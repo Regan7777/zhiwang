@@ -42,7 +42,7 @@ export const affiliateProviders = [
   {
     slug: 'feiv',
     name: '飞V',
-    target: 'https://fugui.flyvaff.com/#/?code=gxmUajhy',
+    target: 'https://cola.flyvaff.com/#/register/?code=gxmUajhy',
     description: '飞V官网注册与购买入口',
   },
   {

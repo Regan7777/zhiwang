@@ -544,7 +544,7 @@ export const airportData: AirportData[] = [
       },
       {
         "name": "飞V官网邀请入口",
-        "url": "https://fugui.flyvaff.com/#/?code=gxmUajhy",
+        "url": "https://cola.flyvaff.com/#/register/?code=gxmUajhy",
         "checkedAt": "2026-10-21"
       }
     ]
