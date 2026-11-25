@@ -12,7 +12,7 @@ tags:
   - Hysteria 2
   - 科学上网
   - 跨平台客户端
-description: Hiddify怎么用？整理跨平台开源客户端安装（Windows、macOS、Android、iOS、Linux）、Sing-box多协议支持（VLESS Reality/Hysteria 2/TUIC/Clash/Trojan）、剪贴板一键导入订阅、分流模式与连接故障排查。
+description: Hiddify怎么用？2026开源跨平台代理客户端安装与配置全指南：支持Windows、macOS、Android、iOS与Linux全平台，内置Sing-box多协议内核（VLESS Reality/Hysteria 2/TUIC/Trojan），详述剪贴板一键导入订阅、分流模式切换与常见连接故障排查。
 ---
 
 更新时间：2026年10月21日。

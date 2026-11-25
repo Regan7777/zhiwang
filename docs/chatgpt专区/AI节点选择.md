@@ -10,7 +10,7 @@ tags:
   - AI工具
   - ChatGPT机场
   - 科学上网
-description: ChatGPT、Claude、Gemini 用什么节点？2026 AI工具机场节点选购指南：深度分析美国、日本、新加坡、英国等支持地区的节点差异，详解原生住宅IP与数据中心IP对AI风控的影响，提供科学配置分流规则与防止封号的实用技巧。
+description: ChatGPT、Claude、Gemini 用什么节点？2026 AI工具机场节点选购指南：深度分析美国、日本、新加坡、英国等支持地区的出口节点差异，详解原生住宅IP与机房数据中心IP对AI风控降智和封号的影响，并提供Clash科学分流规则配置与日常使用防封号实用技巧，全面保障稳定流畅高速高频访问。
 schema:
   - "@type": HowTo
     "@id": "https://zhiwang.one/posts/ai-tools-node-guide-2026/#howto"

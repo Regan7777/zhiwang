@@ -12,7 +12,7 @@ tags:
   - iOS翻墙
   - 科学上网
   - 订阅配置
-description: Clash Mi（基于Karing内核体系）2026官方下载安装与使用配置全攻略：提供GitHub最新版下载途径，详解Windows、Mac、Android及iPhone/iOS免外区Apple ID安装教程。演示神行加速等服务商一键订阅导入、分流规则配置与常见网络排错。
+description: Clash Mi（基于Mihomo与Karing内核体系）2026官方下载安装与使用配置全攻略：提供GitHub最新版官方下载途径，详解Windows、Mac、Android及iPhone/iOS免外区Apple ID安装教程。手把手演示神行加速等服务商一键订阅导入、智能分流规则配置与常见网络连不上排错方法。
 ---
 
 更新时间：2026年11月20日。

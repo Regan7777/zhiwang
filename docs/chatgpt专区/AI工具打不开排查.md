@@ -9,7 +9,7 @@ tags:
   - Gemini打不开
   - AI工具节点
   - ChatGPT机场
-description: ChatGPT、Claude、Gemini打不开或提示地区不可用怎么办？主流AI工具连接报错分步排查指南：涵盖官方服务故障查询、支持地区核对、账号风控状态、浏览器Cookie清理与原生IP节点代理规则配置，助你迅速恢复正常对话。
+description: ChatGPT、Claude、Gemini打不开或提示当前地区不可用怎么办？主流AI工具连接报错分步排查指南：涵盖官方服务器状态查询、支持国家与地区核对、账号风控降智状态检测、浏览器Cookie及缓存清理与原生住宅IP节点代理规则配置，助你快速排查网络与环境故障并顺利恢复正常稳定AI对话使用体验。
 ---
 
 更新时间：2026年10月20日（复核 OpenAI、Claude、Gemini 官方状态与地区说明入口）
