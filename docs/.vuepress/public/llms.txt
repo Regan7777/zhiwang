@@ -33,5 +33,6 @@
 - [AI 生产力工具网络节点选型与风控规避](https://zhiwang.one/posts/ai-tools-node-guide-2026/): ChatGPT、Claude 与 Gemini 纯净住宅 IP 识别与机房 IP 拦截防御。
 - [海外主流流媒体原生 4K 解锁全景指南](https://zhiwang.one/rankings/streaming/): Netflix、Disney+ 与 YouTube Premium 双栈住宅 IP 解锁评测。
 - [出海加密资产基础与安全实务](https://zhiwang.one/posts/what-is-usdt/): USDT 协议选型、网络转账安全与主流交易所基础指引。
+- [2026 伪专线与超售机场审计指南](https://zhiwang.one/posts/fake-iepl-overselling-audit-2026/): 拆解假 IEPL/IPLC 公网伪装、晚高峰超售断流征兆、倍率陷阱与月付止损核验清单。
 - [关于织网与技术评测准则](https://zhiwang.one/about/): 独立第三方客观评测原则、无利益捆绑及开源倡议。
 
